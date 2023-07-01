@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MentalDepths.Data.Models\MentalDepths.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>
