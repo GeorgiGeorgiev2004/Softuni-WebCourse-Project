@@ -1,6 +1,4 @@
-﻿
-
-namespace MentalDepths.Data
+﻿namespace MentalDepths.Data
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -14,5 +12,6 @@ namespace MentalDepths.Data
         {
 
         }
+
     }
 }

@@ -2,12 +2,12 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using static Common.ModelRegulations.Specialisation;
-    public class Specialisations
+    using static Common.ModelRegulations.City;
+    public class City
     {
-        public Specialisations()
+        public City()
         {
-            Specialists = new HashSet<SpecialistSpecialisation>();
+            ApplicationUsers = new HashSet<ApplicationUser>();
         }
         [Key]
         public int Id { get; set; }
@@ -15,6 +15,6 @@
         [StringLength(NamesMaxLenght, MinimumLength = NamesMinLenght)]
         public string Name { get; set; } = null!;
 
-        public ICollection<SpecialistSpecialisation> Specialists { get; set; }
+        public ICollection<ApplicationUser> ApplicationUsers{ get; set; }
     }
 }
