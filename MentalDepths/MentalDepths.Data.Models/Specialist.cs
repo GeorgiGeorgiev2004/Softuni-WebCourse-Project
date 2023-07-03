@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Identity;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using static MentalDepths.Common.ModelRegulations;
     using static MentalDepths.Common.ModelRegulations.Specialist;
     public class Specialist
     {
@@ -10,13 +11,14 @@
         {
             Id = Guid.NewGuid();
             Specialisations = new HashSet<SpecialistSpecialisation>();
+            Apointments= new HashSet<Apointment>();
         }
         [Key]
         public Guid Id { get; set; }
 
         [Required]
         [StringLength(URLMaxLenght,MinimumLength =URLMaxLenght)]
-        public string ImageURL { get; set; }
+        public string ImageURL { get; set; } = null!;
 
         [Required]
         [Range(MinAge,MaxAge)]
@@ -25,15 +27,18 @@
         [Required]
         [StringLength(AddressMaxLenght, MinimumLength = AddressMinLenght)]
         [ProtectedPersonalData]
-        public string Address { get; set; }
+        public string Address { get; set; } = null!;
 
         [StringLength(DescriptionMaxLenght, MinimumLength = DescriptionMinLenght)]
-        public string Description { get; set; }
+        public string Description { get; set; } = null!;
 
         public ICollection<SpecialistSpecialisation> Specialisations { get; set; }
 
+
+        public ICollection<Apointment> Apointments { get; set; }
+
         public Guid UserId { get; set; }
         [ForeignKey(nameof(UserId))]
-        public ApplicationUser ApplicationUser { get; set; }
+        public ApplicationUser ApplicationUser { get; set; } = null!;
     }
 }

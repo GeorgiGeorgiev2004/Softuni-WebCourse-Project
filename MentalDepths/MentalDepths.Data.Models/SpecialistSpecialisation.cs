@@ -6,10 +6,10 @@ namespace MentalDepths.Data.Models
     {
         public Guid SpecialistId { get; set; }
         [ForeignKey(nameof(SpecialistId))]
-        public Specialist Specialist { get; set; }
+        public Specialist Specialist { get; set; } = null!;
 
         public int SpecialisationId { get; set; }
         [ForeignKey(nameof(SpecialisationId))]
-        public Specialisations Specialisation { get; set; }
+        public Specialisation Specialisation { get; set; } = null!;
     }
 }

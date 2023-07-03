@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Identity;
 
     using static Common.ModelRegulations.ApplicationUser;
+    using static MentalDepths.Common.ModelRegulations;
 
     public class ApplicationUser:IdentityUser<Guid>
     {
@@ -13,6 +14,7 @@
         {
             CreatedOn = DateTime.UtcNow;
             IsDeleted = false;
+            Apointments = new HashSet<Apointment>();
         }
         [Required]
         [StringLength(NamesMaxLenght,MinimumLength =NamesMinLenght)]
@@ -36,5 +38,7 @@
 
         [ForeignKey(nameof(CityId))]
         public City City { get; set; } = null!;
+
+        public ICollection<Apointment> Apointments { get; set; }
     }
 }

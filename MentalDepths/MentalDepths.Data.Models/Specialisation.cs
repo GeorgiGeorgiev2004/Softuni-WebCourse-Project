@@ -3,9 +3,9 @@
     using System.ComponentModel.DataAnnotations;
 
     using static Common.ModelRegulations.Specialisation;
-    public class Specialisations
+    public class Specialisation
     {
-        public Specialisations()
+        public Specialisation()
         {
             Specialists = new HashSet<SpecialistSpecialisation>();
         }

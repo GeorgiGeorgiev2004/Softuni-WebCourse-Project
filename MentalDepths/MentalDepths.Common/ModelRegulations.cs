@@ -8,7 +8,6 @@ namespace MentalDepths.Common
 {
     public class ModelRegulations
     {
-
         public class Specialist
         {
             public const int URLMaxLenght = 2048;
@@ -55,6 +54,14 @@ namespace MentalDepths.Common
 
             public const int MedicationMaxDescription = 400;
             public const int MedicationMinDescription = 30;
+        }
+        public class Admin
+        {
+            public const int MaxName = 300;
+            public const int MinName = 1;
+
+            public const int MaxPhone = 10;
+            public const int MinPhone = 7;
         }
     }
 }
