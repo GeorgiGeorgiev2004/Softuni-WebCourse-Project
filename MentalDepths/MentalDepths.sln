@@ -3,19 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentalDepths", "MentalDepths\MentalDepths.csproj", "{3B218200-F1EE-4995-9CB5-2A2E3573584A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalDepths", "MentalDepths\MentalDepths.csproj", "{3B218200-F1EE-4995-9CB5-2A2E3573584A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{74584114-3EFB-4BC7-BB70-A66FAD352D2F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{4CD44BDE-8A75-45C5-89F5-E638F43CA3DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentalDepths.Data", "MentalDepths.Data\MentalDepths.Data.csproj", "{E8F8AF3D-82D5-483F-92D5-D0CE0C0605D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalDepths.Data", "MentalDepths.Data\MentalDepths.Data.csproj", "{E8F8AF3D-82D5-483F-92D5-D0CE0C0605D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentalDepths.Web.ViewModels", "MentalDepths.Web.ViewModels\MentalDepths.Web.ViewModels.csproj", "{2059196E-0027-48E5-8C30-83F4152CD2AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalDepths.Web.ViewModels", "MentalDepths.Web.ViewModels\MentalDepths.Web.ViewModels.csproj", "{2059196E-0027-48E5-8C30-83F4152CD2AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentalDepths.Data.Models", "MentalDepths.Data.Models\MentalDepths.Data.Models.csproj", "{C5CC6D10-7811-47C5-9D7E-69A3484E9916}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalDepths.Data.Models", "MentalDepths.Data.Models\MentalDepths.Data.Models.csproj", "{C5CC6D10-7811-47C5-9D7E-69A3484E9916}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentalDepths.Common", "MentalDepths.Common\MentalDepths.Common.csproj", "{B000C7BB-1E91-4AF9-9AFA-53D31F07BC58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalDepths.Common", "MentalDepths.Common\MentalDepths.Common.csproj", "{B000C7BB-1E91-4AF9-9AFA-53D31F07BC58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentalDepths.Web.Infrastructure", "MentalDepths.Web.Infrastructure\MentalDepths.Web.Infrastructure.csproj", "{0E35A3CF-320B-44A4-B933-D7B22ADFFB70}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B7D11656-E53A-40DF-9F06-E583412F20DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentalDepths.Services.Data", "MentalDepths.Services.Data\MentalDepths.Services.Data.csproj", "{20E1AB15-4E43-4B31-931F-5DA57D054232}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +49,14 @@ Global
 		{B000C7BB-1E91-4AF9-9AFA-53D31F07BC58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B000C7BB-1E91-4AF9-9AFA-53D31F07BC58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B000C7BB-1E91-4AF9-9AFA-53D31F07BC58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E35A3CF-320B-44A4-B933-D7B22ADFFB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E35A3CF-320B-44A4-B933-D7B22ADFFB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E35A3CF-320B-44A4-B933-D7B22ADFFB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E35A3CF-320B-44A4-B933-D7B22ADFFB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20E1AB15-4E43-4B31-931F-5DA57D054232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20E1AB15-4E43-4B31-931F-5DA57D054232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20E1AB15-4E43-4B31-931F-5DA57D054232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20E1AB15-4E43-4B31-931F-5DA57D054232}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +66,8 @@ Global
 		{E8F8AF3D-82D5-483F-92D5-D0CE0C0605D3} = {4CD44BDE-8A75-45C5-89F5-E638F43CA3DB}
 		{2059196E-0027-48E5-8C30-83F4152CD2AE} = {74584114-3EFB-4BC7-BB70-A66FAD352D2F}
 		{C5CC6D10-7811-47C5-9D7E-69A3484E9916} = {4CD44BDE-8A75-45C5-89F5-E638F43CA3DB}
+		{0E35A3CF-320B-44A4-B933-D7B22ADFFB70} = {74584114-3EFB-4BC7-BB70-A66FAD352D2F}
+		{20E1AB15-4E43-4B31-931F-5DA57D054232} = {B7D11656-E53A-40DF-9F06-E583412F20DE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BCEDF9C1-85C7-42F4-B994-12CA6E0A3E05}

@@ -1,9 +1,9 @@
-﻿using MentalDepths.Data.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace MentalDepths.Data.Configurations
+﻿namespace MentalDepths.Data.Configurations
 {
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    
+    using MentalDepths.Data.Models;
     public class AdminEntityConfiguration : IEntityTypeConfiguration<Admin>
     {
         public void Configure(EntityTypeBuilder<Admin> builder)
