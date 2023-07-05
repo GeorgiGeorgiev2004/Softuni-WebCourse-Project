@@ -15,6 +15,7 @@
             CreatedOn = DateTime.UtcNow;
             IsDeleted = false;
             Apointments = new HashSet<Apointment>();
+            Prescriptions = new HashSet<Prescription>();
         }
         [Required]
         [StringLength(NamesMaxLenght,MinimumLength =NamesMinLenght)]
@@ -40,5 +41,7 @@
         public City City { get; set; } = null!;
 
         public ICollection<Apointment> Apointments { get; set; }
+
+        public ICollection<Prescription> Prescriptions { get; set; }
     }
 }

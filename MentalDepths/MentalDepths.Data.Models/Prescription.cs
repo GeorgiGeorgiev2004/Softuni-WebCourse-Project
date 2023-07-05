@@ -10,6 +10,9 @@
         {
              IsAOneTimePrescription = false;
         }
+        [Key]
+        public Guid Id { get; set; }
+
         [Required]
         public Guid ApplicationUserId { get; set; }
         [ForeignKey(nameof(ApplicationUserId))]

@@ -12,6 +12,7 @@
             Id = Guid.NewGuid();
             Specialisations = new HashSet<SpecialistSpecialisation>();
             Apointments= new HashSet<Apointment>();
+            Prescriptions = new HashSet<Prescription>();
         }
         [Key]
         public Guid Id { get; set; }
@@ -34,10 +35,17 @@
 
         public ICollection<SpecialistSpecialisation> Specialisations { get; set; }
 
-
         public ICollection<Apointment> Apointments { get; set; }
 
+        public ICollection<Prescription> Prescriptions { get; set; }
+
+        public int JobApplicationId { get; set; }
+
+        [ForeignKey(nameof(JobApplicationId))]
+        public JobApplicationForm? JobApplication { get; set; }
+
         public Guid UserId { get; set; }
+
         [ForeignKey(nameof(UserId))]
         public ApplicationUser ApplicationUser { get; set; } = null!;
     }

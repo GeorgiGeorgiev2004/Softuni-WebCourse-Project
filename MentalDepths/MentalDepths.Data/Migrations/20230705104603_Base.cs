@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MentalDepths.Data.Migrations
 {
-    public partial class ReachedBaselineAcceptableStateOfTheDB : Migration
+    public partial class Base : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -92,7 +92,7 @@ namespace MentalDepths.Data.Migrations
                         column: x => x.CityId,
                         principalTable: "Cities",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -208,6 +208,7 @@ namespace MentalDepths.Data.Migrations
                     Age = table.Column<int>(type: "int", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: false),
+                    JobApplicationId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -225,6 +226,7 @@ namespace MentalDepths.Data.Migrations
                 name: "Apointments",
                 columns: table => new
                 {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ApplicationUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SpecialistId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DateAndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -232,19 +234,19 @@ namespace MentalDepths.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Apointments", x => new { x.SpecialistId, x.ApplicationUserId });
+                    table.PrimaryKey("PK_Apointments", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Apointments_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Apointments_Specialists_SpecialistId",
                         column: x => x.SpecialistId,
                         principalTable: "Specialists",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -265,13 +267,14 @@ namespace MentalDepths.Data.Migrations
                         column: x => x.SpecialistId,
                         principalTable: "Specialists",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Prescriptions",
                 columns: table => new
                 {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ApplicationUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SpecialistId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MedicationName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
@@ -281,19 +284,19 @@ namespace MentalDepths.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Prescriptions", x => new { x.SpecialistId, x.ApplicationUserId });
+                    table.PrimaryKey("PK_Prescriptions", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Prescriptions_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Prescriptions_Specialists_SpecialistId",
                         column: x => x.SpecialistId,
                         principalTable: "Specialists",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -307,11 +310,11 @@ namespace MentalDepths.Data.Migrations
                 {
                     table.PrimaryKey("PK_AdminJobApplicationMT", x => new { x.AdminId, x.JobApplicationId });
                     table.ForeignKey(
-                        name: "FK_AdminJobApplicationMT_Admins_AdminId",
-                        column: x => x.AdminId,
+                        name: "FK_AdminJobApplicationMT_Admins_JobApplicationId",
+                        column: x => x.JobApplicationId,
                         principalTable: "Admins",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AdminJobApplicationMT_JobApplicationForms_JobApplicationId",
                         column: x => x.JobApplicationId,
@@ -354,13 +357,13 @@ namespace MentalDepths.Data.Migrations
                         column: x => x.SpecialisationId,
                         principalTable: "Specialisations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_SpecialistsSpecialisations_Specialists_SpecialistId",
                         column: x => x.SpecialistId,
                         principalTable: "Specialists",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -377,6 +380,11 @@ namespace MentalDepths.Data.Migrations
                 name: "IX_Apointments_ApplicationUserId",
                 table: "Apointments",
                 column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Apointments_SpecialistId",
+                table: "Apointments",
+                column: "SpecialistId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -425,12 +433,18 @@ namespace MentalDepths.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_JobApplicationForms_SpecialistId",
                 table: "JobApplicationForms",
-                column: "SpecialistId");
+                column: "SpecialistId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Prescriptions_ApplicationUserId",
                 table: "Prescriptions",
                 column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Prescriptions_SpecialistId",
+                table: "Prescriptions",
+                column: "SpecialistId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Specialisations_JobApplicationFormId",

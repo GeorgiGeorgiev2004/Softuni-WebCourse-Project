@@ -8,6 +8,13 @@ namespace MentalDepths.Data.Models
 
     public class Apointment
     {
+        public Apointment()
+        {
+            Id=Guid.NewGuid();
+        }
+        [Key]
+        public Guid Id { get; set; }
+
         [Required]
         public Guid ApplicationUserId { get; set; }
         [ForeignKey(nameof(ApplicationUserId))]

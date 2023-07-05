@@ -13,16 +13,15 @@ namespace MentalDepths.Data.Configurations
                 .WithOne(ja => ja.Admin)
                 .HasForeignKey(a=>a.JobApplicationId)
                 .OnDelete(DeleteBehavior.Restrict);
-            builder.HasData(GenerateAdmin());
         }
-        public Admin GenerateAdmin()
-        {
-            return new Admin
-            {
-                Id = Guid.NewGuid(),
-                Username = "Big Boss",
-                UserId = Guid.Parse(""),
-            };
-        }
+        //public Admin GenerateAdmin()
+        //{
+        //    return new Admin
+        //    {
+        //        Id = Guid.NewGuid(),
+        //        Username = "Big Boss",
+        //        UserId = Guid.Parse(""),
+        //    };
+        //}
     }
 }

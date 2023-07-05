@@ -5,6 +5,7 @@
     using Microsoft.EntityFrameworkCore;
 
     using Models;
+    using System.Reflection;
     using System.Reflection.Emit;
 
     public class MentalDepthsDbContext : IdentityDbContext<ApplicationUser,IdentityRole<Guid>,Guid>
@@ -32,18 +33,9 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<SpecialistSpecialisation>()
-                .HasKey(ss => new { ss.SpecialistId, ss.SpecialisationId });
-
-            builder.Entity<AdminJobApplicationMT>()
-                .HasKey(aja => new { aja.AdminId, aja.JobApplicationId });
-
-            builder.Entity<Apointment>()
-               .HasKey(a => new { a.SpecialistId, a.ApplicationUserId });
-
-            builder.Entity<Prescription>()
-               .HasKey(p => new { p.SpecialistId, p.ApplicationUserId });
-
+            Assembly configAssembly = Assembly.GetAssembly(typeof(MentalDepthsDbContext)) ??
+                                        Assembly.GetExecutingAssembly();
+            builder.ApplyConfigurationsFromAssembly(configAssembly);
             base.OnModelCreating(builder);
         }
     }

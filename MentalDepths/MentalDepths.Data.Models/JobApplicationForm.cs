@@ -10,7 +10,10 @@
         {
             Specialisations = new HashSet<Specialisation>();
             Admins = new HashSet<AdminJobApplicationMT>();
+            Id= Guid.NewGuid();
         }
+
+        [Key]
         public Guid Id { get; set; }
 
         public ICollection<AdminJobApplicationMT> Admins { get; set; }

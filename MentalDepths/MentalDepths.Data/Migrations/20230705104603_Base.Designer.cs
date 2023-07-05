@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentalDepths.Data.Migrations
 {
     [DbContext(typeof(MentalDepthsDbContext))]
-    [Migration("20230703140910_ReachedBaselineAcceptableStateOfTheDB")]
-    partial class ReachedBaselineAcceptableStateOfTheDB
+    [Migration("20230705104603_Base")]
+    partial class Base
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,10 +61,8 @@ namespace MentalDepths.Data.Migrations
 
             modelBuilder.Entity("MentalDepths.Data.Models.Apointment", b =>
                 {
-                    b.Property<Guid>("SpecialistId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ApplicationUserId")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
@@ -72,12 +70,20 @@ namespace MentalDepths.Data.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
+                    b.Property<Guid>("ApplicationUserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("DateAndTime")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("SpecialistId", "ApplicationUserId");
+                    b.Property<Guid>("SpecialistId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("SpecialistId");
 
                     b.ToTable("Apointments");
                 });
@@ -216,14 +222,16 @@ namespace MentalDepths.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SpecialistId");
+                    b.HasIndex("SpecialistId")
+                        .IsUnique();
 
                     b.ToTable("JobApplicationForms");
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.Prescription", b =>
                 {
-                    b.Property<Guid>("SpecialistId")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("ApplicationUserId")
@@ -245,9 +253,14 @@ namespace MentalDepths.Data.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
-                    b.HasKey("SpecialistId", "ApplicationUserId");
+                    b.Property<Guid>("SpecialistId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("SpecialistId");
 
                     b.ToTable("Prescriptions");
                 });
@@ -298,6 +311,9 @@ namespace MentalDepths.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(2048)
                         .HasColumnType("nvarchar(2048)");
+
+                    b.Property<int>("JobApplicationId")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -474,8 +490,8 @@ namespace MentalDepths.Data.Migrations
                 {
                     b.HasOne("MentalDepths.Data.Models.Admin", "Admin")
                         .WithMany("JobApplications")
-                        .HasForeignKey("AdminId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("JobApplicationId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("MentalDepths.Data.Models.JobApplicationForm", "JobApplicationForm")
@@ -494,13 +510,13 @@ namespace MentalDepths.Data.Migrations
                     b.HasOne("MentalDepths.Data.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Apointments")
                         .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("MentalDepths.Data.Models.Specialist", "Specialist")
                         .WithMany("Apointments")
                         .HasForeignKey("SpecialistId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ApplicationUser");
@@ -513,7 +529,7 @@ namespace MentalDepths.Data.Migrations
                     b.HasOne("MentalDepths.Data.Models.City", "City")
                         .WithMany("ApplicationUsers")
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("City");
@@ -522,9 +538,9 @@ namespace MentalDepths.Data.Migrations
             modelBuilder.Entity("MentalDepths.Data.Models.JobApplicationForm", b =>
                 {
                     b.HasOne("MentalDepths.Data.Models.Specialist", "Specialist")
-                        .WithMany()
-                        .HasForeignKey("SpecialistId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithOne("JobApplication")
+                        .HasForeignKey("MentalDepths.Data.Models.JobApplicationForm", "SpecialistId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Specialist");
@@ -533,15 +549,15 @@ namespace MentalDepths.Data.Migrations
             modelBuilder.Entity("MentalDepths.Data.Models.Prescription", b =>
                 {
                     b.HasOne("MentalDepths.Data.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
+                        .WithMany("Prescriptions")
                         .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("MentalDepths.Data.Models.Specialist", "Specialist")
-                        .WithMany()
+                        .WithMany("Prescriptions")
                         .HasForeignKey("SpecialistId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ApplicationUser");
@@ -572,13 +588,13 @@ namespace MentalDepths.Data.Migrations
                     b.HasOne("MentalDepths.Data.Models.Specialisation", "Specialisation")
                         .WithMany("Specialists")
                         .HasForeignKey("SpecialisationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("MentalDepths.Data.Models.Specialist", "Specialist")
                         .WithMany("Specialisations")
                         .HasForeignKey("SpecialistId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Specialisation");
@@ -645,6 +661,8 @@ namespace MentalDepths.Data.Migrations
             modelBuilder.Entity("MentalDepths.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Apointments");
+
+                    b.Navigation("Prescriptions");
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.City", b =>
@@ -667,6 +685,10 @@ namespace MentalDepths.Data.Migrations
             modelBuilder.Entity("MentalDepths.Data.Models.Specialist", b =>
                 {
                     b.Navigation("Apointments");
+
+                    b.Navigation("JobApplication");
+
+                    b.Navigation("Prescriptions");
 
                     b.Navigation("Specialisations");
                 });

@@ -11,6 +11,7 @@
         }
         [Key]
         public int Id { get; set; }
+
         [Required]
         [StringLength(NamesMaxLenght, MinimumLength = NamesMinLenght)]
         public string Name { get; set; } = null!;
