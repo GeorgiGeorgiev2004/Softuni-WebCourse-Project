@@ -7,6 +7,8 @@ namespace MentalDepths
 
     using Data;
     using Data.Models;
+    using MentalDepths.Services.Web.Interfaces;
+    using MentalDepths.Services.Web;
 
     public class Program
     {
@@ -33,6 +35,8 @@ namespace MentalDepths
             })
                 .AddEntityFrameworkStores<MentalDepthsDbContext>()
                 .AddDefaultTokenProviders();
+
+            builder.Services.AddScoped<IUserService, UserService>();
 
             builder.Services.AddControllersWithViews();
 

@@ -16,8 +16,10 @@ namespace MentalDepths.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.AspNetCore.WebUtilities;
 
-    using MentalDepths.Data.Models;
     using static Common.ModelRegulations.ApplicationUser;
+    using MentalDepths.Web.ViewModels.Web;
+    using ApplicationUser = Data.Models.ApplicationUser;
+    using MentalDepths.Services.Web.Interfaces;
 
     public class RegisterModel : PageModel
     {
@@ -27,13 +29,14 @@ namespace MentalDepths.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-
+        private readonly IUserService userService;
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IUserService userservice)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -41,6 +44,8 @@ namespace MentalDepths.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            this.userService= userservice;
+            Cities = userService.GetAllCities().Result.ToList();
         }
 
         /// <summary>
@@ -49,6 +54,8 @@ namespace MentalDepths.Areas.Identity.Pages.Account
         /// </summary>
         [BindProperty]
         public InputModel Input { get; set; }
+
+        public List<CitiesVM> Cities { get; set; }
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -109,6 +116,9 @@ namespace MentalDepths.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Display(Name = "City")]
+            public int? CityId { get; set; }
         }
 
 
@@ -126,7 +136,7 @@ namespace MentalDepths.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.FirstName +""+Input.LastName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
@@ -175,7 +185,8 @@ namespace MentalDepths.Areas.Identity.Pages.Account
                     FirstName = Input.FirstName,
                     SecondName = Input.SecondName,
                     LastName = Input.LastName,
-                    Email = Input.Email
+                    Email = Input.Email,
+                    CityId = Input.CityId ?? 1
                 };
                // return Activator.CreateInstance<ApplicationUser>();
             }

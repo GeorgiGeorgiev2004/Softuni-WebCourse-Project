@@ -6,13 +6,12 @@
     using Microsoft.AspNetCore.Identity;
 
     using static Common.ModelRegulations.ApplicationUser;
-    using static MentalDepths.Common.ModelRegulations;
 
     public class ApplicationUser:IdentityUser<Guid>
     {
         public ApplicationUser()
         {
-            CreatedOn = DateTime.UtcNow;
+            CreatedOn = DateTime.Now;
             IsDeleted = false;
             Apointments = new HashSet<Apointment>();
             Prescriptions = new HashSet<Prescription>();

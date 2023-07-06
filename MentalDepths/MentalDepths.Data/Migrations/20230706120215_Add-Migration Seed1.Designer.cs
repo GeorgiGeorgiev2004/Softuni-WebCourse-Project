@@ -4,6 +4,7 @@ using MentalDepths.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentalDepths.Data.Migrations
 {
     [DbContext(typeof(MentalDepthsDbContext))]
-    partial class MentalDepthsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230706120215_Add-Migration Seed1")]
+    partial class AddMigrationSeed1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -200,141 +202,136 @@ namespace MentalDepths.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Name = ""
-                        },
-                        new
-                        {
-                            Id = 2,
                             Name = "Blagoevgrad"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 2,
                             Name = "Burgas"
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 3,
                             Name = "Dobrich"
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 4,
                             Name = "Gabrovo"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 5,
                             Name = "Haskovo"
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 6,
                             Name = "Kardzhali"
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 7,
                             Name = "Kyustendil"
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 8,
                             Name = "Lovech"
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 9,
                             Name = "Montana"
                         },
                         new
                         {
-                            Id = 11,
+                            Id = 10,
                             Name = "Pazardzhik"
                         },
                         new
                         {
-                            Id = 12,
+                            Id = 11,
                             Name = "Pernik"
                         },
                         new
                         {
-                            Id = 13,
+                            Id = 12,
                             Name = "Pleven"
                         },
                         new
                         {
-                            Id = 14,
+                            Id = 13,
                             Name = "Razgrad"
                         },
                         new
                         {
-                            Id = 15,
+                            Id = 14,
                             Name = "Ruse"
                         },
                         new
                         {
-                            Id = 16,
+                            Id = 15,
                             Name = "Shumen"
                         },
                         new
                         {
-                            Id = 17,
+                            Id = 16,
                             Name = "Silistra"
                         },
                         new
                         {
-                            Id = 18,
+                            Id = 17,
                             Name = "Sliven"
                         },
                         new
                         {
-                            Id = 19,
+                            Id = 18,
                             Name = "Smolyan"
                         },
                         new
                         {
-                            Id = 20,
+                            Id = 19,
                             Name = "Sofia City"
                         },
                         new
                         {
-                            Id = 21,
+                            Id = 20,
                             Name = "Sofia (province)"
                         },
                         new
                         {
-                            Id = 22,
+                            Id = 21,
                             Name = "Stara Zagora"
                         },
                         new
                         {
-                            Id = 23,
+                            Id = 22,
                             Name = "Targovishte"
                         },
                         new
                         {
-                            Id = 24,
+                            Id = 23,
                             Name = "Varna"
                         },
                         new
                         {
-                            Id = 25,
+                            Id = 24,
                             Name = "Veliko Tarnovo"
                         },
                         new
                         {
-                            Id = 26,
+                            Id = 25,
                             Name = "Vidin"
                         },
                         new
                         {
-                            Id = 27,
+                            Id = 26,
                             Name = "Vratsa"
                         },
                         new
                         {
-                            Id = 28,
+                            Id = 27,
                             Name = "Yambol"
                         });
                 });
