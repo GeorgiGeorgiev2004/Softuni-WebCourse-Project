@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MentalDepths.Data.Migrations
 {
-    public partial class Base : Migration
+    public partial class ReworkedEmailTableAndSeededUsers : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,10 +68,10 @@ namespace MentalDepths.Data.Migrations
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     CityId = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -364,6 +364,41 @@ namespace MentalDepths.Data.Migrations
                         principalTable: "Specialists",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Cities",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "" },
+                    { 2, "Blagoevgrad" },
+                    { 3, "Burgas" },
+                    { 4, "Dobrich" },
+                    { 5, "Gabrovo" },
+                    { 6, "Haskovo" },
+                    { 7, "Kardzhali" },
+                    { 8, "Kyustendil" },
+                    { 9, "Lovech" },
+                    { 10, "Montana" },
+                    { 11, "Pazardzhik" },
+                    { 12, "Pernik" },
+                    { 13, "Pleven" },
+                    { 14, "Razgrad" },
+                    { 15, "Ruse" },
+                    { 16, "Shumen" },
+                    { 17, "Silistra" },
+                    { 18, "Sliven" },
+                    { 19, "Smolyan" },
+                    { 20, "Sofia City" },
+                    { 21, "Sofia (province)" },
+                    { 22, "Stara Zagora" },
+                    { 23, "Targovishte" },
+                    { 24, "Varna" },
+                    { 25, "Veliko Tarnovo" },
+                    { 26, "Vidin" },
+                    { 27, "Vratsa" },
+                    { 28, "Yambol" }
                 });
 
             migrationBuilder.CreateIndex(

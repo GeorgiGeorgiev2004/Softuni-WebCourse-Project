@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentalDepths.Data.Migrations
 {
     [DbContext(typeof(MentalDepthsDbContext))]
-    [Migration("20230705104603_Base")]
-    partial class Base
+    [Migration("20230707201007_ReworkedEmailTableAndSeededUsers")]
+    partial class ReworkedEmailTableAndSeededUsers
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -111,6 +111,7 @@ namespace MentalDepths.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -197,6 +198,148 @@ namespace MentalDepths.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = ""
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Blagoevgrad"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Burgas"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Dobrich"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Gabrovo"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Haskovo"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Kardzhali"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Kyustendil"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Lovech"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Montana"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Pazardzhik"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Pernik"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Pleven"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Razgrad"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Ruse"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "Shumen"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Silistra"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Sliven"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "Smolyan"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "Sofia City"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "Sofia (province)"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Name = "Stara Zagora"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Name = "Targovishte"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "Varna"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Name = "Veliko Tarnovo"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Name = "Vidin"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Name = "Vratsa"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Name = "Yambol"
+                        });
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.JobApplicationForm", b =>

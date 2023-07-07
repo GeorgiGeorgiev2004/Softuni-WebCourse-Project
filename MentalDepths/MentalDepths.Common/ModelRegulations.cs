@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MentalDepths.Common
+﻿namespace MentalDepths.Common
 {
+    using System.Text.RegularExpressions;
     public class ModelRegulations
     {
         public class Specialist
@@ -29,6 +24,9 @@ namespace MentalDepths.Common
 
             public const int NamesMaxLenght = 30;
             public const int NamesMinLenght = 1;
+
+            public const int MaxPasswordLenght = 10;
+            public const int MinPasswordLenght = 6;
         }
         public class Specialisation
         {
@@ -62,6 +60,19 @@ namespace MentalDepths.Common
 
             public const int MaxPhone = 10;
             public const int MinPhone = 7;
+        }
+        public class Email
+        {
+            public const string Regex = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
+        }
+        public class CodeSender 
+        {
+            public const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            public const int Lenght = 6;
+            public static Random Random = new Random();
+            public const string LenghtErrorMessage = "The code is exactly {0} symbols long";
+            public const string RegexErrorMessage = "The code will only contain numbers and capital letters!";
+            public const string Regex = @"^[A-Z0-9]{6}";
         }
     }
 }

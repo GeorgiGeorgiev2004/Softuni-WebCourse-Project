@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentalDepths.Data.Migrations
 {
     [DbContext(typeof(MentalDepthsDbContext))]
-    [Migration("20230706120215_Add-Migration Seed1")]
-    partial class AddMigrationSeed1
+    [Migration("20230707203236_Trynumer2")]
+    partial class Trynumer2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -111,6 +111,7 @@ namespace MentalDepths.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -179,6 +180,146 @@ namespace MentalDepths.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e84a2911-5c9c-4014-86ee-9e171362c65c"),
+                            AccessFailedCount = 0,
+                            CityId = 2,
+                            ConcurrencyStamp = "5b1054f1-1c57-4b96-a844-89607fc14ac4",
+                            CreatedOn = new DateTime(2023, 7, 7, 23, 32, 36, 313, DateTimeKind.Local).AddTicks(1890),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "gogo_5a@abv.bg",
+                            EmailConfirmed = true,
+                            FirstName = "Georgi",
+                            IsDeleted = false,
+                            LastName = "Georgiev",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "GOGO_5A@ABV.BG",
+                            NormalizedUserName = "GEORGI_GEORGIEV",
+                            PasswordHash = "AB7FHxFKRuKFt2QYvJtwSCwYS4WRXxnoCRJs5BQV+tUKQ+f9KIfn7JLYfkxy/W470w==",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "Lyubenov",
+                            SecurityStamp = "a37835aa-d3c0-421d-8bac-c33844231267",
+                            TwoFactorEnabled = false,
+                            UserName = "Georgi_Georgiev"
+                        },
+                        new
+                        {
+                            Id = new Guid("11ec3631-f87a-4c3a-823e-c8713aaad84a"),
+                            AccessFailedCount = 0,
+                            CityId = 5,
+                            ConcurrencyStamp = "1e63008e-deea-4701-a3f4-f99a3514c053",
+                            CreatedOn = new DateTime(2023, 7, 7, 23, 32, 36, 313, DateTimeKind.Local).AddTicks(9802),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "ScaryHaxer@yahoo.com",
+                            EmailConfirmed = false,
+                            FirstName = "Iliq",
+                            IsDeleted = false,
+                            LastName = "Steliov",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "SCARYHAXER@YAHOO.COM",
+                            NormalizedUserName = "ILIQ_STELIOV",
+                            PasswordHash = "ABXkRxK+93o8vksguHkaQiY/GH8TCod2cI1m84qojujPeLCLqA79IO8pNcerp3CyPw==",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "",
+                            SecurityStamp = "f6c5204e-7a80-4c6c-aff5-3861b7b218c0",
+                            TwoFactorEnabled = false,
+                            UserName = "Iliq_Steliov"
+                        },
+                        new
+                        {
+                            Id = new Guid("a632be87-766f-4049-9b89-1f4055ec5f30"),
+                            AccessFailedCount = 0,
+                            CityId = 27,
+                            ConcurrencyStamp = "c09ceefe-7cad-418e-bd1e-1fb665e2edc2",
+                            CreatedOn = new DateTime(2023, 7, 7, 23, 32, 36, 314, DateTimeKind.Local).AddTicks(7028),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "Ivan.Ivanov234@gmail.bg",
+                            EmailConfirmed = true,
+                            FirstName = "Ivan",
+                            IsDeleted = false,
+                            LastName = "Ivanov",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "IVAN.IVANOV234@GMAIL.BG",
+                            NormalizedUserName = "IVAN_IVANOV",
+                            PasswordHash = "AHiKBBYm7vEMdfMFzR0njf3Xl6qi4Tv0VJIVrwwXLVGHk6wQFfRHaVAXyusKlwvjlQ==",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "Sirov",
+                            SecurityStamp = "51faae4f-c5fc-4817-aebf-df9f2da18dbf",
+                            TwoFactorEnabled = false,
+                            UserName = "Ivan_Ivanov"
+                        },
+                        new
+                        {
+                            Id = new Guid("3410c43f-0266-4b48-999e-e4e19391f554"),
+                            AccessFailedCount = 0,
+                            CityId = 13,
+                            ConcurrencyStamp = "5db713f8-43f0-45af-9c32-7c53bd1aec78",
+                            CreatedOn = new DateTime(2023, 7, 7, 23, 32, 36, 315, DateTimeKind.Local).AddTicks(4261),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "Lilial_Izbora@abv.bg",
+                            EmailConfirmed = false,
+                            FirstName = "Lilial",
+                            IsDeleted = false,
+                            LastName = "Izbrannikov",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "LILIAL_IZBORA@ABV.BG",
+                            NormalizedUserName = "LILIAL_IZBRANNIKOV",
+                            PasswordHash = "AKMeHGYyOb5+oyTCms7ok/AcxVKxphEPlavaGoE+5al54nQj0XoMQjd+igZsgf3rpg==",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "Sabiev",
+                            SecurityStamp = "009dc9ca-b478-4ee5-a8b4-cf2a2a80807e",
+                            TwoFactorEnabled = false,
+                            UserName = "Lilial_Izbrannikov"
+                        },
+                        new
+                        {
+                            Id = new Guid("f6911c58-9478-4da1-97e6-ecb9b04e29ed"),
+                            AccessFailedCount = 0,
+                            CityId = 22,
+                            ConcurrencyStamp = "978b04c6-a43f-4385-a309-2cf89ed0c109",
+                            CreatedOn = new DateTime(2023, 7, 7, 23, 32, 36, 316, DateTimeKind.Local).AddTicks(1491),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "Kolio_Zemev@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Nikola",
+                            IsDeleted = false,
+                            LastName = "Zemelyarski",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "KOLIO_ZEMEV@GMAIL.COM",
+                            NormalizedUserName = "NIKOLA_ZEMELYARSKI",
+                            PasswordHash = "AMTxVhSuVASeQSmVMyqzC+lig9pC8CskFbDOkB4GEMKmhsPZjvlw26QQL0bmC+9RQQ==",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "",
+                            SecurityStamp = "4d28234a-6a95-4511-b96d-039b0d21bcaa",
+                            TwoFactorEnabled = false,
+                            UserName = "Nikola_Zemelyarski"
+                        },
+                        new
+                        {
+                            Id = new Guid("8883d37b-43bd-4256-9f46-adecfe2d997d"),
+                            AccessFailedCount = 0,
+                            CityId = 17,
+                            ConcurrencyStamp = "16b88bce-aafd-4446-accc-6545a4d2ca38",
+                            CreatedOn = new DateTime(2023, 7, 7, 23, 32, 36, 316, DateTimeKind.Local).AddTicks(8876),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "DembeRed@alo.net",
+                            EmailConfirmed = false,
+                            FirstName = "Dembe",
+                            IsDeleted = false,
+                            LastName = "Redglade",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "DEMBERED@ALO.NET",
+                            NormalizedUserName = "DEMBE_REDGLADE",
+                            PasswordHash = "AFWvGuhUN33m7Zc92aZVkjgzg1dgIsg9w7qj3Ajmb051z7WS5mdOxdRxxqUOBGsRww==",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "Nisantimetarottebe",
+                            SecurityStamp = "900c434d-5324-4a7b-8fcc-b6eab4d532d3",
+                            TwoFactorEnabled = false,
+                            UserName = "Dembe_Redglade"
+                        });
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.City", b =>
@@ -202,136 +343,141 @@ namespace MentalDepths.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Blagoevgrad"
+                            Name = ""
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Burgas"
+                            Name = "Blagoevgrad"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Dobrich"
+                            Name = "Burgas"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Gabrovo"
+                            Name = "Dobrich"
                         },
                         new
                         {
                             Id = 5,
-                            Name = "Haskovo"
+                            Name = "Gabrovo"
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Kardzhali"
+                            Name = "Haskovo"
                         },
                         new
                         {
                             Id = 7,
-                            Name = "Kyustendil"
+                            Name = "Kardzhali"
                         },
                         new
                         {
                             Id = 8,
-                            Name = "Lovech"
+                            Name = "Kyustendil"
                         },
                         new
                         {
                             Id = 9,
-                            Name = "Montana"
+                            Name = "Lovech"
                         },
                         new
                         {
                             Id = 10,
-                            Name = "Pazardzhik"
+                            Name = "Montana"
                         },
                         new
                         {
                             Id = 11,
-                            Name = "Pernik"
+                            Name = "Pazardzhik"
                         },
                         new
                         {
                             Id = 12,
-                            Name = "Pleven"
+                            Name = "Pernik"
                         },
                         new
                         {
                             Id = 13,
-                            Name = "Razgrad"
+                            Name = "Pleven"
                         },
                         new
                         {
                             Id = 14,
-                            Name = "Ruse"
+                            Name = "Razgrad"
                         },
                         new
                         {
                             Id = 15,
-                            Name = "Shumen"
+                            Name = "Ruse"
                         },
                         new
                         {
                             Id = 16,
-                            Name = "Silistra"
+                            Name = "Shumen"
                         },
                         new
                         {
                             Id = 17,
-                            Name = "Sliven"
+                            Name = "Silistra"
                         },
                         new
                         {
                             Id = 18,
-                            Name = "Smolyan"
+                            Name = "Sliven"
                         },
                         new
                         {
                             Id = 19,
-                            Name = "Sofia City"
+                            Name = "Smolyan"
                         },
                         new
                         {
                             Id = 20,
-                            Name = "Sofia (province)"
+                            Name = "Sofia City"
                         },
                         new
                         {
                             Id = 21,
-                            Name = "Stara Zagora"
+                            Name = "Sofia (province)"
                         },
                         new
                         {
                             Id = 22,
-                            Name = "Targovishte"
+                            Name = "Stara Zagora"
                         },
                         new
                         {
                             Id = 23,
-                            Name = "Varna"
+                            Name = "Targovishte"
                         },
                         new
                         {
                             Id = 24,
-                            Name = "Veliko Tarnovo"
+                            Name = "Varna"
                         },
                         new
                         {
                             Id = 25,
-                            Name = "Vidin"
+                            Name = "Veliko Tarnovo"
                         },
                         new
                         {
                             Id = 26,
-                            Name = "Vratsa"
+                            Name = "Vidin"
                         },
                         new
                         {
                             Id = 27,
+                            Name = "Vratsa"
+                        },
+                        new
+                        {
+                            Id = 28,
                             Name = "Yambol"
                         });
                 });

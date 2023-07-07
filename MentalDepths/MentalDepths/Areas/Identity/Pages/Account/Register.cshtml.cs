@@ -96,6 +96,7 @@ namespace MentalDepths.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
+            [RegularExpression(Common.ModelRegulations.Email.Regex,ErrorMessage ="For now we have only implemented work with gmail.com")]
             public string Email { get; set; }
 
             /// <summary>
@@ -136,7 +137,7 @@ namespace MentalDepths.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
-                await _userStore.SetUserNameAsync(user, Input.FirstName +""+Input.LastName, CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.FirstName +"_"+Input.LastName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
@@ -153,8 +154,12 @@ namespace MentalDepths.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
+                    var EmailVerificationCode = userService.GenerateConfiramtionCode();
+
+                    userService.AddConfiramtionCodeToDic(userId, EmailVerificationCode);
+
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                        $"This is your confirmation code {EmailVerificationCode}");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

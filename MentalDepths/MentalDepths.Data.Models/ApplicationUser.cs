@@ -15,6 +15,7 @@
             IsDeleted = false;
             Apointments = new HashSet<Apointment>();
             Prescriptions = new HashSet<Prescription>();
+            EmailConfirmed = false;
         }
         [Required]
         [StringLength(NamesMaxLenght,MinimumLength =NamesMinLenght)]
@@ -31,6 +32,9 @@
         public bool IsDeleted { get; set; }
 
         public DateTime DeletedOn { get; set; }
+
+        [RegularExpression(Common.ModelRegulations.Email.Regex)]
+        public override string Email { get => base.Email; set => base.Email = value; }
 
         [ProtectedPersonalData]
         [Range (minvalue,maxvalue)]

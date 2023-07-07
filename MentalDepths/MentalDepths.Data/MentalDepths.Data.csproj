@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.15">
@@ -17,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MentalDepths.Data.Models\MentalDepths.Data.Models.csproj" />
+    <ProjectReference Include="..\MentalDepths.Services.Data\MentalDepths.Services.Data.csproj" />
   </ItemGroup>
 
 </Project>

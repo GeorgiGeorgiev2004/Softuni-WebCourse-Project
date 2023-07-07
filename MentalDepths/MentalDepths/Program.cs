@@ -9,6 +9,11 @@ namespace MentalDepths
     using Data.Models;
     using MentalDepths.Services.Web.Interfaces;
     using MentalDepths.Services.Web;
+    using Microsoft.AspNetCore.Identity.UI.Services;
+    using MentalDepths.Services.Web.Repositories.Interfaces;
+    using MentalDepths.Services.Web.Repositories;
+    using MentalDepths.Services.Data.Interfaces;
+    using MentalDepths.Services.Data;
 
     public class Program
     {
@@ -27,7 +32,7 @@ namespace MentalDepths
 
             builder.Services.AddDefaultIdentity<ApplicationUser>(options => 
             {
-                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedAccount = true;
                 options.Password.RequireDigit = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
@@ -37,6 +42,10 @@ namespace MentalDepths
                 .AddDefaultTokenProviders();
 
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IEmailSender, EmailSender>();
+            builder.Services.AddScoped<IEntityConfiguration, EntityConfiguration>();
+            builder.Services.AddSingleton<IUserManagerRepository, UserManagerRepository>();
+            
 
             builder.Services.AddControllersWithViews();
 

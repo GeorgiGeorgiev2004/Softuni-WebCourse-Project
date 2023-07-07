@@ -1,0 +1,44 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register confirmation";
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script language="JavaScript">
+        window.onbeforeunload = confirmExit;
+        function confirmExit() {
+            return "You have attempted to leave this page. Your email will not be verified and as such you will miss out on our offers and news.Are you sure you want to exit this page?";
+        }
+    </script>
+}
+
+<h1>@ViewData["Title"]</h1>
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+        <p>
+            This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
+            Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
+        </p>
+    }
+    else
+    {
+        <p> Please check your email to obtain the code</p>
+        <div class="col-md-5">
+            <form method="post">
+                <div class="form-floating">
+                    <input asp-for="Input.Code" class="form-control" autocomplete="code" aria-required="true" />
+                    <label asp-for="Input.Code"></label>
+                    <span asp-validation-for="Input.Code" class="text-danger"></span>
+                </div>
+                <button id="Submit" type="submit" class="w-100 btn btn-lg btn-primary">Submit</button>
+                <input type= "button" value="Cancel" onclick="location.href='@Url.Action("Index","Home")'";></input>
+            </form>
+            <p> Please keep in mind that, if you were to leave this page prior to entering the code your account will not have a verified email and you will miss out on news and offers!</p>
+        </div>
+    }
+}
+
+

@@ -1,5 +1,6 @@
 ﻿namespace MentalDepths.Data
 {
+    using MentalDepths.Data.Configurations;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,7 @@
         {
             Assembly configAssembly = Assembly.GetAssembly(typeof(MentalDepthsDbContext)) ??
                                         Assembly.GetExecutingAssembly();
-            builder.ApplyConfigurationsFromAssembly(configAssembly);
+            builder.ApplyConfigurationsFromAssembly(typeof(MentalDepthsDbContext).Assembly);
             base.OnModelCreating(builder);
         }
     }

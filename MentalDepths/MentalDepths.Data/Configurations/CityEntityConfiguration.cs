@@ -13,6 +13,7 @@
                 .WithOne(au => au.City)
                 .HasForeignKey(c=>c.CityId)
                 .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasData(GenerateCities());
         }
 

@@ -21,30 +21,31 @@
                 .HasForeignKey(a => a.SpecialistId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
-        //public Apointment[] GenerateApointment()
-        //{
-        //    var apointments = new List<Apointment>();
-        //    var apointment = new Apointment
-        //    {
+        public Apointment[] GenerateApointment()
+        {
+            var apointments = new List<Apointment>();
+            var apointment = new Apointment
+            {
 
-        //    };
-        //    apointments.Add(apointment);
-        //    apointment = new Apointment
-        //    {
+            };
+            apointments.Add(apointment);
 
-        //    };
-        //    apointments.Add(apointment);
-        //    apointment = new Apointment
-        //    {
+            apointment = new Apointment
+            {
 
-        //    };
-        //    apointments.Add(apointment);
-        //    apointment = new Apointment
-        //    {
+            };
+            apointments.Add(apointment);
+            apointment = new Apointment
+            {
 
-        //    };
-        //    apointments.Add(apointment);
-        //    return apointments.ToArray();       
-        //}
+            };
+            apointments.Add(apointment);
+            apointment = new Apointment
+            {
+
+            };
+            apointments.Add(apointment);
+            return apointments.ToArray();
+        }
     }
 }
