@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentalDepths.Data.Migrations
 {
     [DbContext(typeof(MentalDepthsDbContext))]
-    [Migration("20230707203236_Trynumer2")]
-    partial class Trynumer2
+    [Migration("20230708105254_SeedingPart2")]
+    partial class SeedingPart2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,6 +42,14 @@ namespace MentalDepths.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("d947f5ab-75ae-4ebe-9f26-9af2671d77ac"),
+                            UserId = new Guid("f957a45a-d8df-439e-a50a-b1c0f87a69f2"),
+                            Username = "Big Boss"
+                        });
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.AdminJobApplicationMT", b =>
@@ -184,11 +192,11 @@ namespace MentalDepths.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e84a2911-5c9c-4014-86ee-9e171362c65c"),
+                            Id = new Guid("f957a45a-d8df-439e-a50a-b1c0f87a69f2"),
                             AccessFailedCount = 0,
                             CityId = 2,
-                            ConcurrencyStamp = "5b1054f1-1c57-4b96-a844-89607fc14ac4",
-                            CreatedOn = new DateTime(2023, 7, 7, 23, 32, 36, 313, DateTimeKind.Local).AddTicks(1890),
+                            ConcurrencyStamp = "c86341c4-e3f7-46aa-b5b1-a80e2719542f",
+                            CreatedOn = new DateTime(2023, 7, 8, 13, 52, 54, 235, DateTimeKind.Local).AddTicks(5580),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "gogo_5a@abv.bg",
                             EmailConfirmed = true,
@@ -198,20 +206,20 @@ namespace MentalDepths.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "GOGO_5A@ABV.BG",
                             NormalizedUserName = "GEORGI_GEORGIEV",
-                            PasswordHash = "AB7FHxFKRuKFt2QYvJtwSCwYS4WRXxnoCRJs5BQV+tUKQ+f9KIfn7JLYfkxy/W470w==",
+                            PasswordHash = "ABeY++4678dQE4bO8F3QFj4mxgl6hwTkfEGlcSH9/ebeIKmUBTKB04IaMtoqO53vgA==",
                             PhoneNumberConfirmed = false,
                             SecondName = "Lyubenov",
-                            SecurityStamp = "a37835aa-d3c0-421d-8bac-c33844231267",
+                            SecurityStamp = "4174e564-1f71-4b5c-89da-f62e0cfb741b",
                             TwoFactorEnabled = false,
                             UserName = "Georgi_Georgiev"
                         },
                         new
                         {
-                            Id = new Guid("11ec3631-f87a-4c3a-823e-c8713aaad84a"),
+                            Id = new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"),
                             AccessFailedCount = 0,
                             CityId = 5,
-                            ConcurrencyStamp = "1e63008e-deea-4701-a3f4-f99a3514c053",
-                            CreatedOn = new DateTime(2023, 7, 7, 23, 32, 36, 313, DateTimeKind.Local).AddTicks(9802),
+                            ConcurrencyStamp = "22ea5948-ceac-4c95-9dad-9f455ef7693f",
+                            CreatedOn = new DateTime(2023, 7, 8, 13, 52, 54, 236, DateTimeKind.Local).AddTicks(3069),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "ScaryHaxer@yahoo.com",
                             EmailConfirmed = false,
@@ -221,43 +229,43 @@ namespace MentalDepths.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SCARYHAXER@YAHOO.COM",
                             NormalizedUserName = "ILIQ_STELIOV",
-                            PasswordHash = "ABXkRxK+93o8vksguHkaQiY/GH8TCod2cI1m84qojujPeLCLqA79IO8pNcerp3CyPw==",
+                            PasswordHash = "AIn4TEuhOmdRC03NsQUeEs4JlJ2pSuLpYLDHz9zAXLB2XyJud2hb4gD2vnSCFLTYpw==",
                             PhoneNumberConfirmed = false,
                             SecondName = "",
-                            SecurityStamp = "f6c5204e-7a80-4c6c-aff5-3861b7b218c0",
+                            SecurityStamp = "573bdc9a-87e5-4305-9c97-37089e52ef1a",
                             TwoFactorEnabled = false,
                             UserName = "Iliq_Steliov"
                         },
                         new
                         {
-                            Id = new Guid("a632be87-766f-4049-9b89-1f4055ec5f30"),
+                            Id = new Guid("308508b8-ce9e-470b-a122-8a77f576532e"),
                             AccessFailedCount = 0,
                             CityId = 27,
-                            ConcurrencyStamp = "c09ceefe-7cad-418e-bd1e-1fb665e2edc2",
-                            CreatedOn = new DateTime(2023, 7, 7, 23, 32, 36, 314, DateTimeKind.Local).AddTicks(7028),
+                            ConcurrencyStamp = "f7ca3edf-690f-4a59-ac18-b35d91aea744",
+                            CreatedOn = new DateTime(2023, 7, 8, 13, 52, 54, 237, DateTimeKind.Local).AddTicks(662),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "Ivan.Ivanov234@gmail.bg",
+                            Email = "Ivan.Ivanov234@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Ivan",
                             IsDeleted = false,
                             LastName = "Ivanov",
                             LockoutEnabled = false,
-                            NormalizedEmail = "IVAN.IVANOV234@GMAIL.BG",
+                            NormalizedEmail = "IVAN.IVANOV234@GMAIL.COM",
                             NormalizedUserName = "IVAN_IVANOV",
-                            PasswordHash = "AHiKBBYm7vEMdfMFzR0njf3Xl6qi4Tv0VJIVrwwXLVGHk6wQFfRHaVAXyusKlwvjlQ==",
+                            PasswordHash = "AAVLPCU5n6TJBYWKfjHtq5GBQfD21K3qwyWof1i9zCzN8wYNUkO5O8U+LIdo/AJRkw==",
                             PhoneNumberConfirmed = false,
                             SecondName = "Sirov",
-                            SecurityStamp = "51faae4f-c5fc-4817-aebf-df9f2da18dbf",
+                            SecurityStamp = "7bdaa8ce-aae9-4090-9025-455a5771c8f8",
                             TwoFactorEnabled = false,
                             UserName = "Ivan_Ivanov"
                         },
                         new
                         {
-                            Id = new Guid("3410c43f-0266-4b48-999e-e4e19391f554"),
+                            Id = new Guid("9953dce8-25f6-45f2-bf8c-816b92bb0e28"),
                             AccessFailedCount = 0,
                             CityId = 13,
-                            ConcurrencyStamp = "5db713f8-43f0-45af-9c32-7c53bd1aec78",
-                            CreatedOn = new DateTime(2023, 7, 7, 23, 32, 36, 315, DateTimeKind.Local).AddTicks(4261),
+                            ConcurrencyStamp = "8471f2b6-644e-452c-8437-e6a450f72c07",
+                            CreatedOn = new DateTime(2023, 7, 8, 13, 52, 54, 237, DateTimeKind.Local).AddTicks(8476),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Lilial_Izbora@abv.bg",
                             EmailConfirmed = false,
@@ -267,20 +275,20 @@ namespace MentalDepths.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "LILIAL_IZBORA@ABV.BG",
                             NormalizedUserName = "LILIAL_IZBRANNIKOV",
-                            PasswordHash = "AKMeHGYyOb5+oyTCms7ok/AcxVKxphEPlavaGoE+5al54nQj0XoMQjd+igZsgf3rpg==",
+                            PasswordHash = "AOM151TS4M9NQOnLZwD7PMxBAf3XZQntyXzC6NuJWMgRG+izvjPq4vi7gIXMIPukqA==",
                             PhoneNumberConfirmed = false,
                             SecondName = "Sabiev",
-                            SecurityStamp = "009dc9ca-b478-4ee5-a8b4-cf2a2a80807e",
+                            SecurityStamp = "3c85f2a3-131a-4cfc-bab8-2f2cff0bb489",
                             TwoFactorEnabled = false,
                             UserName = "Lilial_Izbrannikov"
                         },
                         new
                         {
-                            Id = new Guid("f6911c58-9478-4da1-97e6-ecb9b04e29ed"),
+                            Id = new Guid("59a88704-3ae3-4554-ad39-81b1f0304069"),
                             AccessFailedCount = 0,
                             CityId = 22,
-                            ConcurrencyStamp = "978b04c6-a43f-4385-a309-2cf89ed0c109",
-                            CreatedOn = new DateTime(2023, 7, 7, 23, 32, 36, 316, DateTimeKind.Local).AddTicks(1491),
+                            ConcurrencyStamp = "befc14c4-64d4-46af-99be-d33f33de1360",
+                            CreatedOn = new DateTime(2023, 7, 8, 13, 52, 54, 238, DateTimeKind.Local).AddTicks(5712),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Kolio_Zemev@gmail.com",
                             EmailConfirmed = true,
@@ -290,20 +298,20 @@ namespace MentalDepths.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KOLIO_ZEMEV@GMAIL.COM",
                             NormalizedUserName = "NIKOLA_ZEMELYARSKI",
-                            PasswordHash = "AMTxVhSuVASeQSmVMyqzC+lig9pC8CskFbDOkB4GEMKmhsPZjvlw26QQL0bmC+9RQQ==",
+                            PasswordHash = "ABgYk+FZs8GNI/ADIxUaHmn5sz4vh5c00xITy86/2pbP3lVC6h1muK8DY9PeKWsKLw==",
                             PhoneNumberConfirmed = false,
                             SecondName = "",
-                            SecurityStamp = "4d28234a-6a95-4511-b96d-039b0d21bcaa",
+                            SecurityStamp = "c110be23-76bb-4a00-a11f-4880492090f3",
                             TwoFactorEnabled = false,
                             UserName = "Nikola_Zemelyarski"
                         },
                         new
                         {
-                            Id = new Guid("8883d37b-43bd-4256-9f46-adecfe2d997d"),
+                            Id = new Guid("a63c570e-8c25-449f-b89c-3df89bc0d17c"),
                             AccessFailedCount = 0,
                             CityId = 17,
-                            ConcurrencyStamp = "16b88bce-aafd-4446-accc-6545a4d2ca38",
-                            CreatedOn = new DateTime(2023, 7, 7, 23, 32, 36, 316, DateTimeKind.Local).AddTicks(8876),
+                            ConcurrencyStamp = "77d012de-d878-4b30-a7b6-b0cce5931abc",
+                            CreatedOn = new DateTime(2023, 7, 8, 13, 52, 54, 239, DateTimeKind.Local).AddTicks(2951),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "DembeRed@alo.net",
                             EmailConfirmed = false,
@@ -313,10 +321,10 @@ namespace MentalDepths.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "DEMBERED@ALO.NET",
                             NormalizedUserName = "DEMBE_REDGLADE",
-                            PasswordHash = "AFWvGuhUN33m7Zc92aZVkjgzg1dgIsg9w7qj3Ajmb051z7WS5mdOxdRxxqUOBGsRww==",
+                            PasswordHash = "AD11LSfL9I58/nSCK9aHZCm15+UQGK7292cxyDvK9k7SOgNRC7R3u4ekEIe/4xOQXA==",
                             PhoneNumberConfirmed = false,
                             SecondName = "Nisantimetarottebe",
-                            SecurityStamp = "900c434d-5324-4a7b-8fcc-b6eab4d532d3",
+                            SecurityStamp = "4b817e56-13a3-4551-8580-64558b298d0c",
                             TwoFactorEnabled = false,
                             UserName = "Dembe_Redglade"
                         });
@@ -556,9 +564,6 @@ namespace MentalDepths.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<Guid?>("JobApplicationFormId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -566,9 +571,79 @@ namespace MentalDepths.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JobApplicationFormId");
-
                     b.ToTable("Specialisations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Psychiatrist"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Adolescent psycology"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Prepubescent psycology"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Post-war trauma"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Abnormal psychology"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Biological psychology"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Cognitive psychology "
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Developmental psychology"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Forensic psychology"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Counselling psychology"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Industrial-organizational psychology"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Forensic psychology"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Personality psychology"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Social psychology"
+                        });
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.Specialist", b =>
@@ -595,8 +670,8 @@ namespace MentalDepths.Data.Migrations
                         .HasMaxLength(2048)
                         .HasColumnType("nvarchar(2048)");
 
-                    b.Property<int>("JobApplicationId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("JobApplicationId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -606,6 +681,28 @@ namespace MentalDepths.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Specialists");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("550184af-0284-4a1c-bc3e-223cb9198e62"),
+                            Address = "AlenMak bl.14 vh.6",
+                            Age = 23,
+                            Description = "Talanted, young and abnormaly ambitious she will obliterate your expectations!",
+                            ImageURL = "https://images.pexels.com/photos/3538028/pexels-photo-3538028.jpeg?cs=srgb&dl=pexels-jeys-tubianosa-3538028.jpg&fm=jpg",
+                            JobApplicationId = new Guid("00000000-0000-0000-0000-000000000000"),
+                            UserId = new Guid("308508b8-ce9e-470b-a122-8a77f576532e")
+                        },
+                        new
+                        {
+                            Id = new Guid("33713803-661e-4fad-a041-cf526fbc83e4"),
+                            Address = "ul.\"Sergei Kirov\" vh.34",
+                            Age = 56,
+                            Description = "Talanted, young and abnormaly ambitious he will obliterate your expectations!",
+                            ImageURL = "https://images.pexels.com/photos/1936854/pexels-photo-1936854.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                            JobApplicationId = new Guid("00000000-0000-0000-0000-000000000000"),
+                            UserId = new Guid("59a88704-3ae3-4554-ad39-81b1f0304069")
+                        });
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.SpecialistSpecialisation", b =>
@@ -621,6 +718,33 @@ namespace MentalDepths.Data.Migrations
                     b.HasIndex("SpecialisationId");
 
                     b.ToTable("SpecialistsSpecialisations");
+
+                    b.HasData(
+                        new
+                        {
+                            SpecialistId = new Guid("33713803-661e-4fad-a041-cf526fbc83e4"),
+                            SpecialisationId = 8
+                        },
+                        new
+                        {
+                            SpecialistId = new Guid("33713803-661e-4fad-a041-cf526fbc83e4"),
+                            SpecialisationId = 4
+                        },
+                        new
+                        {
+                            SpecialistId = new Guid("550184af-0284-4a1c-bc3e-223cb9198e62"),
+                            SpecialisationId = 13
+                        },
+                        new
+                        {
+                            SpecialistId = new Guid("550184af-0284-4a1c-bc3e-223cb9198e62"),
+                            SpecialisationId = 6
+                        },
+                        new
+                        {
+                            SpecialistId = new Guid("550184af-0284-4a1c-bc3e-223cb9198e62"),
+                            SpecialisationId = 3
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -848,13 +972,6 @@ namespace MentalDepths.Data.Migrations
                     b.Navigation("Specialist");
                 });
 
-            modelBuilder.Entity("MentalDepths.Data.Models.Specialisation", b =>
-                {
-                    b.HasOne("MentalDepths.Data.Models.JobApplicationForm", null)
-                        .WithMany("Specialisations")
-                        .HasForeignKey("JobApplicationFormId");
-                });
-
             modelBuilder.Entity("MentalDepths.Data.Models.Specialist", b =>
                 {
                     b.HasOne("MentalDepths.Data.Models.ApplicationUser", "ApplicationUser")
@@ -956,8 +1073,6 @@ namespace MentalDepths.Data.Migrations
             modelBuilder.Entity("MentalDepths.Data.Models.JobApplicationForm", b =>
                 {
                     b.Navigation("Admins");
-
-                    b.Navigation("Specialisations");
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.Specialisation", b =>
@@ -969,7 +1084,8 @@ namespace MentalDepths.Data.Migrations
                 {
                     b.Navigation("Apointments");
 
-                    b.Navigation("JobApplication");
+                    b.Navigation("JobApplication")
+                        .IsRequired();
 
                     b.Navigation("Prescriptions");
 

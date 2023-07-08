@@ -11,6 +11,7 @@
     {
         public ApplicationUser()
         {
+            Id = Guid.NewGuid();
             CreatedOn = DateTime.Now;
             IsDeleted = false;
             Apointments = new HashSet<Apointment>();

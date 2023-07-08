@@ -13,5 +13,18 @@
                 .WithOne(s => s.JobApplication)
                 .OnDelete(DeleteBehavior.Restrict);
         }
+        public ICollection<JobApplicationForm> GenerateJobApplicationForm() 
+        {
+            List<JobApplicationForm> jobApplicationForms = new List<JobApplicationForm>();
+
+            JobApplicationForm jobApplicationForm = new JobApplicationForm() 
+            {
+                Id=Guid.Parse(""),
+
+            };
+            jobApplicationForms.Add(jobApplicationForm);
+
+            return jobApplicationForms;
+        }
     }
 }

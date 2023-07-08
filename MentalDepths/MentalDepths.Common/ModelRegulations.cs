@@ -63,7 +63,7 @@
         }
         public class Email
         {
-            public const string Regex = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
+            public const string Regex = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
         }
         public class CodeSender 
         {

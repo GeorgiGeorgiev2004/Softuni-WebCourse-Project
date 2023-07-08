@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentalDepths.Data.Migrations
 {
     [DbContext(typeof(MentalDepthsDbContext))]
-    [Migration("20230707201007_ReworkedEmailTableAndSeededUsers")]
-    partial class ReworkedEmailTableAndSeededUsers
+    [Migration("20230708112109_AppointementSeed")]
+    partial class AppointementSeed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,6 +42,14 @@ namespace MentalDepths.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("d947f5ab-75ae-4ebe-9f26-9af2671d77ac"),
+                            UserId = new Guid("f957a45a-d8df-439e-a50a-b1c0f87a69f2"),
+                            Username = "Big Boss"
+                        });
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.AdminJobApplicationMT", b =>
@@ -86,6 +94,16 @@ namespace MentalDepths.Data.Migrations
                     b.HasIndex("SpecialistId");
 
                     b.ToTable("Apointments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("247a7f62-3cfb-4d10-94b5-b94bb5a32e57"),
+                            Address = "Office",
+                            ApplicationUserId = new Guid("247a7f62-3cfb-4d10-94b5-b94bb5a32e57"),
+                            DateAndTime = new DateTime(2023, 7, 11, 14, 21, 8, 385, DateTimeKind.Local).AddTicks(6938),
+                            SpecialistId = new Guid("247a7f62-3cfb-4d10-94b5-b94bb5a32e57")
+                        });
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.ApplicationUser", b =>
@@ -180,6 +198,146 @@ namespace MentalDepths.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("f957a45a-d8df-439e-a50a-b1c0f87a69f2"),
+                            AccessFailedCount = 0,
+                            CityId = 2,
+                            ConcurrencyStamp = "8d00ea2d-4f3b-49ac-8979-ea1d5689567e",
+                            CreatedOn = new DateTime(2023, 7, 8, 14, 21, 8, 385, DateTimeKind.Local).AddTicks(7151),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "gogo_5a@abv.bg",
+                            EmailConfirmed = true,
+                            FirstName = "Georgi",
+                            IsDeleted = false,
+                            LastName = "Georgiev",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "GOGO_5A@ABV.BG",
+                            NormalizedUserName = "GEORGI_GEORGIEV",
+                            PasswordHash = "AMSCQPYHMJeKbC4k4lvISmHDpj8yLSvsnnuyk7LedNCfXm9hJZfMvnmQU0zfe/qiyQ==",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "Lyubenov",
+                            SecurityStamp = "85756270-0354-4c75-8c41-668634c4c631",
+                            TwoFactorEnabled = false,
+                            UserName = "Georgi_Georgiev"
+                        },
+                        new
+                        {
+                            Id = new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"),
+                            AccessFailedCount = 0,
+                            CityId = 5,
+                            ConcurrencyStamp = "9d153388-2984-42c1-bfd6-6bf47247cc3d",
+                            CreatedOn = new DateTime(2023, 7, 8, 14, 21, 8, 386, DateTimeKind.Local).AddTicks(5185),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "ScaryHaxer@yahoo.com",
+                            EmailConfirmed = false,
+                            FirstName = "Iliq",
+                            IsDeleted = false,
+                            LastName = "Steliov",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "SCARYHAXER@YAHOO.COM",
+                            NormalizedUserName = "ILIQ_STELIOV",
+                            PasswordHash = "ALyYg/MtbXApm7vKaSuKe8EysfgMlLecKAksmNiLi1ZPAl8aUxf9PNoLuXwlyStMaw==",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "",
+                            SecurityStamp = "0b4887d5-53ec-4322-a365-6be9e3f237f3",
+                            TwoFactorEnabled = false,
+                            UserName = "Iliq_Steliov"
+                        },
+                        new
+                        {
+                            Id = new Guid("308508b8-ce9e-470b-a122-8a77f576532e"),
+                            AccessFailedCount = 0,
+                            CityId = 27,
+                            ConcurrencyStamp = "d37450b9-99f9-4b22-ac9e-4a6393c9305a",
+                            CreatedOn = new DateTime(2023, 7, 8, 14, 21, 8, 387, DateTimeKind.Local).AddTicks(3359),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "Ivan.Ivanov234@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Ivan",
+                            IsDeleted = false,
+                            LastName = "Ivanov",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "IVAN.IVANOV234@GMAIL.COM",
+                            NormalizedUserName = "IVAN_IVANOV",
+                            PasswordHash = "AFZiEn91sueKp73RGpwAEGz+w7tDrcLoUdqDVWSYlmDmv086mC6LyXJ0CvgJBPojwA==",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "Sirov",
+                            SecurityStamp = "83cf51a3-10ad-405d-834f-bf53b4a4d2f5",
+                            TwoFactorEnabled = false,
+                            UserName = "Ivan_Ivanov"
+                        },
+                        new
+                        {
+                            Id = new Guid("9953dce8-25f6-45f2-bf8c-816b92bb0e28"),
+                            AccessFailedCount = 0,
+                            CityId = 13,
+                            ConcurrencyStamp = "a6fdb78e-76cc-450f-a8fd-b7e5b382ab20",
+                            CreatedOn = new DateTime(2023, 7, 8, 14, 21, 8, 388, DateTimeKind.Local).AddTicks(1259),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "Lilial_Izbora@abv.bg",
+                            EmailConfirmed = false,
+                            FirstName = "Lilial",
+                            IsDeleted = false,
+                            LastName = "Izbrannikov",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "LILIAL_IZBORA@ABV.BG",
+                            NormalizedUserName = "LILIAL_IZBRANNIKOV",
+                            PasswordHash = "ABYfIJvJkLkvpvOrkXs13Y6a9lwxPpVMk1DXWNG1sNI3TbCEtqyGHrMrJQIDRxUpCg==",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "Sabiev",
+                            SecurityStamp = "96f26e4f-f359-4769-b393-c3ae9278d12a",
+                            TwoFactorEnabled = false,
+                            UserName = "Lilial_Izbrannikov"
+                        },
+                        new
+                        {
+                            Id = new Guid("59a88704-3ae3-4554-ad39-81b1f0304069"),
+                            AccessFailedCount = 0,
+                            CityId = 22,
+                            ConcurrencyStamp = "821d3eff-0199-49fb-b420-795aa2521f0a",
+                            CreatedOn = new DateTime(2023, 7, 8, 14, 21, 8, 388, DateTimeKind.Local).AddTicks(9380),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "Kolio_Zemev@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Nikola",
+                            IsDeleted = false,
+                            LastName = "Zemelyarski",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "KOLIO_ZEMEV@GMAIL.COM",
+                            NormalizedUserName = "NIKOLA_ZEMELYARSKI",
+                            PasswordHash = "AE/1lGfryL3l5zY27sVU1/4H+w5M9mbnj5T72CtrkG+K1GqZ7fNNBmRHSPp/Awo/sg==",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "",
+                            SecurityStamp = "9d0e9e5a-05e1-418d-ba1b-a1ed0e632996",
+                            TwoFactorEnabled = false,
+                            UserName = "Nikola_Zemelyarski"
+                        },
+                        new
+                        {
+                            Id = new Guid("a63c570e-8c25-449f-b89c-3df89bc0d17c"),
+                            AccessFailedCount = 0,
+                            CityId = 17,
+                            ConcurrencyStamp = "244b762f-7dac-4cc7-a8bb-7d99061fdbcd",
+                            CreatedOn = new DateTime(2023, 7, 8, 14, 21, 8, 389, DateTimeKind.Local).AddTicks(6637),
+                            DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "DembeRed@alo.net",
+                            EmailConfirmed = false,
+                            FirstName = "Dembe",
+                            IsDeleted = false,
+                            LastName = "Redglade",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "DEMBERED@ALO.NET",
+                            NormalizedUserName = "DEMBE_REDGLADE",
+                            PasswordHash = "AAu1ZJ6PGbgglhsqTbl0AQPmS7Ok7W1YDk9zNjnuEX6BLaAPVcGM4RIEQN5mjj1V6w==",
+                            PhoneNumberConfirmed = false,
+                            SecondName = "Nisantimetarottebe",
+                            SecurityStamp = "654f3397-9930-4fcf-8c6b-89b83d096fb6",
+                            TwoFactorEnabled = false,
+                            UserName = "Dembe_Redglade"
+                        });
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.City", b =>
@@ -416,9 +574,6 @@ namespace MentalDepths.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<Guid?>("JobApplicationFormId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -426,9 +581,79 @@ namespace MentalDepths.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JobApplicationFormId");
-
                     b.ToTable("Specialisations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Psychiatrist"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Adolescent psycology"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Prepubescent psycology"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Post-war trauma"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Abnormal psychology"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Biological psychology"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Cognitive psychology "
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Developmental psychology"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Forensic psychology"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Counselling psychology"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Industrial-organizational psychology"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Forensic psychology"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Personality psychology"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Social psychology"
+                        });
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.Specialist", b =>
@@ -455,8 +680,8 @@ namespace MentalDepths.Data.Migrations
                         .HasMaxLength(2048)
                         .HasColumnType("nvarchar(2048)");
 
-                    b.Property<int>("JobApplicationId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("JobApplicationId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -466,6 +691,28 @@ namespace MentalDepths.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Specialists");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("550184af-0284-4a1c-bc3e-223cb9198e62"),
+                            Address = "AlenMak bl.14 vh.6",
+                            Age = 23,
+                            Description = "Talanted, young and abnormaly ambitious she will obliterate your expectations!",
+                            ImageURL = "https://images.pexels.com/photos/3538028/pexels-photo-3538028.jpeg?cs=srgb&dl=pexels-jeys-tubianosa-3538028.jpg&fm=jpg",
+                            JobApplicationId = new Guid("00000000-0000-0000-0000-000000000000"),
+                            UserId = new Guid("308508b8-ce9e-470b-a122-8a77f576532e")
+                        },
+                        new
+                        {
+                            Id = new Guid("33713803-661e-4fad-a041-cf526fbc83e4"),
+                            Address = "ul.\"Sergei Kirov\" vh.34",
+                            Age = 56,
+                            Description = "Talanted, young and abnormaly ambitious he will obliterate your expectations!",
+                            ImageURL = "https://images.pexels.com/photos/1936854/pexels-photo-1936854.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                            JobApplicationId = new Guid("00000000-0000-0000-0000-000000000000"),
+                            UserId = new Guid("59a88704-3ae3-4554-ad39-81b1f0304069")
+                        });
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.SpecialistSpecialisation", b =>
@@ -481,6 +728,33 @@ namespace MentalDepths.Data.Migrations
                     b.HasIndex("SpecialisationId");
 
                     b.ToTable("SpecialistsSpecialisations");
+
+                    b.HasData(
+                        new
+                        {
+                            SpecialistId = new Guid("33713803-661e-4fad-a041-cf526fbc83e4"),
+                            SpecialisationId = 8
+                        },
+                        new
+                        {
+                            SpecialistId = new Guid("33713803-661e-4fad-a041-cf526fbc83e4"),
+                            SpecialisationId = 4
+                        },
+                        new
+                        {
+                            SpecialistId = new Guid("550184af-0284-4a1c-bc3e-223cb9198e62"),
+                            SpecialisationId = 13
+                        },
+                        new
+                        {
+                            SpecialistId = new Guid("550184af-0284-4a1c-bc3e-223cb9198e62"),
+                            SpecialisationId = 6
+                        },
+                        new
+                        {
+                            SpecialistId = new Guid("550184af-0284-4a1c-bc3e-223cb9198e62"),
+                            SpecialisationId = 3
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -708,13 +982,6 @@ namespace MentalDepths.Data.Migrations
                     b.Navigation("Specialist");
                 });
 
-            modelBuilder.Entity("MentalDepths.Data.Models.Specialisation", b =>
-                {
-                    b.HasOne("MentalDepths.Data.Models.JobApplicationForm", null)
-                        .WithMany("Specialisations")
-                        .HasForeignKey("JobApplicationFormId");
-                });
-
             modelBuilder.Entity("MentalDepths.Data.Models.Specialist", b =>
                 {
                     b.HasOne("MentalDepths.Data.Models.ApplicationUser", "ApplicationUser")
@@ -816,8 +1083,6 @@ namespace MentalDepths.Data.Migrations
             modelBuilder.Entity("MentalDepths.Data.Models.JobApplicationForm", b =>
                 {
                     b.Navigation("Admins");
-
-                    b.Navigation("Specialisations");
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.Specialisation", b =>
@@ -829,7 +1094,8 @@ namespace MentalDepths.Data.Migrations
                 {
                     b.Navigation("Apointments");
 
-                    b.Navigation("JobApplication");
+                    b.Navigation("JobApplication")
+                        .IsRequired();
 
                     b.Navigation("Prescriptions");
 

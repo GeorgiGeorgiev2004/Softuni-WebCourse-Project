@@ -19,7 +19,7 @@ namespace MentalDepths.Data.Configurations
             List<ApplicationUser> users = new List<ApplicationUser>();
             ApplicationUser user = new ApplicationUser()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("f957a45a-d8df-439e-a50a-b1c0f87a69f2"),
                 FirstName = "Georgi",
                 SecondName = "Lyubenov",
                 LastName = "Georgiev",
@@ -38,7 +38,7 @@ namespace MentalDepths.Data.Configurations
 
             user = new ApplicationUser()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("010d67b6-964d-4248-9c9a-ad83215eaa4a"),
                 FirstName = "Iliq",
                 SecondName = string.Empty,
                 LastName = "Steliov",
@@ -57,7 +57,7 @@ namespace MentalDepths.Data.Configurations
 
             user = new ApplicationUser()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("308508b8-ce9e-470b-a122-8a77f576532e"),
                 FirstName = "Ivan",
                 SecondName = "Sirov",
                 LastName = "Ivanov",
@@ -76,7 +76,7 @@ namespace MentalDepths.Data.Configurations
 
             user = new ApplicationUser()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("9953dce8-25f6-45f2-bf8c-816b92bb0e28"),
                 FirstName = "Lilial",
                 SecondName = "Sabiev",
                 LastName = "Izbrannikov",
@@ -95,7 +95,7 @@ namespace MentalDepths.Data.Configurations
 
             user = new ApplicationUser()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("59a88704-3ae3-4554-ad39-81b1f0304069"),
                 FirstName = "Nikola",
                 SecondName = string.Empty,
                 LastName = "Zemelyarski",
@@ -114,7 +114,7 @@ namespace MentalDepths.Data.Configurations
 
             user = new ApplicationUser()
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("a63c570e-8c25-449f-b89c-3df89bc0d17c"),
                 FirstName = "Dembe",
                 SecondName = "Nisantimetarottebe",
                 LastName = "Redglade",

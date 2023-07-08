@@ -3,7 +3,6 @@
     using Microsoft.AspNetCore.Identity;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using static MentalDepths.Common.ModelRegulations;
     using static MentalDepths.Common.ModelRegulations.Specialist;
     public class Specialist
     {
@@ -39,10 +38,10 @@
 
         public ICollection<Prescription> Prescriptions { get; set; }
 
-        public int JobApplicationId { get; set; }
+        [ForeignKey(nameof(JobApplication))]
+        public Guid JobApplicationId { get; set; }
 
-        [ForeignKey(nameof(JobApplicationId))]
-        public JobApplicationForm? JobApplication { get; set; }
+        public JobApplicationForm JobApplication { get; set; }
 
         public Guid UserId { get; set; }
 

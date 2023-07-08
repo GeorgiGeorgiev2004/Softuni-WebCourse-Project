@@ -8,7 +8,6 @@
     {
         public JobApplicationForm()
         {
-            Specialisations = new HashSet<Specialisation>();
             Admins = new HashSet<AdminJobApplicationMT>();
             Id= Guid.NewGuid();
         }
@@ -18,12 +17,10 @@
 
         public ICollection<AdminJobApplicationMT> Admins { get; set; }
 
+        [ForeignKey(nameof(Specialist))]
         public Guid SpecialistId { get; set; }
-
-        [ForeignKey(nameof(SpecialistId))]
+        
         public Specialist Specialist { get; set; } = null!;
-
-        public ICollection<Specialisation> Specialisations { get; set; }
 
         [Required]
         public byte[] CV { get; set; } = null!;

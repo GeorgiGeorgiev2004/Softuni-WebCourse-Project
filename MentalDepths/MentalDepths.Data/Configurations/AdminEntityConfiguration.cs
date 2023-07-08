@@ -17,12 +17,14 @@
         }
         public Admin GenerateAdmin()
         {
-            return new Admin
+             Admin admin = new Admin
             {
                 Id = Guid.Parse("d947f5ab-75ae-4ebe-9f26-9af2671d77ac"),
                 Username = "Big Boss",
-                UserId = Guid.Parse("e84a2911-5c9c-4014-86ee-9e171362c65c"),
+                UserId = Guid.Parse("f957a45a-d8df-439e-a50a-b1c0f87a69f2")
             };
+            return admin;
+            
         }
     }
 }

@@ -14,7 +14,6 @@
         [Required]
         [StringLength(NamesMaxLenght, MinimumLength = NamesMinLenght)]
         public string Name { get; set; } = null!;
-
         public ICollection<SpecialistSpecialisation> Specialists { get; set; }
     }
 }
