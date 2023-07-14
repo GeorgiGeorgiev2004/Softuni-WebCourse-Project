@@ -9,8 +9,8 @@
     {
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            var mail = "gogotin5@gmail.com";
-            var pw = "qvngcwxibadnsryj";
+            var mail = "georgigeorgievbrezho@gmail.com";
+            var pw = "tzvtkanlokvjayjt";
 
             var client = new SmtpClient("smtp.gmail.com", 587);
             client.UseDefaultCredentials = false;
