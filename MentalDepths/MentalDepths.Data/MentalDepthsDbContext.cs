@@ -1,13 +1,11 @@
 ﻿namespace MentalDepths.Data
 {
-    using MentalDepths.Data.Configurations;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
     using Models;
     using System.Reflection;
-    using System.Reflection.Emit;
 
     public class MentalDepthsDbContext : IdentityDbContext<ApplicationUser,IdentityRole<Guid>,Guid>
     {

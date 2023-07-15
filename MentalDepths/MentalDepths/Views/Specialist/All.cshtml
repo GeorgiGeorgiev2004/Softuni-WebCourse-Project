@@ -4,7 +4,7 @@
 }
 
 <h1 class="text-center">@ViewBag.Title</h1>
-<br />
+<hr />
 <div class="container-fluid" style="max-width:100%">
 	<div class="row">
 
@@ -15,22 +15,24 @@
 			<ul class="list-inline" style="display:grid; grid-template-columns:repeat(4,1fr)">
 				@for (int i = 0; i < 5; i++)
 				{
-					@foreach (var item in Model)
+					@foreach (var specialist in Model)
 					{
 						<li class="list-group-item">
-							<img src="@item.ImageURL" class="img-fluid img-rounded" style="width: 250px;height: auto" alt=""><img />
+							<img src="@specialist.ImageURL" class="img-fluid img-rounded" style="width: 250px;height: auto" alt=""><img />
 							<h4>
-								<a>@item.ApplicationUser.UserName</a>
+								<a>@specialist.ApplicationUser.UserName</a>
 							</h4>
 							<ul>
-								@foreach (var specialisation in item.Specialisations)
+								@foreach (var specialisation in specialist.Specialisations)
 								{
 									<li>
 										@specialisation
 									</li>
 								}
 							</ul>
-							<a asp-controller="Specialist" asp-action="More" asp-route="@item.Id" class="btn btn-primary">Submit</a>
+							<div class="d-grid gap-2">
+								<a asp-controller="Specialist" asp-action="More" asp-route-id="@specialist.Id" class="btn btn-warning">More</a>
+							</div>
 						</li>
 					}
 				}

@@ -1,4 +1,46 @@
 ﻿@model SpecialistVM
 @{
     ViewBag.Title = "More information about " + Model.ApplicationUser.UserName;
+    string name = Model.ApplicationUser.FirstName + "" + $" {Model.ApplicationUser.SecondName}" + " " + Model.ApplicationUser.LastName;
+    string specialisations = string.Join(", ", Model.Specialisations);
 }
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="container-fluid" style="max-width:100%">
+    <div class="row">
+
+        <div class="col-md-2">
+        </div>
+
+        <div class="card mb-6" style="max-width: 824px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="@Model.ImageURL" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@name</h5>
+                        <p class="card-subtitle">@specialisations</p>
+                        <p class="card-subtitle"><small class="text-muted">@Model.Age years of age</small></p>
+                        <p class="card-text">Description: @Model.Description</p>
+                        @{
+                            if (!User.Identity.IsAuthenticated)
+                            {
+                                <p class="card-text p-2 text-warning"> Plsease log in to reach out to this professional!</p>
+                            }
+                            else
+                            {
+                                <div class="d-grid gap-2">
+                                    <a asp-action="Book" asp-controller="Apointment" asp-route-id="@Model.Id" asp-route-UserName="@User.Identity.Name" class="link-primary"> Book an apointement now</a>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+</div>

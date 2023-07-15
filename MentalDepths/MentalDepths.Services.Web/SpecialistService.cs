@@ -26,7 +26,7 @@ namespace MentalDepths.Services.Web
                 Address = specialist.Address,
                 Description = specialist.Description,
 				Specialisations = specialist.Specialisations.Select(s => s.Specialisation.Name).ToList(),
-                ApplicationUser = specialist.ApplicationUser,
+                ApplicationUser = await context.Users.FirstAsync(s=>s.Id==specialist.UserId),
                 Age = specialist.Age,
                 ImageURL = specialist.ImageURL,
 			};
