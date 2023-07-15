@@ -7,6 +7,7 @@
 
     public class SpecialistVM
     {
+        [Key]
         public Guid Id { get; set; }
 
         [Required]

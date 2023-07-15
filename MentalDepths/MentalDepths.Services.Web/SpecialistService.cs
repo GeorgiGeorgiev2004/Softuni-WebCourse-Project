@@ -6,14 +6,34 @@ namespace MentalDepths.Services.Web
 
     using MentalDepths.Services.Web.Interfaces;
     using MentalDepths.Web.ViewModels.Web;
-    public class SpecialistService : ISpecialistService
+	using System;
+	using MentalDepths.Data.Models;
+
+	public class SpecialistService : ISpecialistService
     {
         public readonly MentalDepthsDbContext context;
         public SpecialistService(MentalDepthsDbContext Context)
         {
             context = Context;
         }
-        public async Task<ICollection<SpecialistVM>> GetAllSpecialist()
+
+		public async Task<SpecialistVM> FindSpecialistById(Guid id)
+		{
+			Specialist specialist = context.Specialists.FirstOrDefaultAsync(s=>s.Id==id).Result;
+            SpecialistVM spec= new SpecialistVM 
+            { 
+                Id = specialist.Id,
+                Address = specialist.Address,
+                Description = specialist.Description,
+				Specialisations = specialist.Specialisations.Select(s => s.Specialisation.Name).ToList(),
+                ApplicationUser = specialist.ApplicationUser,
+                Age = specialist.Age,
+                ImageURL = specialist.ImageURL,
+			};
+            return spec;
+		}
+
+		public async Task<ICollection<SpecialistVM>> GetAllSpecialist()
         {
             return await context.Specialists.Select(s => new SpecialistVM
             {

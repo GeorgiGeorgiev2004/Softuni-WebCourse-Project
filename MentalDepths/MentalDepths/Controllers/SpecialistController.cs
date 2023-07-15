@@ -1,4 +1,5 @@
 ﻿using MentalDepths.Services.Web.Interfaces;
+using MentalDepths.Web.ViewModels.Web;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MentalDepths.Controllers
@@ -10,10 +11,17 @@ namespace MentalDepths.Controllers
         {
             specialistService = sp;
         }
+        [HttpGet]
         public async Task<IActionResult> All()
         {
             var list = await specialistService.GetAllSpecialist();
             return View(list);
         }
-    }
+        [HttpGet]
+		public async Task<IActionResult> More(Guid id)
+		{
+			var spec = await specialistService.FindSpecialistById(id);
+			return View(spec);
+		}
+	}
 }
