@@ -18,6 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalDepths.Data", "Mental
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalDepths.Web.ViewModels", "MentalDepths.Web.ViewModels\MentalDepths.Web.ViewModels.csproj", "{2059196E-0027-48E5-8C30-83F4152CD2AE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C5CC6D10-7811-47C5-9D7E-69A3484E9916} = {C5CC6D10-7811-47C5-9D7E-69A3484E9916}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalDepths.Data.Models", "MentalDepths.Data.Models\MentalDepths.Data.Models.csproj", "{C5CC6D10-7811-47C5-9D7E-69A3484E9916}"
 EndProject
@@ -29,11 +32,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalDepths.Web.Infrastruc
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B7D11656-E53A-40DF-9F06-E583412F20DE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalDepths.Services.Data", "MentalDepths.Services.Data\MentalDepths.Services.Data.csproj", "{20E1AB15-4E43-4B31-931F-5DA57D054232}"
-	ProjectSection(ProjectDependencies) = postProject
-		{B000C7BB-1E91-4AF9-9AFA-53D31F07BC58} = {B000C7BB-1E91-4AF9-9AFA-53D31F07BC58}
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalDepths.Services.Web", "MentalDepths.Services.Web\MentalDepths.Services.Web.csproj", "{FA7029AC-F590-48D2-957D-D361BCA4CC15}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -70,10 +68,6 @@ Global
 		{0E35A3CF-320B-44A4-B933-D7B22ADFFB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E35A3CF-320B-44A4-B933-D7B22ADFFB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E35A3CF-320B-44A4-B933-D7B22ADFFB70}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20E1AB15-4E43-4B31-931F-5DA57D054232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20E1AB15-4E43-4B31-931F-5DA57D054232}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20E1AB15-4E43-4B31-931F-5DA57D054232}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20E1AB15-4E43-4B31-931F-5DA57D054232}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FA7029AC-F590-48D2-957D-D361BCA4CC15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FA7029AC-F590-48D2-957D-D361BCA4CC15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA7029AC-F590-48D2-957D-D361BCA4CC15}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -88,7 +82,6 @@ Global
 		{2059196E-0027-48E5-8C30-83F4152CD2AE} = {74584114-3EFB-4BC7-BB70-A66FAD352D2F}
 		{C5CC6D10-7811-47C5-9D7E-69A3484E9916} = {4CD44BDE-8A75-45C5-89F5-E638F43CA3DB}
 		{0E35A3CF-320B-44A4-B933-D7B22ADFFB70} = {74584114-3EFB-4BC7-BB70-A66FAD352D2F}
-		{20E1AB15-4E43-4B31-931F-5DA57D054232} = {B7D11656-E53A-40DF-9F06-E583412F20DE}
 		{FA7029AC-F590-48D2-957D-D361BCA4CC15} = {B7D11656-E53A-40DF-9F06-E583412F20DE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

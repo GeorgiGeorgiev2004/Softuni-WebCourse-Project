@@ -4,7 +4,6 @@ namespace MentalDepths.Data.Configurations
     using Microsoft.EntityFrameworkCore;
     using MentalDepths.Data.Models;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using MentalDepths.Services.Data.Interfaces;
     using Microsoft.AspNet.Identity;
 
     public class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<ApplicationUser>
@@ -31,7 +30,7 @@ namespace MentalDepths.Data.Configurations
                 ConcurrencyStamp = Guid.NewGuid().ToString("D"),
                 LockoutEnabled=false
             };
-            user.UserName = user.FirstName + "_" + user.LastName;
+            user.UserName = user.FirstName + " " + user.LastName;
             user.NormalizedUserName = user.UserName.ToUpper();
             user.NormalizedEmail=user.Email.ToUpper();
             users.Add(user);
@@ -50,7 +49,7 @@ namespace MentalDepths.Data.Configurations
                 ConcurrencyStamp = Guid.NewGuid().ToString("D"),
                 LockoutEnabled = false
             };
-            user.UserName = user.FirstName + "_" + user.LastName;
+            user.UserName = user.FirstName + " " + user.LastName;
             user.NormalizedUserName = user.UserName.ToUpper();
             user.NormalizedEmail = user.Email.ToUpper();
             users.Add(user);
@@ -69,7 +68,7 @@ namespace MentalDepths.Data.Configurations
                 ConcurrencyStamp = Guid.NewGuid().ToString("D"),
                 LockoutEnabled = false
             };
-            user.UserName = user.FirstName + "_" + user.LastName;
+            user.UserName = user.FirstName + " " + user.LastName;
             user.NormalizedUserName = user.UserName.ToUpper();
             user.NormalizedEmail = user.Email.ToUpper();
             users.Add(user);
@@ -88,7 +87,7 @@ namespace MentalDepths.Data.Configurations
                 ConcurrencyStamp = Guid.NewGuid().ToString("D"),
                 LockoutEnabled = false
             };
-            user.UserName = user.FirstName + "_" + user.LastName;
+            user.UserName = user.FirstName + " " + user.LastName;
             user.NormalizedUserName = user.UserName.ToUpper();
             user.NormalizedEmail = user.Email.ToUpper();
             users.Add(user);
@@ -107,7 +106,7 @@ namespace MentalDepths.Data.Configurations
                 ConcurrencyStamp = Guid.NewGuid().ToString("D"),
                 LockoutEnabled = false
             };
-            user.UserName = user.FirstName + "_" + user.LastName;
+            user.UserName = user.FirstName + " " + user.LastName;
             user.NormalizedUserName = user.UserName.ToUpper();
             user.NormalizedEmail = user.Email.ToUpper();
             users.Add(user);
@@ -126,7 +125,7 @@ namespace MentalDepths.Data.Configurations
                 ConcurrencyStamp = Guid.NewGuid().ToString("D"),
                 LockoutEnabled = false
             };
-            user.UserName = user.FirstName + "_" + user.LastName;
+            user.UserName = user.FirstName + " " + user.LastName;
             user.NormalizedUserName = user.UserName.ToUpper();
             user.NormalizedEmail = user.Email.ToUpper();
             users.Add(user);

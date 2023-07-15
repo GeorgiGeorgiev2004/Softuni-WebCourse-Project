@@ -1,0 +1,41 @@
+﻿@model ICollection<SpecialistVM>
+@{
+	ViewBag.Title = "Our Team";
+}
+
+<h1 class="text-center">@ViewBag.Title</h1>
+<br />
+<div class=" container">
+	<div class="row">
+
+		<div class="col-md-2">
+		</div>
+
+		<div class="col-md-8 px-0">
+			<ul class="list-group list-group-horizontal-md">
+				@for (int i = 0; i < 5; i++)
+				{
+					@foreach (var item in Model)
+					{
+						<li class="list-group-item">
+							<img src="@item.ImageURL" class="img-fluid img-rounded" style="width: 250px;height: auto" alt=""><img />
+							<h3>
+								<a>@item.ApplicationUser.UserName</a>
+							</h3>
+							<ul>
+								@foreach (var specialisation in item.Specialisations)
+								{
+									<li>
+										@specialisation
+									</li>
+								}
+							</ul>
+						</li>
+					}
+				}
+			</ul>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+</div>

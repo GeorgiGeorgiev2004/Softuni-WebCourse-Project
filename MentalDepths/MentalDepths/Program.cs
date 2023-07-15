@@ -12,8 +12,6 @@ namespace MentalDepths
     using Microsoft.AspNetCore.Identity.UI.Services;
     using MentalDepths.Services.Web.Repositories.Interfaces;
     using MentalDepths.Services.Web.Repositories;
-    using MentalDepths.Services.Data.Interfaces;
-    using MentalDepths.Services.Data;
 
     public class Program
     {
@@ -43,7 +41,7 @@ namespace MentalDepths
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IEmailSender, EmailSender>();
-            builder.Services.AddScoped<IEntityConfiguration, EntityConfiguration>();
+            builder.Services.AddScoped<ISpecialistService, SpecialistService>();
             builder.Services.AddSingleton<IUserManagerRepository, UserManagerRepository>();
             
 
