@@ -1,12 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MentalDepths.Services.Web.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MentalDepths.Controllers
 {
     public class ApointmentController : Controller
     {
-        public IActionResult Book()
+        private IApointmentService apservice;
+        public ApointmentController(IApointmentService apservice)
         {
-            return View();
+            this.apservice = apservice;
+        }
+        public IActionResult Book(Guid SpecialistId,Guid CustomerId)
+        {
+            var apointment = apservice.GenerateNewApointement().Result;
+            return View(apointment);
         }
     }
 }

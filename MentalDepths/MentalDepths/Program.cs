@@ -41,7 +41,7 @@ namespace MentalDepths
             builder.Services.AddScoped<IEmailSender, EmailSender>();
             builder.Services.AddScoped<ISpecialistService, SpecialistService>();
             builder.Services.AddSingleton<IUserManagerRepository, UserManagerRepository>();
-
+            builder.Services.AddScoped<IApointmentService, ApointmentService>();
             builder.Services.AddSignalR();
 
             builder.Services.AddControllersWithViews();

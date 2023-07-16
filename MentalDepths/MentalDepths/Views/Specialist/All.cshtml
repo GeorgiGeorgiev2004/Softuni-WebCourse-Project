@@ -12,17 +12,17 @@
 		</div>
 
 		<div class="col-md-8 px-0">
-			<ul class="list-inline" style="display:grid; grid-template-columns:repeat(4,1fr)">
+			<ul class="list-inline" style="display:inline-grid; grid-template-columns:repeat(4,1fr)">
 				@for (int i = 0; i < 5; i++)
 				{
 					@foreach (var specialist in Model)
 					{
-						<li class="list-group-item">
-							<img src="@specialist.ImageURL" class="img-fluid img-rounded" style="width: 300px;height: auto" alt=""><img />
+						<li class="list-group-item d-grid border">
+							<img src="@specialist.ImageURL" class="img-fluid img-rounded" style="width: 300px;height: auto" alt=""></img>
 							<h4>
 								<a>@specialist.ApplicationUser.UserName</a>
 							</h4>
-							<div class="d-grid gap-2">
+							<div class="d-grid gap-2 align-self-md-end">
 								<a asp-controller="Specialist" asp-action="More" asp-route-id="@specialist.Id" class="btn btn-warning">Learn more!</a>
 							</div>
 						</li>

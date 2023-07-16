@@ -1,7 +1,15 @@
-﻿
+﻿@model BookApointementVM
 @{
+    ViewBag.Title = "Contact has been made!";
 }
 <input type="hidden" value="@User.Identity.Name" id="username" />
+
+<script type="text/javascript">
+window.alert("Keep in mind that you are talking to a real human.\nBe mindful, polite and follow our guidlines!")    
+
+</script>
+
+<h2>@ViewBag.Title </h2>
 <div class="container">
     <div class="row p-1">
         <div class="col-1">User</div>
