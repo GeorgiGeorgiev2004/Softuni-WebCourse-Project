@@ -1,18 +1,16 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using MentalDepths.Data;
 namespace MentalDepths
 {
     using Microsoft.EntityFrameworkCore;
 
     using Data;
-    using Data.Models;
     using MentalDepths.Services.Web.Interfaces;
     using MentalDepths.Services.Web;
     using Microsoft.AspNetCore.Identity.UI.Services;
     using MentalDepths.Services.Web.Repositories.Interfaces;
     using MentalDepths.Services.Web.Repositories;
-
+    using MentalDepths.Services.Web.SignalR.Chat;
     public class Program
     {
         public static void Main(string[] args)
@@ -43,7 +41,8 @@ namespace MentalDepths
             builder.Services.AddScoped<IEmailSender, EmailSender>();
             builder.Services.AddScoped<ISpecialistService, SpecialistService>();
             builder.Services.AddSingleton<IUserManagerRepository, UserManagerRepository>();
-            
+
+            builder.Services.AddSignalR();
 
             builder.Services.AddControllersWithViews();
 
@@ -73,6 +72,8 @@ namespace MentalDepths
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
+
+            app.MapHub<ChatHub>("/chatHub");
 
             app.Run();
         }

@@ -18,20 +18,12 @@
 					@foreach (var specialist in Model)
 					{
 						<li class="list-group-item">
-							<img src="@specialist.ImageURL" class="img-fluid img-rounded" style="width: 250px;height: auto" alt=""><img />
+							<img src="@specialist.ImageURL" class="img-fluid img-rounded" style="width: 300px;height: auto" alt=""><img />
 							<h4>
 								<a>@specialist.ApplicationUser.UserName</a>
 							</h4>
-							<ul>
-								@foreach (var specialisation in specialist.Specialisations)
-								{
-									<li>
-										@specialisation
-									</li>
-								}
-							</ul>
 							<div class="d-grid gap-2">
-								<a asp-controller="Specialist" asp-action="More" asp-route-id="@specialist.Id" class="btn btn-warning">More</a>
+								<a asp-controller="Specialist" asp-action="More" asp-route-id="@specialist.Id" class="btn btn-warning">Learn more!</a>
 							</div>
 						</li>
 					}
