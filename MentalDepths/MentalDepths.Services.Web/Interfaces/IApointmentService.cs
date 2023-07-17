@@ -9,6 +9,6 @@ namespace MentalDepths.Services.Web.Interfaces
 {
     public interface IApointmentService
     {
-        public Task<BookApointementVM> GenerateNewApointement();
+        public Task<BookApointementVM> GenerateNewApointement(Guid IdSpecialist, Guid IdUser);
     }
 }

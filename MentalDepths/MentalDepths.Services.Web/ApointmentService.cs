@@ -1,13 +1,28 @@
-﻿using MentalDepths.Services.Web.Interfaces;
+﻿using MentalDepths.Data;
+using MentalDepths.Services.Web.Interfaces;
 using MentalDepths.Web.ViewModels.Web;
+using Microsoft.EntityFrameworkCore;
 
 namespace MentalDepths.Services.Web
 {
     public class ApointmentService : IApointmentService
     {
-        public async Task<BookApointementVM> GenerateNewApointement()
+        private MentalDepthsDbContext context;
+        public ApointmentService(MentalDepthsDbContext dbctx)
         {
-            return new BookApointementVM();
+                this.context = dbctx;
+        }
+        public async Task<BookApointementVM> GenerateNewApointement(Guid IdSpecialist, Guid IdUser)
+        {
+            return new BookApointementVM() 
+            {
+                SpecialistId = IdSpecialist,
+                UserId=IdUser,
+                Specialist = await context.Specialists.FirstAsync(s => s.Id == IdSpecialist),
+                User = await context.ApplicationUsers.FirstAsync(u => u.Id == IdUser)
+            };
+
+
         }
     }
 }

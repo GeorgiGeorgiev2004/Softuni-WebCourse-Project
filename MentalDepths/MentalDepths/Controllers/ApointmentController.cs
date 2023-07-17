@@ -10,9 +10,9 @@ namespace MentalDepths.Controllers
         {
             this.apservice = apservice;
         }
-        public IActionResult Book(Guid SpecialistId,Guid CustomerId)
+        public IActionResult Book(Guid SpecialistId,Guid UserId)
         {
-            var apointment = apservice.GenerateNewApointement().Result;
+            var apointment = apservice.GenerateNewApointement(SpecialistId, UserId).Result;
             return View(apointment);
         }
     }
