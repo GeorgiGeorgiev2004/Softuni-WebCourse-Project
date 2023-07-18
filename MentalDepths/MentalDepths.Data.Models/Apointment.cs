@@ -2,6 +2,7 @@
 namespace MentalDepths.Data.Models
 {
     using MentalDepths.Common.Enums;
+    using Microsoft.Extensions.DependencyInjection;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,6 +13,7 @@ namespace MentalDepths.Data.Models
         public Apointment()
         {
             Id=Guid.NewGuid();
+            IsConfirmed = false;
         }
         [Key]
         public Guid Id { get; set; }
@@ -32,5 +34,7 @@ namespace MentalDepths.Data.Models
         [StringLength(AddressMaxLenght,MinimumLength =AddressMinLenght)]
         public string Address { get; set; }
 
+        [Required]
+        public bool IsConfirmed { get; set; }
     }
 }

@@ -6,10 +6,12 @@ namespace MentalDepths.Controllers
 {
     public class SpecialistController : Controller
     {
-        private readonly ISpecialistService specialistService;
-        public SpecialistController(ISpecialistService sp)
+        private ISpecialistService specialistService;
+        private IApointmentService apointmentService;
+        public SpecialistController(ISpecialistService sp, IApointmentService apointmentService)
         {
             specialistService = sp;
+            this.apointmentService = apointmentService;
         }
         [HttpGet]
         public async Task<IActionResult> All()
@@ -23,5 +25,11 @@ namespace MentalDepths.Controllers
 			var spec = await specialistService.FindSpecialistById(id);
 			return View(spec);
 		}
-	}
+        [HttpGet]
+        public async Task<IActionResult> MyChats(Guid id)
+        {
+            var apointments = await apointmentService.GetAllApointementsForSpecialist(id);
+            return View(apointments);
+        }
+    }
 }

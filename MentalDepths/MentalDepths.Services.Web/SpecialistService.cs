@@ -8,10 +8,11 @@ namespace MentalDepths.Services.Web
     using MentalDepths.Web.ViewModels.Web;
 	using System;
 	using MentalDepths.Data.Models;
+    using System.Runtime.CompilerServices;
 
-	public class SpecialistService : ISpecialistService
+    public class SpecialistService : ISpecialistService
     {
-        public readonly MentalDepthsDbContext context;
+        private MentalDepthsDbContext context;
         public SpecialistService(MentalDepthsDbContext Context)
         {
             context = Context;
@@ -33,7 +34,7 @@ namespace MentalDepths.Services.Web
             return spec;
 		}
 
-		public async Task<ICollection<SpecialistVM>> GetAllSpecialist()
+        public async Task<ICollection<SpecialistVM>> GetAllSpecialist()
         {
             return await context.Specialists.Select(s => new SpecialistVM
             {
@@ -45,6 +46,22 @@ namespace MentalDepths.Services.Web
                 Specialisations = s.Specialisations.Select(s=>s.Specialisation.Name).ToList(),
                 ApplicationUser = s.ApplicationUser
             }).ToListAsync();
+        }
+
+        public async Task SendTheAppointmentToTheSpecialist(BookApointementVM bavm)
+        {
+            var specialist = context.Specialists.FirstAsync(s => s.Id == bavm.SpecialistId).Result;
+            var apointement = new Apointment()
+            {
+                Id = Guid.NewGuid(),
+                ApplicationUserId = bavm.UserId,
+                SpecialistId = bavm.SpecialistId,
+                DateAndTime = bavm.Date,
+                Address = bavm.Address,
+            };
+            await context.Apointments.AddAsync(apointement);
+            
+            await context.SaveChangesAsync();
         }
     }
 }

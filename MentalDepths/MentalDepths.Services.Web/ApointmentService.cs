@@ -1,6 +1,7 @@
 ﻿using MentalDepths.Data;
 using MentalDepths.Services.Web.Interfaces;
 using MentalDepths.Web.ViewModels.Web;
+using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace MentalDepths.Services.Web
@@ -21,8 +22,15 @@ namespace MentalDepths.Services.Web
                 Specialist = await context.Specialists.FirstAsync(s => s.Id == IdSpecialist),
                 User = await context.ApplicationUsers.FirstAsync(u => u.Id == IdUser)
             };
+        }
 
-
+        public async Task<ICollection<BookApointementVM>> GetAllApointementsForSpecialist(Guid specialistId)
+        {
+            return await context.Apointments.Where(s=>s.SpecialistId==specialistId).Select(s => new BookApointementVM() 
+            {
+                SpecialistId = s.SpecialistId,
+                UserId = s.ApplicationUserId
+            }).ToListAsync();
         }
     }
 }

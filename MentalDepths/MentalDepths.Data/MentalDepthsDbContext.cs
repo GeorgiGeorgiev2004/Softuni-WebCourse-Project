@@ -34,7 +34,7 @@
         {
             Assembly configAssembly = Assembly.GetAssembly(typeof(MentalDepthsDbContext)) ??
                                         Assembly.GetExecutingAssembly();
-            builder.ApplyConfigurationsFromAssembly(typeof(MentalDepthsDbContext).Assembly);
+            builder.ApplyConfigurationsFromAssembly(configAssembly);
             base.OnModelCreating(builder);
         }
     }
