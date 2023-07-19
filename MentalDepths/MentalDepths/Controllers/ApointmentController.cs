@@ -15,7 +15,7 @@ namespace MentalDepths.Controllers
         public IActionResult Book(Guid SpecialistId,Guid UserId)
         {
             var apointment = apservice.GenerateNewApointement(SpecialistId, UserId).Result;
-            specialistService.SendTheAppointmentToTheSpecialist(apointment);
+            apservice.SaveApointment(apointment);
             return View(apointment);
         }
     }

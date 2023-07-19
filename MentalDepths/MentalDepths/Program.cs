@@ -42,6 +42,7 @@ namespace MentalDepths
             builder.Services.AddScoped<ISpecialistService, SpecialistService>();
             builder.Services.AddSingleton<IUserManagerRepository, UserManagerRepository>();
             builder.Services.AddScoped<IApointmentService, ApointmentService>();
+            builder.Services.AddScoped<INoteService, NoteService>();
             builder.Services.AddSignalR();
 
             builder.Services.AddControllersWithViews();

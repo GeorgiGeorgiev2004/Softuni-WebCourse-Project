@@ -12,7 +12,7 @@ namespace MentalDepths.Data.Models
     {
         public Apointment()
         {
-            Id=Guid.NewGuid();
+            Id = Guid.NewGuid();
             IsConfirmed = false;
         }
         [Key]

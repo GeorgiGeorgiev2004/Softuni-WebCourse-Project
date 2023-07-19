@@ -8,8 +8,6 @@ namespace MentalDepths.Services.Web.Interfaces
         public Task<ICollection<SpecialistVM>> GetAllSpecialist();
 
         public Task<SpecialistVM> FindSpecialistById(Guid id);
-        
-        public Task SendTheAppointmentToTheSpecialist(BookApointementVM bavm);
 
     }
 }

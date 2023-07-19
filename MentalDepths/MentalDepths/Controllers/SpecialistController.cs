@@ -8,10 +8,12 @@ namespace MentalDepths.Controllers
     {
         private ISpecialistService specialistService;
         private IApointmentService apointmentService;
-        public SpecialistController(ISpecialistService sp, IApointmentService apointmentService)
+        private INoteService noteService;
+        public SpecialistController(ISpecialistService sp, IApointmentService apointmentService, INoteService noteService)
         {
             specialistService = sp;
             this.apointmentService = apointmentService;
+            this.noteService = noteService;
         }
         [HttpGet]
         public async Task<IActionResult> All()
@@ -30,6 +32,17 @@ namespace MentalDepths.Controllers
         {
             var apointments = await apointmentService.GetAllApointementsForSpecialist(id);
             return View(apointments);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Note()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Note(NoteVm note)
+        {
+
+            return RedirectToAction("MyChats");
         }
     }
 }

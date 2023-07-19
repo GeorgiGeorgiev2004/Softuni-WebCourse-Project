@@ -47,21 +47,5 @@ namespace MentalDepths.Services.Web
                 ApplicationUser = s.ApplicationUser
             }).ToListAsync();
         }
-
-        public async Task SendTheAppointmentToTheSpecialist(BookApointementVM bavm)
-        {
-            var specialist = context.Specialists.FirstAsync(s => s.Id == bavm.SpecialistId).Result;
-            var apointement = new Apointment()
-            {
-                Id = Guid.NewGuid(),
-                ApplicationUserId = bavm.UserId,
-                SpecialistId = bavm.SpecialistId,
-                DateAndTime = bavm.Date,
-                Address = bavm.Address,
-            };
-            await context.Apointments.AddAsync(apointement);
-            
-            await context.SaveChangesAsync();
-        }
     }
 }

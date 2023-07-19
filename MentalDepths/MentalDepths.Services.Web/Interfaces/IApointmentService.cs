@@ -6,5 +6,7 @@ namespace MentalDepths.Services.Web.Interfaces
     {
         public Task<BookApointementVM> GenerateNewApointement(Guid IdSpecialist, Guid IdUser);
         public Task<ICollection<BookApointementVM>> GetAllApointementsForSpecialist(Guid specialistId);
+
+        public Task SaveApointment(BookApointementVM model);
     }
 }
