@@ -6,7 +6,7 @@ namespace MentalDepths.Web.ViewModels.Web
     {
         public BookApointementVM()
         {
-            Id = Guid.NewGuid();
+            Id= Guid.NewGuid();
         }
         public Guid Id { get; set; }
         public Guid SpecialistId { get; set; }

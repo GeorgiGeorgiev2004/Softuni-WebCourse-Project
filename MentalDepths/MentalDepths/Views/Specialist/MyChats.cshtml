@@ -12,10 +12,10 @@
                 <div class="card w-75">
                     <div class="card-header">@bavm.User.UserName</div>
                     <div class="card-body">
-                        Notes: @bavm.Note
-                        <a class="btn btn-primary " asp-action="Note" asp-controller="Specialist" asp-route-Id="@bavm.Id">Add a note</a>
+                        Notes: @bavm.Note.Note
+                        <a class="btn btn-primary " asp-action="Note" asp-controller="Specialist" asp-route-BookApointmentVMId="@bavm.Id">Add a note</a>
                     </div>
-                    <div class="card-footer "><a class="btn btn-primary" asp-action="Book" asp-controller="Apointment"></a></div>
+                    <div class="card-footer "><a class="btn btn-primary" asp-action="Book" asp-controller="Apointment" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId"></a></div>
                 </div>
             }
         </div>

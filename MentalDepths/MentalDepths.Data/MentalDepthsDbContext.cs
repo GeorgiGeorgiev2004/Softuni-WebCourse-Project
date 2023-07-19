@@ -23,6 +23,7 @@
         public DbSet<Specialisation> Specialisations { get; set; } = null!;
         public DbSet<Specialist> Specialists { get; set; } = null!;
 
+        public DbSet<Note> Notes { get; set; } = null!;
         //<summary>
         //From here down is mapping tables
         //</summary>

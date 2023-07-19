@@ -1,13 +1,10 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime;
+using static MentalDepths.Common.ModelRegulations.Apointment;
+
 namespace MentalDepths.Data.Models
 {
-    using MentalDepths.Common.Enums;
-    using Microsoft.Extensions.DependencyInjection;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    using static MentalDepths.Common.ModelRegulations.Apointment;
-
     public class Apointment
     {
         public Apointment()
@@ -36,5 +33,7 @@ namespace MentalDepths.Data.Models
 
         [Required]
         public bool IsConfirmed { get; set; }
+
+        public Note Note { get; set; }
     }
 }

@@ -32,6 +32,7 @@ namespace MentalDepths.Services.Web
             var specialist = await context.Specialists.FirstAsync(s => s.UserId == userId);
             return await context.Apointments.Where(s => s.SpecialistId == specialist.Id).Select(s => new BookApointementVM()
             {
+                Id=s.Id,
                 SpecialistId = s.SpecialistId,
                 Specialist= specialist,
                 UserId = s.ApplicationUserId,
@@ -39,6 +40,11 @@ namespace MentalDepths.Services.Web
                 Address = s.Address,
                 Date=s.DateAndTime,
                 ImageURLSpecialist = specialist.ImageURL,
+                Note = new NoteVm() 
+                {
+                    Id= context.Notes.FirstOrDefault(n => n.ApointmentId == s.Id).Id,
+                    Note = context.Notes.FirstOrDefault(n => n.ApointmentId == s.Id).Message,
+                }
             }).ToListAsync();
         }
         public async Task SaveApointment(BookApointementVM bavm)
@@ -47,6 +53,11 @@ namespace MentalDepths.Services.Web
                 .FirstOrDefaultAsync(a => a.ApplicationUserId == bavm.UserId && a.SpecialistId == bavm.SpecialistId).Result;
             if (ap == null)
             {
+                var note = new Note()
+                {
+                    Id = Guid.NewGuid(),
+                    Message = "This patient has no note yet!"
+                };
                 var apointement = new Apointment()
                 {
                     ApplicationUserId = bavm.UserId,
@@ -55,9 +66,12 @@ namespace MentalDepths.Services.Web
                     Specialist = bavm.Specialist,
                     DateAndTime = bavm.Date,
                     Address = AddressesEnum.Office.ToString(),
+                    Note = note
                 };
-                await context.Apointments.AddAsync(apointement);
-                await context.SaveChangesAsync();
+
+                context.Apointments.Add(apointement);
+                context.Notes.Add(note);
+                context.SaveChanges();
             }
 
         }

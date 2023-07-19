@@ -34,15 +34,16 @@ namespace MentalDepths.Controllers
             return View(apointments);
         }
         [HttpGet]
-        public async Task<IActionResult> Note()
+        public async Task<IActionResult> Note(Guid BookApointmentVMId)
         {
-            return View();
+            var note = noteService.GetNoteFromApointment(BookApointmentVMId).Result;
+            return View(note);
         }
         [HttpPost]
-        public async Task<IActionResult> Note(NoteVm note)
-        {
-
-            return RedirectToAction("MyChats");
+        public async Task<IActionResult> Note(Guid BookApointmentVMId,NoteVm model)
+        { 
+            await noteService.SaveChangesToNote(BookApointmentVMId, model);
+            return RedirectToAction("Index","Home");
         }
     }
 }

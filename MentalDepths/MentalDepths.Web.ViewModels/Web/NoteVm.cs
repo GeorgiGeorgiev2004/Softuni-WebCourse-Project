@@ -2,7 +2,7 @@
 {
     public class NoteVm
     {
-        public string Id { get; set; } = null!;
+        public Guid Id { get; set; }
 
         public string? Note { get; set; }
 
