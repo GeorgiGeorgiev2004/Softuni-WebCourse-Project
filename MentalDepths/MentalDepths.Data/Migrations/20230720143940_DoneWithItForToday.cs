@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MentalDepths.Data.Migrations
 {
-    public partial class AddingConversationsTry4 : Migration
+    public partial class DoneWithItForToday : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -364,25 +364,6 @@ namespace MentalDepths.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Notes",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Message = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ApointmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Notes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Notes_Apointments_ApointmentId",
-                        column: x => x.ApointmentId,
-                        principalTable: "Apointments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Messages",
                 columns: table => new
                 {
@@ -399,6 +380,25 @@ namespace MentalDepths.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Messages_Conversations_ConversationId",
                         column: x => x.ConversationId,
+                        principalTable: "Conversations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notes",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConversationtId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Notes_Conversations_ConversationtId",
+                        column: x => x.ConversationtId,
                         principalTable: "Conversations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -489,12 +489,12 @@ namespace MentalDepths.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "CityId", "ConcurrencyStamp", "CreatedOn", "DeletedOn", "Email", "EmailConfirmed", "FirstName", "IsDeleted", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecondName", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"), 0, 5, "30bb2cc7-f517-4518-b6c0-77dee7a476ea", new DateTime(2023, 7, 20, 13, 30, 56, 627, DateTimeKind.Local).AddTicks(3237), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ScaryHaxer@yahoo.com", false, "Iliq", false, "Steliov", false, null, "SCARYHAXER@YAHOO.COM", "ILIQ STELIOV", "AC3MSL8LnWXjpB8I2yQV9+H8dWFLXRKBrHKcVx4tvl4B9CIt+BVXjJnwN3Px9LFGJA==", null, false, "", "8075c96b-9d58-4bbf-b717-50a9cff96669", false, "Iliq Steliov" },
-                    { new Guid("308508b8-ce9e-470b-a122-8a77f576532e"), 0, 27, "7e76f38c-ca8e-4f5c-804a-53317a03ed17", new DateTime(2023, 7, 20, 13, 30, 56, 627, DateTimeKind.Local).AddTicks(7928), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ivan.Ivanov234@gmail.com", true, "Ivan", false, "Ivanov", false, null, "IVAN.IVANOV234@GMAIL.COM", "IVAN IVANOV", "AM/j40x2kGVc0YJ54jFe+/SB34oZsalLWBnkPGDBaDwt1HIL3aZyANUycUsFTSUKjg==", null, false, "Sirov", "5e841d86-bd85-47f3-9e35-9f41559e6861", false, "Ivan Ivanov" },
-                    { new Guid("59a88704-3ae3-4554-ad39-81b1f0304069"), 0, 22, "5ea90ed8-6077-4337-a770-6f45700011bd", new DateTime(2023, 7, 20, 13, 30, 56, 628, DateTimeKind.Local).AddTicks(7281), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kolio_Zemev@gmail.com", true, "Nikola", false, "Zemelyarski", false, null, "KOLIO_ZEMEV@GMAIL.COM", "NIKOLA ZEMELYARSKI", "AEMuBSThJrtQhWZogXRQvh0AoVtWnt8Q8/HyIQ5GKcKzzhPV+qJH0Deroj5GrzpSYg==", null, false, "", "b431aaf8-da50-44c3-8319-c9b6dc6d4dcb", false, "Nikola Zemelyarski" },
-                    { new Guid("9953dce8-25f6-45f2-bf8c-816b92bb0e28"), 0, 13, "dc3b4d57-bb10-488b-8d3d-797c16b1b9f9", new DateTime(2023, 7, 20, 13, 30, 56, 628, DateTimeKind.Local).AddTicks(2595), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lilial_Izbora@abv.bg", false, "Lilial", false, "Izbrannikov", false, null, "LILIAL_IZBORA@ABV.BG", "LILIAL IZBRANNIKOV", "AGANVp+mTcuytvkr33p90OPtIK4kKJqmf28ZjGbaLlcI8fjq1ez8OwhWOvMz3zPlxQ==", null, false, "Sabiev", "4d5976ca-e2e4-451a-b628-700c2d351b87", false, "Lilial Izbrannikov" },
-                    { new Guid("a63c570e-8c25-449f-b89c-3df89bc0d17c"), 0, 17, "1d6be4d6-1236-4ed8-a824-238556770556", new DateTime(2023, 7, 20, 13, 30, 56, 629, DateTimeKind.Local).AddTicks(2009), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "DembeRed@alo.net", false, "Dembe", false, "Redglade", false, null, "DEMBERED@ALO.NET", "DEMBE REDGLADE", "AMxISIJBizaVFwRG7KZMOFzLTeAUy/PsrdjIqx+pXeaY5Xgux6vJSbKBbzAvnKSGXw==", null, false, "Nisantimetarottebe", "e999c35d-3b00-495a-b712-2699a6841642", false, "Dembe Redglade" },
-                    { new Guid("f957a45a-d8df-439e-a50a-b1c0f87a69f2"), 0, 2, "2f9239cf-bb90-4208-a5c8-b67c16c26168", new DateTime(2023, 7, 20, 13, 30, 56, 626, DateTimeKind.Local).AddTicks(8404), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "gogo_5a@abv.bg", true, "Georgi", false, "Georgiev", false, null, "GOGO_5A@ABV.BG", "GEORGI GEORGIEV", "AF7nmNruqD9LiStcvfbRb64BfZIJh/gwKYztUE1wufTJTF0z79BLTAaKrfBvIpEJxg==", null, false, "Lyubenov", "345af71b-1363-4691-b128-ee58f7673bd0", false, "Georgi Georgiev" }
+                    { new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"), 0, 5, "3ada90ae-7382-4aaf-8dad-37da984416cf", new DateTime(2023, 7, 20, 17, 39, 39, 966, DateTimeKind.Local).AddTicks(9615), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ScaryHaxer@yahoo.com", false, "Iliq", false, "Steliov", false, null, "SCARYHAXER@YAHOO.COM", "ILIQ STELIOV", "AIHBHSCnL2PvoXho7cad6ql9D2dLUASuiywn1uZFCQ7TfvFrKs2pvJ5oeBWdwR2uAw==", null, false, "", "5ca20257-2ab1-47dd-8808-e33d308fe551", false, "Iliq Steliov" },
+                    { new Guid("308508b8-ce9e-470b-a122-8a77f576532e"), 0, 27, "2a5d18e7-5eb8-4e6e-b7c5-77ba1a787cec", new DateTime(2023, 7, 20, 17, 39, 39, 967, DateTimeKind.Local).AddTicks(4043), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ivan.Ivanov234@gmail.com", true, "Ivan", false, "Ivanov", false, null, "IVAN.IVANOV234@GMAIL.COM", "IVAN IVANOV", "AG30EN7Emt+RIoFk3rN51EH4CbvQwJbgw2lOKMSLPkf1guWabf5r7XECcx6OiQB99A==", null, false, "Sirov", "c42690a1-df4b-4a29-85be-b4b7d3c1c2b5", false, "Ivan Ivanov" },
+                    { new Guid("59a88704-3ae3-4554-ad39-81b1f0304069"), 0, 22, "c2e434cd-7178-49bc-badf-2eb4804f5917", new DateTime(2023, 7, 20, 17, 39, 39, 968, DateTimeKind.Local).AddTicks(2853), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kolio_Zemev@gmail.com", true, "Nikola", false, "Zemelyarski", false, null, "KOLIO_ZEMEV@GMAIL.COM", "NIKOLA ZEMELYARSKI", "AGBxH9FywVznxhftAlYv2hrFbcolHNtPKC6U/vmfyvMoH+IkZHc/zqwwOVYE18wvBw==", null, false, "", "fb833561-0497-4cbd-b35c-7cda24f2cb2f", false, "Nikola Zemelyarski" },
+                    { new Guid("9953dce8-25f6-45f2-bf8c-816b92bb0e28"), 0, 13, "da369907-2697-4b38-bb77-7a5afc58bd32", new DateTime(2023, 7, 20, 17, 39, 39, 967, DateTimeKind.Local).AddTicks(8447), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lilial_Izbora@abv.bg", false, "Lilial", false, "Izbrannikov", false, null, "LILIAL_IZBORA@ABV.BG", "LILIAL IZBRANNIKOV", "ACn8LvGqeGzgs7t7Wot0xLYRE64zRy8WtIYk0N2eHKkoIvDeYtEMAW481GxkZUBbZA==", null, false, "Sabiev", "7aa5c7dc-6d53-4dfb-97a7-84e01a6b3f91", false, "Lilial Izbrannikov" },
+                    { new Guid("a63c570e-8c25-449f-b89c-3df89bc0d17c"), 0, 17, "a26a6b01-680f-4398-b114-5dcdffb90762", new DateTime(2023, 7, 20, 17, 39, 39, 968, DateTimeKind.Local).AddTicks(7293), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "DembeRed@alo.net", false, "Dembe", false, "Redglade", false, null, "DEMBERED@ALO.NET", "DEMBE REDGLADE", "AKzg8SDD+OF1nm2Wp9pcYiJVAquByaOJgHFNyQQMWDbXUeX7/hD+26uThetZvJN84A==", null, false, "Nisantimetarottebe", "75e58699-897b-4fbf-be37-f8b695d7b66a", false, "Dembe Redglade" },
+                    { new Guid("f957a45a-d8df-439e-a50a-b1c0f87a69f2"), 0, 2, "875ddd8d-e8d2-42de-9d29-08e1ef48ab00", new DateTime(2023, 7, 20, 17, 39, 39, 966, DateTimeKind.Local).AddTicks(4984), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "gogo_5a@abv.bg", true, "Georgi", false, "Georgiev", false, null, "GOGO_5A@ABV.BG", "GEORGI GEORGIEV", "ABKdSYjRlsHGYWFQlAsaT7hPXnZGFQHaGcWWj3fS0DBA4cGdnv313CG31alJ/I1TcA==", null, false, "Lyubenov", "a00dfee1-c0e1-4f71-a377-845a29e0f0a3", false, "Georgi Georgiev" }
                 });
 
             migrationBuilder.InsertData(
@@ -515,7 +515,7 @@ namespace MentalDepths.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Apointments",
                 columns: new[] { "Id", "Address", "ApplicationUserId", "DateAndTime", "IsConfirmed", "SpecialistId" },
-                values: new object[] { new Guid("247a7f62-3cfb-4d10-94b5-b94bb5a32e57"), "Office", new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"), new DateTime(2023, 7, 23, 13, 30, 56, 626, DateTimeKind.Local).AddTicks(8264), false, new Guid("33713803-661e-4fad-a041-cf526fbc83e4") });
+                values: new object[] { new Guid("247a7f62-3cfb-4d10-94b5-b94bb5a32e57"), "Office", new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"), new DateTime(2023, 7, 23, 17, 39, 39, 966, DateTimeKind.Local).AddTicks(4864), false, new Guid("33713803-661e-4fad-a041-cf526fbc83e4") });
 
             migrationBuilder.InsertData(
                 table: "SpecialistsSpecialisations",
@@ -615,9 +615,9 @@ namespace MentalDepths.Data.Migrations
                 column: "ConversationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Notes_ApointmentId",
+                name: "IX_Notes_ConversationtId",
                 table: "Notes",
-                column: "ApointmentId",
+                column: "ConversationtId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -645,6 +645,9 @@ namespace MentalDepths.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AdminJobApplicationMT");
+
+            migrationBuilder.DropTable(
+                name: "Apointments");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -684,9 +687,6 @@ namespace MentalDepths.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Conversations");
-
-            migrationBuilder.DropTable(
-                name: "Apointments");
 
             migrationBuilder.DropTable(
                 name: "Specialisations");

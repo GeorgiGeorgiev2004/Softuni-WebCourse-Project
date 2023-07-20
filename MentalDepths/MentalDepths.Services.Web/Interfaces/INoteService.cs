@@ -5,7 +5,7 @@ namespace MentalDepths.Services.Web.Interfaces
     public interface INoteService
     {
         public Task<NoteVm> GenerateNewNote();
-        public Task<NoteVm> GetNoteFromApointment(Guid id);
+        public Task<NoteVm> GetNoteById(Guid id);
         public Task SaveChangesToNote(Guid id, NoteVm model);
     }
 }

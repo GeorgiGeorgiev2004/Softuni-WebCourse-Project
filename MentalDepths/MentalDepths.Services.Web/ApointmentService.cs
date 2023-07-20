@@ -1,6 +1,5 @@
 ﻿using MentalDepths.Common.Enums;
 using MentalDepths.Data;
-using MentalDepths.Data.Models;
 using MentalDepths.Services.Web.Interfaces;
 using MentalDepths.Web.ViewModels.Web;
 using Microsoft.EntityFrameworkCore;

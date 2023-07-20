@@ -1,8 +1,7 @@
-﻿using MentalDepths.Services.Web;
-using MentalDepths.Services.Web.Interfaces;
+﻿using MentalDepths.Services.Web.Interfaces;
 using MentalDepths.Web.ViewModels.Web;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Query.Internal;
+using System.Security.Claims;
 
 namespace MentalDepths.Controllers
 {
@@ -30,14 +29,15 @@ namespace MentalDepths.Controllers
         [HttpGet]
         public async Task<IActionResult> Note(Guid NoteId)
         {
-            var note = noteService.GetNoteFromApointment(NoteId).Result;
+            var note = noteService.GetNoteById(NoteId).Result;
             return View(note);
         }
         [HttpPost]
         public async Task<IActionResult> Note(Guid NoteId, NoteVm model)
         {
             await noteService.SaveChangesToNote(NoteId, model);
-            return RedirectToAction("Index", "Home");
+            var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return RedirectToAction("MyConversations", "Conversation", new { id});
         }
 
     }

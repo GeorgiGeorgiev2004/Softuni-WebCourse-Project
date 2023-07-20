@@ -14,6 +14,7 @@ namespace MentalDepths.Services.Web
         }
         public async Task<NoteVm> GenerateNewNote()
         {
+
             return new NoteVm()
             {
                 Id = Guid.NewGuid(),
@@ -21,7 +22,7 @@ namespace MentalDepths.Services.Web
             };
         }
 
-        public async Task<NoteVm> GetNoteFromApointment(Guid id)
+        public async Task<NoteVm> GetNoteById(Guid id)
         {
             var note = await dbContext.Notes.FirstAsync(a => a.Id == id);
             return new NoteVm()
@@ -33,7 +34,7 @@ namespace MentalDepths.Services.Web
 
         public async Task SaveChangesToNote(Guid id, NoteVm model)
         {
-            var notePlaceholder = this.GetNoteFromApointment(id).Result;
+            var notePlaceholder = this.GetNoteById(id).Result;
             var note = dbContext.Notes.FirstOrDefault(o => o.Id == notePlaceholder.Id);
             note.Message = model.Note;
 

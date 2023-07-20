@@ -2,9 +2,7 @@
 @{
     ViewBag.Title = "Contact has been made!";
 }
-<!--Sends the username of the current user to the chat.js code
-
--->
+<!--Sends the username of the current user to the chat.js code-->
 <input type="hidden" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" id="userId" />
 <script type="text/javascript">window.alert("Keep in mind that you are talking to a real human.\nBe mindful, polite and follow our guidlines!")</script>
 

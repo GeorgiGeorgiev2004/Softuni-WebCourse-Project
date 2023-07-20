@@ -4,7 +4,9 @@
     {
         public Guid Id { get; set; }
 
-        public string? Note { get; set; }
+        public string? NoteAboutPatient { get; set; }
+
+        public string? NoteAboutSpecialist { get; set; }
 
 
     }
