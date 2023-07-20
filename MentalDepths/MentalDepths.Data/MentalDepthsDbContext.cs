@@ -22,7 +22,8 @@
         public DbSet<Prescription> Prescriptions { get; set; } = null!;
         public DbSet<Specialisation> Specialisations { get; set; } = null!;
         public DbSet<Specialist> Specialists { get; set; } = null!;
-
+        public DbSet<Conversation> Conversations { get; set; } = null!;
+        public DbSet<Message> Messages { get; set; } = null!;
         public DbSet<Note> Notes { get; set; } = null!;
         //<summary>
         //From here down is mapping tables

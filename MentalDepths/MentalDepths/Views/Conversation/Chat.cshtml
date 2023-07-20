@@ -1,18 +1,18 @@
-﻿@model BookApointementVM
+﻿@model ConversationVM
 @{
     ViewBag.Title = "Contact has been made!";
 }
 <!--Sends the username of the current user to the chat.js code
 
 -->
-<input type="hidden" value="@User.Identity.Name" id="username" />
+<input type="hidden" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" id="userId" />
 <script type="text/javascript">window.alert("Keep in mind that you are talking to a real human.\nBe mindful, polite and follow our guidlines!")</script>
 
 <h2 class="align-self-center">@ViewBag.Title </h2>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2">
-            <img src="@Model.Specialist.ImageURL" style="max-width:300px;max-height:250px;"></img>
+            <img src="@Model.Specialist.ImageURL" style="max-width:300px;max-height:250px;">
         </div>
         <div class="container-fluid col-md-6">
             <div class="row d-flex justify-content-center">
@@ -35,11 +35,11 @@
             </div>
         </div>
         <div class="col-md-3">
-            <img src="@Model.Specialist.ImageURL" style="max-width:300px;max-height:250px;"></img>
+            <img src="@Model.Specialist.ImageURL" style="max-width:300px;max-height:250px;">
         </div>
         <div class="col-md-1"></div>
-        </div>
     </div>
 </div>
+
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>

@@ -33,7 +33,5 @@ namespace MentalDepths.Data.Models
 
         [Required]
         public bool IsConfirmed { get; set; }
-
-        public Note Note { get; set; }
     }
 }

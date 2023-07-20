@@ -25,4 +25,8 @@
     <ProjectReference Include="..\MentalDepths.Web.ViewModels\MentalDepths.Web.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Apointment\" />
+  </ItemGroup>
+
 </Project>

@@ -12,7 +12,9 @@
                 .HasMany(s => s.Specialisations)
                 .WithOne(s => s.Specialist)
                 .OnDelete(DeleteBehavior.Restrict);
-
+            builder.HasMany(s => s.Conversations)
+                .WithOne(c =>c.Specialist )
+                .OnDelete(DeleteBehavior.Restrict);
            builder.HasData(GenerateSpecialists());
         }
         public List<Specialist> GenerateSpecialists() 

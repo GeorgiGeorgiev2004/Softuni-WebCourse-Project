@@ -12,6 +12,7 @@
             Specialisations = new HashSet<SpecialistSpecialisation>();
             Apointments= new HashSet<Apointment>();
             Prescriptions = new HashSet<Prescription>();
+            Conversations=new HashSet<Conversation>();
         }
         [Key]
         public Guid Id { get; set; }
@@ -37,6 +38,8 @@
         public ICollection<Apointment> Apointments { get; set; }
 
         public ICollection<Prescription> Prescriptions { get; set; }
+
+        public ICollection<Conversation> Conversations { get; set; }
 
         [ForeignKey(nameof(JobApplication))]
         public Guid JobApplicationId { get; set; }

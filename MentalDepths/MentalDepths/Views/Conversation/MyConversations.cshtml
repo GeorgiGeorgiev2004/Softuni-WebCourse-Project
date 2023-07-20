@@ -1,19 +1,24 @@
-﻿@model ICollection<BookApointementVM>
+﻿@model ICollection<ConversationVM>
 @{
 }
 <h1>MyChats</h1>
+@if (Model.Count == 0)
+{
+    <p>No conversations yet!</p>
+}
+@if (Model.Count > 0)
+{
 <div class="container-fluid">
     <div class="row">
 
         <div class="col-md-6">
-
             @foreach (var bavm in Model)
             {
                 <div class="card w-75">
                     <div class="card-header">@bavm.User.UserName</div>
                     <div class="card-body">
                         Notes: @bavm.Note.Note
-                        <a class="btn btn-primary " asp-action="Note" asp-controller="Specialist" asp-route-BookApointmentVMId="@bavm.Id">Add a note</a>
+                        <a class="btn btn-primary " asp-action="Note" asp-controller="Conversation" asp-route-NoteId="@bavm.Note.Id">Add a note</a>
                     </div>
                     <div class="card-footer "><a class="btn btn-primary" asp-action="Book" asp-controller="Apointment" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId"></a></div>
                 </div>
@@ -21,3 +26,4 @@
         </div>
     </div>
 </div>
+}

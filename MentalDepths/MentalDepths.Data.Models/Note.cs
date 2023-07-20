@@ -17,8 +17,9 @@ namespace MentalDepths.Data.Models
         [Key]
         public Guid Id { get; set; }
         public string? Message { get; set; }
-        [ForeignKey(nameof(Apointment))]
-        public Guid ApointmentId { get; set; }
-        public Apointment Apointment { get; set; }
+
+        [ForeignKey(nameof(Conversation))]
+        public Guid ConversationtId { get; set; }
+        public Conversation Conversation { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace MentalDepths.Services.Web
 
         public async Task<NoteVm> GetNoteFromApointment(Guid id)
         {
-            var note = await dbContext.Notes.FirstAsync(a => a.ApointmentId == id);
+            var note = await dbContext.Notes.FirstAsync(a => a.Id == id);
             return new NoteVm()
             {
                 Id = note.Id,

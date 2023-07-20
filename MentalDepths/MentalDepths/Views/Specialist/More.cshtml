@@ -32,7 +32,7 @@
                             else
                             {
                                 <div class="d-grid gap-2">
-                                    <a asp-action="Book" asp-controller="Apointment" asp-route-SpecialistId="@Model.Id" asp-route-UserId="@User.FindFirstValue(ClaimTypes.NameIdentifier)" class="link-success"> Book an apointement now</a>
+                                    <a asp-action="Chat" asp-controller="Conversation" asp-route-SpecialistId="@Model.Id" asp-route-UserId="@User.FindFirstValue(ClaimTypes.NameIdentifier)" class="link-success"> Book an apointement now</a>
                                 </div>
                             }
                         }

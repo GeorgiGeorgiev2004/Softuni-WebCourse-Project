@@ -3,9 +3,7 @@ using MentalDepths.Data;
 using MentalDepths.Data.Models;
 using MentalDepths.Services.Web.Interfaces;
 using MentalDepths.Web.ViewModels.Web;
-using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
-using static MentalDepths.Common.ModelRegulations;
 using Apointment = MentalDepths.Data.Models.Apointment;
 namespace MentalDepths.Services.Web
 {
@@ -39,12 +37,7 @@ namespace MentalDepths.Services.Web
                 User = context.ApplicationUsers.FirstOrDefault(u=>u.Id==s.ApplicationUserId),
                 Address = s.Address,
                 Date=s.DateAndTime,
-                ImageURLSpecialist = specialist.ImageURL,
-                Note = new NoteVm() 
-                {
-                    Id= context.Notes.FirstOrDefault(n => n.ApointmentId == s.Id).Id,
-                    Note = context.Notes.FirstOrDefault(n => n.ApointmentId == s.Id).Message,
-                }
+                ImageURLSpecialist = specialist.ImageURL
             }).ToListAsync();
         }
         public async Task SaveApointment(BookApointementVM bavm)
@@ -53,11 +46,6 @@ namespace MentalDepths.Services.Web
                 .FirstOrDefaultAsync(a => a.ApplicationUserId == bavm.UserId && a.SpecialistId == bavm.SpecialistId).Result;
             if (ap == null)
             {
-                var note = new Note()
-                {
-                    Id = Guid.NewGuid(),
-                    Message = "This patient has no note yet!"
-                };
                 var apointement = new Apointment()
                 {
                     ApplicationUserId = bavm.UserId,
@@ -66,11 +54,9 @@ namespace MentalDepths.Services.Web
                     Specialist = bavm.Specialist,
                     DateAndTime = bavm.Date,
                     Address = AddressesEnum.Office.ToString(),
-                    Note = note
                 };
 
                 context.Apointments.Add(apointement);
-                context.Notes.Add(note);
                 context.SaveChanges();
             }
 
