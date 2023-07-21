@@ -42,8 +42,8 @@ namespace MentalDepths
             builder.Services.AddScoped<ISpecialistService, SpecialistService>();
             builder.Services.AddScoped<IConversationService, ConversationService>();
             builder.Services.AddSingleton<IUserManagerRepository, UserManagerRepository>();
-            builder.Services.AddScoped<IChatLogs, ChatLogs>();
             builder.Services.AddScoped<IApointmentService, ApointmentService>();
+            builder.Services.AddScoped<IMessageService, MessageService>();
             builder.Services.AddScoped<INoteService, NoteService>();
             builder.Services.AddSignalR();
 

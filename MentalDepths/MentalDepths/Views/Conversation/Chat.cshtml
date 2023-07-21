@@ -3,16 +3,14 @@
     ViewBag.Title = "Contact has been made!";
 }
 <!--Sends the username of the current user to the chat.js code-->
-<input type="hidden" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" id="userId" />
+<input type="hidden" value="@Model.UserId.ToString()" id="userInput" />
 <script type="text/javascript">window.alert("Keep in mind that you are talking to a real human.\nBe mindful, polite and follow our guidlines!")</script>
 
-<h2 class="align-self-center">@ViewBag.Title </h2>
+<h2 class="text-center">@ViewBag.Title </h2>
+<hr >
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2">
-            <img src="@Model.Specialist.ImageURL" style="max-width:300px;max-height:250px;">
-        </div>
-        <div class="container-fluid col-md-6">
+        <div class="container-fluid col-md-8">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-12 col-lg-12 col-xl-6">
                     <div class="card" id="chat2">
@@ -20,7 +18,30 @@
                             <h5 class="mb-0">Chat</h5>
                         </div>
                         <div class="card-body overflow-auto" data-mdb-perfect-scrollbar="true" style="position: relative;height:auto; max-height: 900px;width:auto;">
-                            <ul id="messagesList"></ul>
+                            <ul>
+                                @foreach (var item in Model.Messages)
+                                {
+                                    @if (item.TypeOfUser == 0)
+                                    {
+                                        <li class="text-start">@item.Text</li>
+                                    }
+                                    else
+                                    {
+                                        <li class="text-end">@item.Text</li>
+                                    }
+                                    <li class="card-text">
+                                        <small class="text-muted">
+                                            Message send:
+                                            @{
+                                                Convert.ToDateTime(DateTime.Now - item.TimeOfSend);
+                                            } ago.
+                                        </small>
+                                    </li>
+                                }
+                            </ul>
+                            <div class="col-6">
+                                <ul id="messagesList"></ul>
+                            </div>
                         </div>
                         <div class="card-footer text-muted d-flex justify-content-start align-items-center p-1">
                             <input type="text" class="form-control form-control-lg" id="messageInput"
@@ -28,7 +49,6 @@
                             <input type="button" id="sendButton" value="Send Message" />
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -38,6 +58,5 @@
         <div class="col-md-1"></div>
     </div>
 </div>
-
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>

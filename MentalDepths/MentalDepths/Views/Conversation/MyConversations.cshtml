@@ -26,7 +26,7 @@
                                     Note: @bavm.Note.Message
                                     <a class="btn btn-primary " asp-action="Note" asp-controller="Conversation" asp-route-NoteId="@bavm.Note.Id">Add a note</a>
                                 </div>
-                                <div class="card-footer "><a class="btn btn-primary d-flex w-25" asp-action="Book" asp-controller="Apointment" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId">See chat</a></div>
+                                <div class="card-footer "><a class="btn btn-primary d-flex w-25" asp-action="Chat" asp-controller="Conversation" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId">See chat</a></div>
                             </div>
                         }
                     }
@@ -39,15 +39,14 @@
                                     <img src="@bavm.Specialist.ImageURL" class="card-img" alt="...">
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="card-header">>@bavm.SpecialistName</div>
+                                    <div class="card-header">@bavm.SpecialistName</div>
                                     <div class="card-body">@bavm.Specialist.Description</div>
-                                    <div class="card-footer "><a class="btn btn-primary d-flex w-25" asp-action="Book" asp-controller="Apointment" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId">See chat</a></div>
+                                    <div class="card-footer "><a class="btn btn-primary d-flex w-25" asp-action="Chat" asp-controller="Conversation" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId">See chat</a></div>
                                 </div>
                             </div>
                         }
                     }
                 }
-
             </div>
         </div>
     </div>

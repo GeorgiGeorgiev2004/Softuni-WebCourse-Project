@@ -53,7 +53,22 @@ namespace MentalDepths.Services.Web
         }
         public async Task<ConversationVM> GenerateNewConversation(Guid IdSpecialist, Guid IdUser)
         {
-            return new ConversationVM()
+            Conversation? conv = context.Conversations.FirstOrDefaultAsync(c => c.UserId == IdUser && c.SpecialistId == IdSpecialist).Result;
+            if (conv!=null)
+            {
+                var n= new ConversationVM()
+                {
+                    Id = conv.Id,
+                    UserId = conv.UserId,
+                    SpecialistId = conv.SpecialistId,
+                    Specialist = await context.Specialists.FirstAsync(s => s.Id == IdSpecialist),
+                    User = await context.ApplicationUsers.FirstAsync(u => u.Id == IdUser),
+                };
+                n.Specialist.ApplicationUser = context.ApplicationUsers.FirstOrDefaultAsync(s => s.Id == IdUser).Result;
+                n.SpecialistName = n.Specialist.ApplicationUser.UserName;
+                return n;
+            }
+            else return new ConversationVM()
             {
                 SpecialistId = IdSpecialist,
                 UserId = IdUser,

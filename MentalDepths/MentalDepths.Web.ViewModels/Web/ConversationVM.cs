@@ -13,5 +13,6 @@ namespace MentalDepths.Web.ViewModels.Web
         public ApplicationUser User { get; set; }
 
         public NoteVm? Note { get; set; }
+        public ICollection<Message> Messages { get; set; } = new HashSet<Message>();
     }
 }

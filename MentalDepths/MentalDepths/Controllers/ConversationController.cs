@@ -37,7 +37,7 @@ namespace MentalDepths.Controllers
         {
             await noteService.SaveChangesToNote(NoteId, model);
             var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return RedirectToAction("MyConversations", "Conversation", new { id});
+            return RedirectToAction("MyConversations", "Conversation", new {id});
         }
 
     }
