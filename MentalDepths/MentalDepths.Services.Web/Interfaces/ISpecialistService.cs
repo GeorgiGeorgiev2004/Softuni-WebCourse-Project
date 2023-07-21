@@ -9,5 +9,8 @@ namespace MentalDepths.Services.Web.Interfaces
 
         public Task<SpecialistVM> FindSpecialistById(Guid id);
 
+        public Task AsignApplicationUserToSpecialistOnLogIn(Guid userId);
+
+        public Task<bool> IsThereASpecialistWithThisUserId(Guid userId);
     }
 }

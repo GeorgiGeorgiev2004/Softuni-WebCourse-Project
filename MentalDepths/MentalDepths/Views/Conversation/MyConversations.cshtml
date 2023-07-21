@@ -1,29 +1,54 @@
 ﻿@model ICollection<ConversationVM>
 @{
+    var currentUserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 }
 <h1>MyChats</h1>
 @if (Model.Count == 0)
 {
     <p>No conversations yet!</p>
 }
+@using MentalDepths.Services.Web.Interfaces;
+@inject ISpecialistService sps;
+
 @if (Model.Count > 0)
 {
-<div class="container-fluid">
-    <div class="row">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                @{
+                    if (sps.IsThereASpecialistWithThisUserId(currentUserId).Result)
+                    {
+                        foreach (var bavm in Model)
+                        {
+                            <div class="card w-75">
+                                <div class="card-header">@bavm.User.UserName</div>
+                                <div class="card-body">
+                                    Note: @bavm.Note.Message
+                                    <a class="btn btn-primary " asp-action="Note" asp-controller="Conversation" asp-route-NoteId="@bavm.Note.Id">Add a note</a>
+                                </div>
+                                <div class="card-footer "><a class="btn btn-primary d-flex w-25" asp-action="Book" asp-controller="Apointment" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId">See chat</a></div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        foreach (var bavm in Model)
+                        {
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img src="@bavm.Specialist.ImageURL" class="card-img" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-header">>@bavm.SpecialistName</div>
+                                    <div class="card-body">@bavm.Specialist.Description</div>
+                                    <div class="card-footer "><a class="btn btn-primary d-flex w-25" asp-action="Book" asp-controller="Apointment" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId">See chat</a></div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
 
-        <div class="col-md-6">
-            @foreach (var bavm in Model)
-            {
-                <div class="card w-75">
-                    <div class="card-header">@bavm.User.UserName</div>
-                    <div class="card-body">
-                        Notes: @bavm.Note.Note
-                        <a class="btn btn-primary " asp-action="Note" asp-controller="Conversation" asp-route-NoteId="@bavm.Note.Id">Add a note</a>
-                    </div>
-                    <div class="card-footer "><a class="btn btn-primary" asp-action="Book" asp-controller="Apointment" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId"></a></div>
-                </div>
-            }
+            </div>
         </div>
     </div>
-</div>
 }

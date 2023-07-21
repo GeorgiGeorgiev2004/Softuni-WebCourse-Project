@@ -1,4 +1,5 @@
-﻿using MentalDepths.Data;
+﻿using MentalDepths.Common.Enums;
+using MentalDepths.Data;
 using MentalDepths.Services.Web.Interfaces;
 using MentalDepths.Web.ViewModels.Web;
 using Microsoft.EntityFrameworkCore;
@@ -14,31 +15,29 @@ namespace MentalDepths.Services.Web
         }
         public async Task<NoteVm> GenerateNewNote()
         {
-
             return new NoteVm()
             {
                 Id = Guid.NewGuid(),
-                Note = "This patient has no note yet!",
+                Message = "No note for this patient yet!"
             };
         }
 
         public async Task<NoteVm> GetNoteById(Guid id)
         {
             var note = await dbContext.Notes.FirstAsync(a => a.Id == id);
-            return new NoteVm()
+            return new NoteVm() 
             {
                 Id = note.Id,
-                Note = note.Message
+                Message=note.Message
             };
         }
 
         public async Task SaveChangesToNote(Guid id, NoteVm model)
         {
-            var notePlaceholder = this.GetNoteById(id).Result;
-            var note = dbContext.Notes.FirstOrDefault(o => o.Id == notePlaceholder.Id);
-            note.Message = model.Note;
+            var note = dbContext.Notes.FirstOrDefault(o => o.Id == id);
+            note.Message=model.Message;
 
-            await dbContext.SaveChangesAsync();
+            dbContext.SaveChanges();
         }
     }
 }

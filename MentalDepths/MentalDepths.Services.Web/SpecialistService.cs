@@ -18,7 +18,19 @@ namespace MentalDepths.Services.Web
             context = Context;
         }
 
-		public async Task<SpecialistVM> FindSpecialistById(Guid id)
+        public async Task AsignApplicationUserToSpecialistOnLogIn(Guid userId)
+        {
+            Specialist? specialistWithUserId = context.Specialists.FirstOrDefaultAsync(x => x.UserId == userId).Result;
+            if (specialistWithUserId!=null&&specialistWithUserId.ApplicationUser==null)
+            {
+                var UserWithId = context.ApplicationUsers.FirstOrDefaultAsync(u=>u.Id==userId).Result;
+                specialistWithUserId.ApplicationUser = UserWithId;
+
+                context.SaveChanges();
+            }
+        }
+
+        public async Task<SpecialistVM> FindSpecialistById(Guid id)
 		{
 			Specialist specialist = context.Specialists.FirstOrDefaultAsync(s=>s.Id==id).Result;
             SpecialistVM spec= new SpecialistVM 
@@ -46,6 +58,12 @@ namespace MentalDepths.Services.Web
                 Specialisations = s.Specialisations.Select(s=>s.Specialisation.Name).ToList(),
                 ApplicationUser = s.ApplicationUser
             }).ToListAsync();
+        }
+
+        public async Task<bool> IsThereASpecialistWithThisUserId(Guid userId)
+        {
+            Specialist? spec = context.Specialists.FirstOrDefaultAsync(s => s.UserId == userId).Result;
+            return spec!=null;
         }
     }
 }

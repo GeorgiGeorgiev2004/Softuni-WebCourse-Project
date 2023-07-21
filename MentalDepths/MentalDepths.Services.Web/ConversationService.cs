@@ -1,4 +1,5 @@
-﻿using MentalDepths.Data;
+﻿using MentalDepths.Common.Enums;
+using MentalDepths.Data;
 using MentalDepths.Data.Models;
 using MentalDepths.Services.Web.Interfaces;
 using MentalDepths.Web.ViewModels.Web;
@@ -16,10 +17,10 @@ namespace MentalDepths.Services.Web
         public async Task<ICollection<ConversationVM>> GetAllConversationsForUser(Guid userId)
         {
             var user = await context.ApplicationUsers.FirstAsync(s => s.Id == userId);
-            Guid id = user.Id;
             Specialist? sp = context.Specialists.FirstOrDefaultAsync(s => s.UserId == userId).Result;
             if (sp != null)
             {
+                sp.ApplicationUser =await context.ApplicationUsers.FirstOrDefaultAsync(s => s.Id == userId);
                 return await context.Conversations.Where(c => c.SpecialistId == sp.Id).Select(c => new ConversationVM()
                 {
                     Id = c.Id,
@@ -27,11 +28,11 @@ namespace MentalDepths.Services.Web
                     User = c.User,
                     Specialist = c.Specialist,
                     SpecialistId = c.SpecialistId,
+                    SpecialistName = c.Specialist.ApplicationUser.UserName,
                     Note = new NoteVm()
                     {
                         Id = context.Notes.FirstOrDefault(n => n.ConversationtId == c.Id).Id,
-                        NoteAboutPatient = context.Notes.FirstOrDefault(n => n.ConversationtId == c.Id).Message,
-                        NoteAboutSpecialist = string.Empty
+                       Message= context.Notes.FirstOrDefault(n => n.ConversationtId == c.Id).Message
                     }
                 }).ToListAsync();
             }
@@ -39,14 +40,14 @@ namespace MentalDepths.Services.Web
             {
                 Id = c.Id,
                 UserId = user.Id,
-                User = c.User,
-                Specialist = c.Specialist,
+                User = context.ApplicationUsers.FirstOrDefault(s => s.Id == c.UserId),
+                Specialist = context.Specialists.FirstOrDefault(s => s.Id == c.SpecialistId),
                 SpecialistId = c.SpecialistId,
+                SpecialistName= c.Specialist.ApplicationUser.UserName??"Name Yok",
                 Note = new NoteVm()
                 {
                     Id = context.Notes.FirstOrDefault(n => n.ConversationtId == c.Id).Id,
-                    NoteAboutSpecialist = context.Notes.FirstOrDefault(n => n.ConversationtId == c.Id).Message,
-                    NoteAboutPatient = string.Empty
+                    Message = context.Notes.FirstOrDefault(n => n.ConversationtId == c.Id).Message
                 }
             }).ToListAsync();
         }
@@ -78,7 +79,8 @@ namespace MentalDepths.Services.Web
                     User = conversation.User,
                     SpecialistId = conversation.SpecialistId,
                     Specialist = conversation.Specialist,
-                    Note = note
+                    Note = note,
+                    IsClosed = false
                 };
 
                 context.Conversations.Add(convo);

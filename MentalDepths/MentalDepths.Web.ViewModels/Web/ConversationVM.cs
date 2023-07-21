@@ -1,9 +1,4 @@
 ﻿using MentalDepths.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MentalDepths.Web.ViewModels.Web
 {
@@ -13,6 +8,7 @@ namespace MentalDepths.Web.ViewModels.Web
         public Guid SpecialistId { get; set; }
         public Specialist Specialist { get; set; }
 
+        public string SpecialistName { get; set; }
         public Guid UserId { get; set; }
         public ApplicationUser User { get; set; }
 

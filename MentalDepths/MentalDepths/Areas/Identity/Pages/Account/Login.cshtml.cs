@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using MentalDepths.Data.Models;
+using MentalDepths.Services.Web.Interfaces;
+using System.Security.Claims;
 
 namespace MentalDepths.Areas.Identity.Pages.Account
 {
@@ -23,13 +25,15 @@ namespace MentalDepths.Areas.Identity.Pages.Account
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly ISpecialistService _specialistService;
 
         public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager, ISpecialistService spc)
         {
             _signInManager = signInManager;
             _logger = logger;
             _userManager = userManager;
+            _specialistService = spc;
         }
 
         /// <summary>

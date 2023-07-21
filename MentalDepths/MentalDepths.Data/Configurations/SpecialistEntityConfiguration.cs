@@ -28,7 +28,6 @@
                 Address = "AlenMak bl.14 vh.6",
                 Description = "Talanted, young and abnormaly ambitious she will obliterate your expectations!",
                 UserId = Guid.Parse("308508b8-ce9e-470b-a122-8a77f576532e")
-                
             };
             specialists.Add(specialist);
 
@@ -38,7 +37,7 @@
                 ImageURL = "https://images.pexels.com/photos/1936854/pexels-photo-1936854.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                 Age = 56,
                 Address = "ul.\"Sergei Kirov\" vh.34",
-                Description = "Talanted, young and abnormaly ambitious he will obliterate your expectations!",
+                Description = "Talanted, not so young and rather slackish he will obliterate your expectations(in a bad way)!",
                 UserId = Guid.Parse("59a88704-3ae3-4554-ad39-81b1f0304069")
             };
             
