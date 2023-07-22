@@ -45,7 +45,7 @@ namespace MentalDepths
             builder.Services.AddScoped<IApointmentService, ApointmentService>();
             builder.Services.AddScoped<IMessageService, MessageService>();
             builder.Services.AddScoped<INoteService, NoteService>();
-            builder.Services.AddSignalR(opt => opt.EnableDetailedErrors = true);
+            builder.Services.AddSignalR();
 
             builder.Services.AddControllersWithViews();
 

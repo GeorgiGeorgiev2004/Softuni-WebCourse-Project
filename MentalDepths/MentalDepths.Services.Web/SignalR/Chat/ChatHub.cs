@@ -13,7 +13,7 @@
         }
         public async Task SendMessage(string message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", message);
+            await Clients.All.SendAsync("ReceiveMessage", message,DateTime.Now.ToString());
         }
         public async Task SaveMessage(string userId, string message,string conversationId)
         {

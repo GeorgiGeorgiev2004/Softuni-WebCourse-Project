@@ -4,10 +4,15 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
 document.getElementById("sendButton").disabled = true;
 
-connection.on("ReceiveMessage", function (message) {
+connection.on("ReceiveMessage", function (message,datetime) {
     var li = document.createElement("li");
+    li.classList.add('list-group-item');
+    var small = document.createElement("small");
+    small.classList.add('text-muted', 'text-start');
+    document.getElementById("messagesList").appendChild(small);
     document.getElementById("messagesList").appendChild(li);
     li.textContent = `${message}`;
+    small.textContent = `Message sent on: ${datetime}`;
 });
 
 connection.start().then(function () {
