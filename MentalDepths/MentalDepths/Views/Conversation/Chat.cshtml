@@ -4,10 +4,11 @@
 }
 <!--Sends the username of the current user to the chat.js code-->
 <input type="hidden" value="@Model.UserId.ToString()" id="userInput" />
+<input type="hidden" value="@Model.Id" id="conversationId" />
 <script type="text/javascript">window.alert("Keep in mind that you are talking to a real human.\nBe mindful, polite and follow our guidlines!")</script>
 
 <h2 class="text-center">@ViewBag.Title </h2>
-<hr >
+<hr>
 <div class="container-fluid">
     <div class="row">
         <div class="container-fluid col-md-8">
@@ -18,30 +19,32 @@
                             <h5 class="mb-0">Chat</h5>
                         </div>
                         <div class="card-body overflow-auto" data-mdb-perfect-scrollbar="true" style="position: relative;height:auto; max-height: 900px;width:auto;">
-                            <ul>
-                                @foreach (var item in Model.Messages)
+                            <ul class="list-group" id="messagesList">
+                                @if (Model.Messages.Count>0)
                                 {
-                                    @if (item.TypeOfUser == 0)
+                                    @foreach (var item in Model.Messages)
                                     {
-                                        <li class="text-start">@item.Text</li>
+                                        <label asp-for="@item.Text">
+                                            <small class="text-muted">
+                                                Message send on: @item.TimeOfSend
+                                            </small>
+                                        </label>
+                                        @if (item.TypeOfUser == 0)
+                                        {
+                                            <li class="text-start list-group-item">@item.Text</li>
+                                        }
+                                        else
+                                        {
+                                            <li class="text-end list-group-item">@item.Text</li>
+                                        }
                                     }
-                                    else
-                                    {
-                                        <li class="text-end">@item.Text</li>
-                                    }
-                                    <li class="card-text">
-                                        <small class="text-muted">
-                                            Message send:
-                                            @{
-                                                Convert.ToDateTime(DateTime.Now - item.TimeOfSend);
-                                            } ago.
-                                        </small>
-                                    </li>
+                                }
+                                @if (Model.Messages.Count==0)
+                                {
+                                    <li>No messages yet!</li>
+                                    <hr>
                                 }
                             </ul>
-                            <div class="col-6">
-                                <ul id="messagesList"></ul>
-                            </div>
                         </div>
                         <div class="card-footer text-muted d-flex justify-content-start align-items-center p-1">
                             <input type="text" class="form-control form-control-lg" id="messageInput"

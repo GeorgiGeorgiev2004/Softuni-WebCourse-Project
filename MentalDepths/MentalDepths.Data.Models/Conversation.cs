@@ -14,6 +14,7 @@ namespace MentalDepths.Data.Models
         public Conversation()
         {
             Id= Guid.NewGuid();
+            Messages = new HashSet<Message>();
         }
         [Key]
         public Guid Id { get; set; }
@@ -24,7 +25,7 @@ namespace MentalDepths.Data.Models
         [ForeignKey(nameof(UserId))]
         public ApplicationUser User { get; set; }
         public Note Note { get; set; }
-        public ICollection<Message> Messages { get; set; } = new HashSet<Message>();
+        public ICollection<Message> Messages { get; set; }
 
         public bool IsClosed { get; set; }
     }

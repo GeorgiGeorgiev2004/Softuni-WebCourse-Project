@@ -32,7 +32,7 @@ namespace MentalDepths.Services.Web
 
         public async Task<SpecialistVM> FindSpecialistById(Guid id)
 		{
-			Specialist specialist = context.Specialists.FirstOrDefaultAsync(s=>s.Id==id).Result;
+		    Specialist? specialist = context.Specialists.FirstOrDefaultAsync(s=>s.Id==id).Result;
             SpecialistVM spec= new SpecialistVM 
             { 
                 Id = specialist.Id,

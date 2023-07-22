@@ -8,5 +8,6 @@ namespace MentalDepths.Services.Web.Interfaces
 
         public Task<ConversationVM> GenerateNewConversation(Guid IdSpecialist, Guid IdUser);
         public Task SaveConversation(ConversationVM conversation);
+        public Task<ConversationVM> GetConversationById(Guid id);
     }
 }

@@ -2,6 +2,8 @@
 {
     using MentalDepths.Services.Web.Interfaces;
     using Microsoft.AspNetCore.SignalR;
+    using Microsoft.VisualBasic;
+
     public class ChatHub:Hub
     {
         private readonly IMessageService messageService;
@@ -9,9 +11,13 @@
         {
             messageService = msgs;
         }
-        public async Task SendMessage(string user, string message)
+        public async Task SendMessage(string message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            await Clients.All.SendAsync("ReceiveMessage", message);
+        }
+        public async Task SaveMessage(string userId, string message,string conversationId)
+        {
+           await messageService.SaveMessage(Guid.Parse(userId), message, Guid.Parse(conversationId));
         }
     }
 }

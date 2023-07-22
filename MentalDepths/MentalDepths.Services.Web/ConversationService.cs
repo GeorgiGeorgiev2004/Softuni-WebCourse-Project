@@ -10,9 +10,11 @@ namespace MentalDepths.Services.Web
     public class ConversationService : IConversationService
     {
         private MentalDepthsDbContext context;
-        public ConversationService(MentalDepthsDbContext dbctx)
+        private INoteService noteService;
+        public ConversationService(MentalDepthsDbContext dbctx, INoteService noteService)
         {
             this.context = dbctx;
+            this.noteService = noteService;
         }
         public async Task<ICollection<ConversationVM>> GetAllConversationsForUser(Guid userId)
         {
@@ -24,7 +26,7 @@ namespace MentalDepths.Services.Web
                 return await context.Conversations.Where(c => c.SpecialistId == sp.Id).Select(c => new ConversationVM()
                 {
                     Id = c.Id,
-                    UserId = user.Id,
+                    UserId = c.UserId,
                     User = c.User,
                     Specialist = c.Specialist,
                     SpecialistId = c.SpecialistId,
@@ -54,15 +56,16 @@ namespace MentalDepths.Services.Web
         public async Task<ConversationVM> GenerateNewConversation(Guid IdSpecialist, Guid IdUser)
         {
             Conversation? conv = context.Conversations.FirstOrDefaultAsync(c => c.UserId == IdUser && c.SpecialistId == IdSpecialist).Result;
-            if (conv!=null)
+            if (conv != null)
             {
-                var n= new ConversationVM()
+                var n = new ConversationVM()
                 {
                     Id = conv.Id,
                     UserId = conv.UserId,
                     SpecialistId = conv.SpecialistId,
                     Specialist = await context.Specialists.FirstAsync(s => s.Id == IdSpecialist),
                     User = await context.ApplicationUsers.FirstAsync(u => u.Id == IdUser),
+                    Messages = context.Messages.Where(m => m.ConversationId == conv.Id).ToHashSet(),
                 };
                 n.Specialist.ApplicationUser = context.ApplicationUsers.FirstOrDefaultAsync(s => s.Id == IdUser).Result;
                 n.SpecialistName = n.Specialist.ApplicationUser.UserName;
@@ -73,7 +76,8 @@ namespace MentalDepths.Services.Web
                 SpecialistId = IdSpecialist,
                 UserId = IdUser,
                 Specialist = await context.Specialists.FirstAsync(s => s.Id == IdSpecialist),
-                User = await context.ApplicationUsers.FirstAsync(u => u.Id == IdUser)
+                User = await context.ApplicationUsers.FirstAsync(u => u.Id == IdUser),
+                Messages = new HashSet<Message>()
             };
         }
 
@@ -95,7 +99,8 @@ namespace MentalDepths.Services.Web
                     SpecialistId = conversation.SpecialistId,
                     Specialist = conversation.Specialist,
                     Note = note,
-                    IsClosed = false
+                    IsClosed = false,
+                    Messages= conversation.Messages
                 };
 
                 context.Conversations.Add(convo);
@@ -103,6 +108,26 @@ namespace MentalDepths.Services.Web
                 context.SaveChanges();
             }
 
+        }
+
+        public async Task<ConversationVM> GetConversationById(Guid id)
+        {
+            Conversation? conversation = context.Conversations.FirstOrDefaultAsync(s => s.Id == id).Result;
+            conversation.Specialist = context.Specialists.FirstOrDefaultAsync(s => s.Id == conversation.SpecialistId).Result;
+            conversation.User = context.ApplicationUsers.FirstOrDefaultAsync(a => a.Id == conversation.UserId).Result;
+            conversation.Note = context.Notes.FirstOrDefaultAsync(n => n.ConversationtId == id).Result;
+            conversation.Messages = context.Messages.Where(m => m.ConversationId == id).ToHashSet();
+            ConversationVM conv= new ConversationVM()
+            {
+                Id = conversation.Id,
+                User = conversation.User,
+                UserId = conversation.UserId,
+                Specialist = conversation.Specialist,
+                SpecialistId = conversation.SpecialistId,
+                Note = noteService.GetNoteById(conversation.Note.Id).Result,
+                Messages= conversation.Messages
+            };
+            return conv;
         }
     }
 }
