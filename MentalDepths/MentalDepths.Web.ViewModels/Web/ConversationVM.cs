@@ -14,5 +14,7 @@ namespace MentalDepths.Web.ViewModels.Web
 
         public NoteVm? Note { get; set; }
         public ICollection<Message>? Messages { get; set; }
+
+        public BookApointementVM? BookAnApointment { get; set; }
     }
 }

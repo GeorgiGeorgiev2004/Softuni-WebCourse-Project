@@ -7,12 +7,15 @@
     public class ChatHub:Hub
     {
         private readonly IMessageService messageService;
-        public ChatHub(IMessageService msgs)
+        private readonly ISpecialistService specialistService;
+
+        public ChatHub(IMessageService msgs, ISpecialistService spc)
         {
             messageService = msgs;
+            specialistService = spc;
         }
         public async Task SendMessage(string message)
-        {
+        {       
             await Clients.All.SendAsync("ReceiveMessage", message,DateTime.Now.ToString());
         }
         public async Task SaveMessage(string userId, string message,string conversationId)

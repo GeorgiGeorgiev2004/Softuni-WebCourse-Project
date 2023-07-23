@@ -1,4 +1,5 @@
-﻿using MentalDepths.Data.Models;
+﻿using MentalDepths.Common.Enums;
+using MentalDepths.Data.Models;
 
 namespace MentalDepths.Web.ViewModels.Web
 {
@@ -16,9 +17,8 @@ namespace MentalDepths.Web.ViewModels.Web
         public Guid UserId { get; set; }
         public ApplicationUser User { get; set; }
 
-        public NoteVm? Note { get; set; }
-
-        public string Address { get; set; }
+        public int AddressId { get; set; }
+        public ICollection<AddressesEnum> Address { get; set; }
 
         public DateTime Date { get; set; }
     }

@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime;
 using static MentalDepths.Common.ModelRegulations.Apointment;
 
 namespace MentalDepths.Data.Models
