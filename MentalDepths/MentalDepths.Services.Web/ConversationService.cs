@@ -65,7 +65,7 @@ namespace MentalDepths.Services.Web
                     SpecialistId = conv.SpecialistId,
                     Specialist = await context.Specialists.FirstAsync(s => s.Id == IdSpecialist),
                     User = await context.ApplicationUsers.FirstAsync(u => u.Id == IdUser),
-                    Messages = context.Messages.Where(m => m.ConversationId == conv.Id).ToHashSet(),
+                    Messages = context.Messages.Where(m => m.ConversationId == conv.Id).ToHashSet()
                 };
                 n.Specialist.ApplicationUser = context.ApplicationUsers.FirstOrDefaultAsync(s => s.Id == IdUser).Result;
                 n.SpecialistName = n.Specialist.ApplicationUser.UserName;

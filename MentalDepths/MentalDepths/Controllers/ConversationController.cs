@@ -13,7 +13,6 @@ namespace MentalDepths.Controllers
         {
             conversationService = cvs;
             this.noteService = noteService;
-
         }
         public IActionResult MyConversations(Guid id)
         {

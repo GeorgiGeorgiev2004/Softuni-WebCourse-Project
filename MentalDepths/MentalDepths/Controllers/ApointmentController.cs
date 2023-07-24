@@ -1,5 +1,7 @@
 ﻿using MentalDepths.Services.Web.Interfaces;
+using MentalDepths.Web.ViewModels.Web;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace MentalDepths.Controllers
 {
@@ -12,11 +14,18 @@ namespace MentalDepths.Controllers
             this.apservice = apservice;
             this.specialistService = specialistService;
         }
+        [HttpGet]
         public IActionResult Book(Guid SpecialistId,Guid UserId)
         {
             var apointment = apservice.GenerateNewApointement(SpecialistId, UserId).Result;
-            apservice.SaveApointment(apointment);
             return View(apointment);
+        }
+        [HttpPost]
+        public IActionResult Book(BookApointementVM bavm)
+        {
+            apservice.SaveApointment(bavm);
+            var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return RedirectToAction("MyConversations", "Conversation", new { id });
         }
     }
 }
