@@ -27,5 +27,10 @@ namespace MentalDepths.Controllers
             var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             return RedirectToAction("MyConversations", "Conversation", new { id });
         }
+        public IActionResult MyApointments(Guid id) 
+        {
+            var apointments = apservice.GetAllApointementsForUser(id).Result;
+            return View(apointments);
+        }
     }
 }

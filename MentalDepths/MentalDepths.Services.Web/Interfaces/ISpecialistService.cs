@@ -12,5 +12,7 @@ namespace MentalDepths.Services.Web.Interfaces
         public Task AsignApplicationUserToSpecialistOnLogIn(Guid userId);
 
         public Task<bool> IsThereASpecialistWithThisUserId(Guid userId);
+
+        public Task<string> GetUsernameForspecialist(Guid userId);
     }
 }

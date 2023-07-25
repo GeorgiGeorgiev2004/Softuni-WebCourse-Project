@@ -9,7 +9,7 @@ namespace MentalDepths.Data.Models
         public Apointment()
         {
             Id = Guid.NewGuid();
-            IsConfirmed = false;
+            HasPassed = false;
         }
         [Key]
         public Guid Id { get; set; }
@@ -31,6 +31,6 @@ namespace MentalDepths.Data.Models
         public string Address { get; set; }
 
         [Required]
-        public bool IsConfirmed { get; set; }
+        public bool HasPassed { get; set; }
     }
 }

@@ -60,6 +60,11 @@ namespace MentalDepths.Services.Web
             }).ToListAsync();
         }
 
+        public async Task<string> GetUsernameForspecialist(Guid userId)
+        {
+            return context.ApplicationUsers.FirstAsync(a => a.Id == userId).Result.UserName;
+        }
+
         public async Task<bool> IsThereASpecialistWithThisUserId(Guid userId)
         {
             Specialist? spec = context.Specialists.FirstOrDefaultAsync(s => s.UserId == userId).Result;
