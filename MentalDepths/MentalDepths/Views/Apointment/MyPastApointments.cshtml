@@ -1,8 +1,8 @@
 ﻿@model ICollection<BookApointementVM>
 @{
-    ViewBag.Title = "These are your appointmets";
+    ViewBag.Title = "These are your past appointmets";
     var currentUserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-    var list = @Model.Where(c => c.HasOccured == false).OrderBy(m => m.Date).ToList();
+    var list = @Model.Where(c=>c.HasOccured==true).OrderBy(m => m.Date).ToList();
     var CurSelectedCard = Guid.NewGuid();
 }
 @using MentalDepths.Services.Web.Interfaces;
@@ -18,8 +18,10 @@
             {
                 <div class="card">
                     <div class="card-header"> Session with : @item.User.UserName on @item.Date.DayOfWeek</div>
-                    <div class="card-body" id="pain">Address: @item.Address 
-                        <a class="btn btn-primary w-25 align-self-end float-end" asp-action="MarkAsCompleted" asp-controller="Apointment" asp-route-id="@item.Id">Apointment has passed successfully</a></div>
+                    <div class="card-body" id="pain">
+                        Address: @item.Address
+                        <a class="btn btn-primary w-25 align-self-end float-end" asp-action="MarkAsCompleted" asp-controller="Apointment" asp-route-id="@item.Id">Apointment has passed successfully</a>
+                    </div>
                     <div class="card-body">Time: @item.Date.Hour:@item.Date.Minute - @item.Date.AddHours(1).Hour:@item.Date.Minute</div>
                 </div>
             }

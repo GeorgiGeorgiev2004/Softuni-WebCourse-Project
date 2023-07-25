@@ -19,5 +19,7 @@ namespace MentalDepths.Web.ViewModels.Web
         public string Address { get; set; }
 
         public DateTime Date { get; set; }
+
+        public bool HasOccured { get; set; }
     }
 }

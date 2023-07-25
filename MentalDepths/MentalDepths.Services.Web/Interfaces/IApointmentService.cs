@@ -8,5 +8,8 @@ namespace MentalDepths.Services.Web.Interfaces
         public Task<ICollection<BookApointementVM>> GetAllApointementsForUser(Guid userId);
 
         public Task SaveApointment(BookApointementVM model);
+
+        public Task ConfirmApointmentOccured(Guid apointmentId);
+        public Task<BookApointementVM> GetApointmentById(Guid id);
     }
 }
