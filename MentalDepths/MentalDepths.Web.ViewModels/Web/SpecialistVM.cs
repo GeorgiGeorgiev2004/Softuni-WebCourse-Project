@@ -28,7 +28,7 @@
 
         public ICollection<string> Specialisations { get; set; }=new HashSet<string>();
 
-
+        public Guid UserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; } = null!;
     }
 }

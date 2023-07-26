@@ -10,7 +10,6 @@
         public Admin()
         {
             Id= Guid.NewGuid();
-            JobApplications = new HashSet<AdminJobApplicationMT>();
         }
         public Guid Id { get; set; }
 
@@ -22,7 +21,5 @@
         [Required]
         [ForeignKey(nameof(UserId))]
         public ApplicationUser ApplicationUser { get; set; } = null!;
-
-        public ICollection<AdminJobApplicationMT> JobApplications { get; set; }
     }
 }

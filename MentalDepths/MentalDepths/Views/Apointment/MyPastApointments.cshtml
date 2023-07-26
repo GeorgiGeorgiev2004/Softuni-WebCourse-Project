@@ -7,7 +7,6 @@
 }
 @using MentalDepths.Services.Web.Interfaces;
 @inject ISpecialistService sps
-@inject IApointmentService aps
 <h1>@ViewBag.Title</h1>
 <hr>
 <div class="container-fluid">
@@ -18,10 +17,7 @@
             {
                 <div class="card">
                     <div class="card-header"> Session with : @item.User.UserName on @item.Date.DayOfWeek</div>
-                    <div class="card-body" id="pain">
-                        Address: @item.Address
-                        <a class="btn btn-primary w-25 align-self-end float-end" asp-action="MarkAsCompleted" asp-controller="Apointment" asp-route-id="@item.Id">Apointment has passed successfully</a>
-                    </div>
+                    <div class="card-body" id="pain">Address: @item.Address</div>
                     <div class="card-body">Time: @item.Date.Hour:@item.Date.Minute - @item.Date.AddHours(1).Hour:@item.Date.Minute</div>
                 </div>
             }

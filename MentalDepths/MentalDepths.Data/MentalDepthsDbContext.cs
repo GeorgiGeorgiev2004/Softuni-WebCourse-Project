@@ -29,7 +29,6 @@
         //From here down is mapping tables
         //</summary>
         public DbSet<SpecialistSpecialisation> SpecialistsSpecialisations { get; set; } = null!;
-        public DbSet<AdminJobApplicationMT> AdminJobApplicationMT { get; set; } = null!;
 
 
         protected override void OnModelCreating(ModelBuilder builder)

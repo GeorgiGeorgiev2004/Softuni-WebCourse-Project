@@ -8,12 +8,6 @@
     {
         public void Configure(EntityTypeBuilder<Admin> builder)
         {
-            builder
-                .HasMany(a => a.JobApplications)
-                .WithOne(ja => ja.Admin)
-                .HasForeignKey(a=>a.JobApplicationId)
-                .OnDelete(DeleteBehavior.Restrict);
-            builder.HasData(GenerateAdmin());
         }
         public Admin GenerateAdmin()
         {

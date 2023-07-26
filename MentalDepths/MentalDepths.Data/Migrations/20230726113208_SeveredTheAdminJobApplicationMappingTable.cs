@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MentalDepths.Data.Migrations
 {
-    public partial class MakingSureeverythingIsClean : Migration
+    public partial class SeveredTheAdminJobApplicationMappingTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -244,7 +244,7 @@ namespace MentalDepths.Data.Migrations
                     SpecialistId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DateAndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
-                    IsConfirmed = table.Column<bool>(type: "bit", nullable: false)
+                    HasPassed = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -404,30 +404,6 @@ namespace MentalDepths.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "AdminJobApplicationMT",
-                columns: table => new
-                {
-                    AdminId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    JobApplicationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AdminJobApplicationMT", x => new { x.AdminId, x.JobApplicationId });
-                    table.ForeignKey(
-                        name: "FK_AdminJobApplicationMT_Admins_JobApplicationId",
-                        column: x => x.JobApplicationId,
-                        principalTable: "Admins",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_AdminJobApplicationMT_JobApplicationForms_JobApplicationId",
-                        column: x => x.JobApplicationId,
-                        principalTable: "JobApplicationForms",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "Cities",
                 columns: new[] { "Id", "Name" },
@@ -489,18 +465,13 @@ namespace MentalDepths.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "CityId", "ConcurrencyStamp", "CreatedOn", "DeletedOn", "Email", "EmailConfirmed", "FirstName", "IsDeleted", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecondName", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"), 0, 5, "0397a018-0f2e-45c0-b5c5-a21c3bf7fe64", new DateTime(2023, 7, 21, 16, 16, 27, 566, DateTimeKind.Local).AddTicks(3952), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ScaryHaxer@yahoo.com", false, "Iliq", false, "Steliov", false, null, "SCARYHAXER@YAHOO.COM", "ILIQ STELIOV", "AA7/NLisF18nR4ggSh4nxL8Z58B7B8LrjlRuh/DMV8/ZopPFnZ10e2BVXJZo4gluiA==", null, false, "", "156fe437-0b54-437d-891c-05ba71d01043", false, "Iliq Steliov" },
-                    { new Guid("308508b8-ce9e-470b-a122-8a77f576532e"), 0, 27, "674eaff3-e1ac-43d4-82b1-bfd17f814e0e", new DateTime(2023, 7, 21, 16, 16, 27, 567, DateTimeKind.Local).AddTicks(1348), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ivan.Ivanov234@gmail.com", true, "Ivan", false, "Ivanov", false, null, "IVAN.IVANOV234@GMAIL.COM", "IVAN IVANOV", "AE7QZqETWYorewWDNU9sEGpVvyDZzJW6P+W6Oys74a3lD9rYVNP6qwIqbsurw2Z3Ag==", null, false, "Sirov", "b7fbfd07-f43b-474e-89df-0daf3628f5ca", false, "Ivan Ivanov" },
-                    { new Guid("59a88704-3ae3-4554-ad39-81b1f0304069"), 0, 22, "8cdf0c22-c44a-4344-9bc9-bb0ef9ce4965", new DateTime(2023, 7, 21, 16, 16, 27, 568, DateTimeKind.Local).AddTicks(6168), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kolio_Zemev@gmail.com", true, "Nikola", false, "Zemelyarski", false, null, "KOLIO_ZEMEV@GMAIL.COM", "NIKOLA ZEMELYARSKI", "ANHMTvfOdjZJkbU+ZHk4/o4ahz3yagTgBD9wRjXRst7A+2GD7hp0l4ZihGiT8mf6lw==", null, false, "", "1a537de8-7787-4965-bcbf-04da69c7b62c", false, "Nikola Zemelyarski" },
-                    { new Guid("9953dce8-25f6-45f2-bf8c-816b92bb0e28"), 0, 13, "c55c9a43-ae15-48ea-9e82-012b0fc0ae57", new DateTime(2023, 7, 21, 16, 16, 27, 567, DateTimeKind.Local).AddTicks(8795), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lilial_Izbora@abv.bg", false, "Lilial", false, "Izbrannikov", false, null, "LILIAL_IZBORA@ABV.BG", "LILIAL IZBRANNIKOV", "AI9b0dHYhUw874JpScVzOrmusiAnEpL2L/5ME8zd74wn5pFoRPQTGWjA1FP1FTCEiw==", null, false, "Sabiev", "a6c56ab9-25aa-4e32-b22e-a6e748f1619e", false, "Lilial Izbrannikov" },
-                    { new Guid("a63c570e-8c25-449f-b89c-3df89bc0d17c"), 0, 17, "7e15e970-7bfb-4333-b8fc-436327e93301", new DateTime(2023, 7, 21, 16, 16, 27, 569, DateTimeKind.Local).AddTicks(3520), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "DembeRed@alo.net", false, "Dembe", false, "Redglade", false, null, "DEMBERED@ALO.NET", "DEMBE REDGLADE", "APYzT8pej8aIRp2Hl6MDwwjFkCHVgEsYarnn8eVWHD/XTd+VXDhg7xVU5PBnSLIJDg==", null, false, "Nisantimetarottebe", "04d8ae8d-fd89-41f0-84db-9848fb14a598", false, "Dembe Redglade" },
-                    { new Guid("f957a45a-d8df-439e-a50a-b1c0f87a69f2"), 0, 2, "5951f3e2-3bb1-4385-85a8-dfd578ef7881", new DateTime(2023, 7, 21, 16, 16, 27, 565, DateTimeKind.Local).AddTicks(6325), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "gogo_5a@abv.bg", true, "Georgi", false, "Georgiev", false, null, "GOGO_5A@ABV.BG", "GEORGI GEORGIEV", "AGyHis1+ukALA6uLegiVGl+CfRur1ChFb2QHUp/1FOC54xpiVq26z1AyKJuO969A/A==", null, false, "Lyubenov", "e4841524-702a-4881-888b-b995f85045cb", false, "Georgi Georgiev" }
+                    { new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"), 0, 5, "339bfa9e-fcab-4487-a008-0da239737c5f", new DateTime(2023, 7, 26, 14, 32, 8, 765, DateTimeKind.Local).AddTicks(844), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ScaryHaxer@yahoo.com", false, "Iliq", false, "Steliov", false, null, "SCARYHAXER@YAHOO.COM", "ILIQ STELIOV", "AIJDU1Asf+3zcdTavNPGJxGAly4+rQ3xACoJGIY9D/x/VcVchqEf63BC2FaUMIsHiQ==", null, false, "", "180734ec-3694-4a6e-a06f-1d5f605f59ab", false, "Iliq Steliov" },
+                    { new Guid("308508b8-ce9e-470b-a122-8a77f576532e"), 0, 27, "5d019962-221d-46cb-baec-d378635ccb98", new DateTime(2023, 7, 26, 14, 32, 8, 765, DateTimeKind.Local).AddTicks(5613), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ivan.Ivanov234@gmail.com", true, "Ivan", false, "Ivanov", false, null, "IVAN.IVANOV234@GMAIL.COM", "IVAN IVANOV", "AEiJUpfVqLZYtG9kBvw7mmKUlAJPSGRli/s1/HHMpUsqv6RuhQcs09/A3RHLs2AkyQ==", null, false, "Sirov", "ae5784fd-e57a-4224-9bf0-9e7fd7f94f30", false, "Ivan Ivanov" },
+                    { new Guid("59a88704-3ae3-4554-ad39-81b1f0304069"), 0, 22, "99a37cd4-fcb5-4ba9-b254-2a2230adff33", new DateTime(2023, 7, 26, 14, 32, 8, 766, DateTimeKind.Local).AddTicks(5185), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kolio_Zemev@gmail.com", true, "Nikola", false, "Zemelyarski", false, null, "KOLIO_ZEMEV@GMAIL.COM", "NIKOLA ZEMELYARSKI", "AJKU62OxvohJnN1m+fMFwsEuIsuiBZ3BYeBzOt1XDP1S3RWXlE0P3I65T2IffsDmgA==", null, false, "", "9f37cbf9-0966-45ad-bbd7-daa046d8bce5", false, "Nikola Zemelyarski" },
+                    { new Guid("9953dce8-25f6-45f2-bf8c-816b92bb0e28"), 0, 13, "b322984e-b951-4dde-974d-cb939a7894dc", new DateTime(2023, 7, 26, 14, 32, 8, 766, DateTimeKind.Local).AddTicks(386), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lilial_Izbora@abv.bg", false, "Lilial", false, "Izbrannikov", false, null, "LILIAL_IZBORA@ABV.BG", "LILIAL IZBRANNIKOV", "AG75IdRJkc6mmLbJcm/iCJUo6J5zTa9EqifgaAafBVyoYtrHndJPi+9Qp7HLCdVZzA==", null, false, "Sabiev", "de9c362f-af5b-4eee-b761-9a9a299d2143", false, "Lilial Izbrannikov" },
+                    { new Guid("a63c570e-8c25-449f-b89c-3df89bc0d17c"), 0, 17, "284667a6-1f17-453b-8a75-95a684242a1d", new DateTime(2023, 7, 26, 14, 32, 8, 766, DateTimeKind.Local).AddTicks(9935), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "DembeRed@alo.net", false, "Dembe", false, "Redglade", false, null, "DEMBERED@ALO.NET", "DEMBE REDGLADE", "AJCmojYZD3FVwBDRvGE9weshfGm3djNM3HqbMY1Q8w/4/2Y2uxLmO/rkTaJV+Iy4eQ==", null, false, "Nisantimetarottebe", "98c8734e-8f03-4414-ac77-9ff373cea756", false, "Dembe Redglade" },
+                    { new Guid("f957a45a-d8df-439e-a50a-b1c0f87a69f2"), 0, 2, "544c60b2-03fe-47fa-9538-84bfd9a6dc94", new DateTime(2023, 7, 26, 14, 32, 8, 764, DateTimeKind.Local).AddTicks(5875), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "gogo_5a@abv.bg", true, "Georgi", false, "Georgiev", false, null, "GOGO_5A@ABV.BG", "GEORGI GEORGIEV", "AOuGykzPiJIdgWohxHLLyTLRFMrVlT5lewNoyKlllaZgr7JNzwln6M1LSEAWTisXKw==", null, false, "Lyubenov", "02ab85f2-2e08-43e8-aac8-71f31136a4cd", false, "Georgi Georgiev" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "Admins",
-                columns: new[] { "Id", "UserId", "Username" },
-                values: new object[] { new Guid("d947f5ab-75ae-4ebe-9f26-9af2671d77ac"), new Guid("f957a45a-d8df-439e-a50a-b1c0f87a69f2"), "Big Boss" });
 
             migrationBuilder.InsertData(
                 table: "Specialists",
@@ -514,8 +485,8 @@ namespace MentalDepths.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Apointments",
-                columns: new[] { "Id", "Address", "ApplicationUserId", "DateAndTime", "IsConfirmed", "SpecialistId" },
-                values: new object[] { new Guid("247a7f62-3cfb-4d10-94b5-b94bb5a32e57"), "Office", new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"), new DateTime(2023, 7, 24, 16, 16, 27, 565, DateTimeKind.Local).AddTicks(6145), false, new Guid("33713803-661e-4fad-a041-cf526fbc83e4") });
+                columns: new[] { "Id", "Address", "ApplicationUserId", "DateAndTime", "HasPassed", "SpecialistId" },
+                values: new object[] { new Guid("247a7f62-3cfb-4d10-94b5-b94bb5a32e57"), "Office", new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"), new DateTime(2023, 7, 29, 14, 32, 8, 764, DateTimeKind.Local).AddTicks(5747), false, new Guid("33713803-661e-4fad-a041-cf526fbc83e4") });
 
             migrationBuilder.InsertData(
                 table: "SpecialistsSpecialisations",
@@ -528,11 +499,6 @@ namespace MentalDepths.Data.Migrations
                     { 6, new Guid("550184af-0284-4a1c-bc3e-223cb9198e62") },
                     { 13, new Guid("550184af-0284-4a1c-bc3e-223cb9198e62") }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AdminJobApplicationMT_JobApplicationId",
-                table: "AdminJobApplicationMT",
-                column: "JobApplicationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Admins_UserId",
@@ -644,7 +610,7 @@ namespace MentalDepths.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AdminJobApplicationMT");
+                name: "Admins");
 
             migrationBuilder.DropTable(
                 name: "Apointments");
@@ -665,6 +631,9 @@ namespace MentalDepths.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "JobApplicationForms");
+
+            migrationBuilder.DropTable(
                 name: "Messages");
 
             migrationBuilder.DropTable(
@@ -675,12 +644,6 @@ namespace MentalDepths.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "SpecialistsSpecialisations");
-
-            migrationBuilder.DropTable(
-                name: "Admins");
-
-            migrationBuilder.DropTable(
-                name: "JobApplicationForms");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
