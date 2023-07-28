@@ -1,4 +1,4 @@
-﻿@model SpecialistVM
+﻿@model CreateASpecialistVM
 @{
     ViewBag.Title = "Job Application";
     var currentUserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -18,9 +18,14 @@
                 <span asp-validation-for="@Model.ImageURL" class="text-danger"></span>
             </div>
             <div class="form-floating">
-                <small class="text-muted">Self-explanatory field <small class="text-info">21-76</small></small>
+                <small class="text-muted">Enter your age here <small class="text-info">21-76</small></small>
                 <input asp-for="@Model.Age" class="form-control" aria-required="true" />
                 <span asp-validation-for="@Model.Age" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <small class="text-muted">Please insert a phone number <small class="text-info">0876451392</small></small>
+                <input asp-for="@Model.PhoneNumber" class="form-control" aria-required="true" />
+                <span asp-validation-for="@Model.ApplicationUser.PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-floating">
                 <small class="text-muted">Write your address here! Example: <small class="text-info">ul. Haideger blok 17 vh. 71</small></small>
@@ -36,9 +41,9 @@
                 <input asp-for="@Model.Specialisations" class="form-control" aria-required="true" />
             </div>
             <div class="form-floating">
-                <input asp-for="@Model.UserId" class="form-control" type="hidden" value=""/>
+                <input asp-for="@Model.UserId" class="form-control" type="hidden" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)"/>
             </div>
-            <a class="btn btn-primary w-50" asp-action="Apply" asp-controller="JobApplication">Submit!</a>
+            <input class="btn btn-primary w-50" type="submit" value="Submit!" />
            </form>
     </div>
     <div class="col-md-3"></div>

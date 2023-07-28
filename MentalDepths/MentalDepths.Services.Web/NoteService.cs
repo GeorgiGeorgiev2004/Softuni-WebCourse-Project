@@ -36,8 +36,7 @@ namespace MentalDepths.Services.Web
         {
             var note = dbContext.Notes.FirstOrDefault(o => o.Id == id);
             note.Message=model.Message;
-
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
     }
 }

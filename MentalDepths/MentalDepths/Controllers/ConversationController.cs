@@ -14,15 +14,20 @@ namespace MentalDepths.Controllers
             conversationService = cvs;
             this.noteService = noteService;
         }
-        public IActionResult MyConversations(Guid id)
+        public async Task<IActionResult> MyConversations(Guid id)
         {
             var convos = conversationService.GetAllConversationsForUser(id).Result;
             return View(convos);
         }
-        public IActionResult Chat(Guid SpecialistId, Guid UserId)
+        public async Task<IActionResult> Chat(Guid SpecialistId, Guid UserId)
         {
             var conversation = conversationService.GenerateNewConversation(SpecialistId, UserId).Result;
-            conversationService.SaveConversation(conversation);
+            if (conversation.SpecialistName == null)
+            {
+                await conversationService.SaveConversation(conversation);
+                var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                return RedirectToAction("MyConversations", new { id });
+            }
             return View(conversation);
         }
         [HttpGet]
@@ -36,7 +41,7 @@ namespace MentalDepths.Controllers
         {
             await noteService.SaveChangesToNote(NoteId, model);
             var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return RedirectToAction("MyConversations", "Conversation", new {id});
+            return RedirectToAction("MyConversations", "Conversation", new { id });
         }
 
     }

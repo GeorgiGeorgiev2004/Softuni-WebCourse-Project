@@ -103,9 +103,9 @@ namespace MentalDepths.Services.Web
                     Messages= conversation.Messages
                 };
 
-                context.Conversations.Add(convo);
-                context.Notes.Add(note);
-                context.SaveChanges();
+                await context.Conversations.AddAsync(convo);
+                await context.Notes.AddAsync(note);
+                await context.SaveChangesAsync();
             }
 
         }

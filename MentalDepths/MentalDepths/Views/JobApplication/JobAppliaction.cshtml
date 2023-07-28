@@ -1,0 +1,29 @@
+﻿@model JobApplicationFileVM
+@{
+    ViewBag.Title = "Job Application";
+    var currentUserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+}
+<h1>@ViewBag.Title</h1>
+<hr>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <form id="registerForm" method="post">
+            <h2>Register as a Specialist.</h2>
+            <hr />
+            <div class="form-floating">
+                <small class="text-muted">Insert a scanned image of your CV here</small>
+                <input asp-for="@Model.CVPath" class="form-control" aria-required="true" type="file"/>
+            </div>
+            <div class="form-floating">
+                <small class="text-muted">Insert a scanned copy of your Diploma here</small>
+                <input asp-for="@Model.DiplomaPath" class="form-control" aria-required="true" type="file" />
+            </div>  <div class="form-floating">
+                <small class="text-muted">Insert a scanned image of any certifications you have here</small>
+                <input asp-for="@Model.CertificatePath" class="form-control" aria-required="true" type="file" multiple />
+            </div>
+            <input class="btn btn-primary w-50" type="submit" value="Submit!" />
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>

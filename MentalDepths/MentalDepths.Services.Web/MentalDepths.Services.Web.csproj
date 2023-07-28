@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MentalDepths.Data\MentalDepths.Data.csproj" />
+    <ProjectReference Include="..\MentalDepths.Web.Infrastructure\MentalDepths.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\MentalDepths.Web.ViewModels\MentalDepths.Web.ViewModels.csproj" />
   </ItemGroup>
 

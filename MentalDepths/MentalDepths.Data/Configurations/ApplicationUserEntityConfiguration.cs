@@ -14,7 +14,8 @@ namespace MentalDepths.Data.Configurations
         }
 
         public ICollection<ApplicationUser> GenerateApplicationUsers()
-        {
+        { 
+            PasswordHasher hasher = new PasswordHasher();
             List<ApplicationUser> users = new List<ApplicationUser>();
             ApplicationUser user = new ApplicationUser()
             {
@@ -25,7 +26,7 @@ namespace MentalDepths.Data.Configurations
                 CityId = 2,
                 Email = "gogo_5a@abv.bg",
                 EmailConfirmed = true,
-                PasswordHash = new PasswordHasher().HashPassword("ZA(dPFvU"),
+                PasswordHash = hasher.HashPassword("ZA(dPFvU"),
                 SecurityStamp = Guid.NewGuid().ToString("D"),
                 ConcurrencyStamp = Guid.NewGuid().ToString("D"),
                 LockoutEnabled=false
@@ -42,9 +43,9 @@ namespace MentalDepths.Data.Configurations
                 SecondName = string.Empty,
                 LastName = "Steliov",
                 CityId = 5,
-                Email = "ScaryHaxer@yahoo.com",
+                Email = "ScaryHaxer@gmail.com",
                 EmailConfirmed = false,
-                PasswordHash = new PasswordHasher().HashPassword("Ya9zMTWsW"),
+                PasswordHash = hasher.HashPassword("Ya9zMTWsW"),
                 SecurityStamp = Guid.NewGuid().ToString("D"),
                 ConcurrencyStamp = Guid.NewGuid().ToString("D"),
                 LockoutEnabled = false
@@ -63,7 +64,7 @@ namespace MentalDepths.Data.Configurations
                 CityId = 27,
                 Email = "Ivan.Ivanov234@gmail.com",
                 EmailConfirmed = true,
-                PasswordHash = new PasswordHasher().HashPassword("uw^Nn(Yf"),
+                PasswordHash = hasher.HashPassword("uw^Nn(Yf"),
                 SecurityStamp = Guid.NewGuid().ToString("D"),
                 ConcurrencyStamp = Guid.NewGuid().ToString("D"),
                 LockoutEnabled = false
@@ -101,7 +102,7 @@ namespace MentalDepths.Data.Configurations
                 CityId = 22,
                 Email = "Kolio_Zemev@gmail.com",
                 EmailConfirmed = true,
-                PasswordHash = new PasswordHasher().HashPassword("nNNygMc"),
+                PasswordHash = hasher.HashPassword("nNNygMc"),
                 SecurityStamp = Guid.NewGuid().ToString("D"),
                 ConcurrencyStamp = Guid.NewGuid().ToString("D"),
                 LockoutEnabled = false
@@ -118,9 +119,9 @@ namespace MentalDepths.Data.Configurations
                 SecondName = "Nisantimetarottebe",
                 LastName = "Redglade",
                 CityId = 17,
-                Email = "DembeRed@alo.net",
+                Email = "Sasunionios_loliolios@abv.bg",
                 EmailConfirmed = false,
-                PasswordHash = new PasswordHasher().HashPassword("!cJ@yvJ"),
+                PasswordHash = hasher.HashPassword("!cJ@yvJ"),
                 SecurityStamp = Guid.NewGuid().ToString("D"),
                 ConcurrencyStamp = Guid.NewGuid().ToString("D"),
                 LockoutEnabled = false

@@ -39,7 +39,7 @@ namespace MentalDepths.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Admins");
+                    b.ToTable("Admins", (string)null);
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.Apointment", b =>
@@ -71,7 +71,7 @@ namespace MentalDepths.Data.Migrations
 
                     b.HasIndex("SpecialistId");
 
-                    b.ToTable("Apointments");
+                    b.ToTable("Apointments", (string)null);
 
                     b.HasData(
                         new
@@ -334,7 +334,7 @@ namespace MentalDepths.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities");
+                    b.ToTable("Cities", (string)null);
 
                     b.HasData(
                         new
@@ -500,7 +500,7 @@ namespace MentalDepths.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Conversations");
+                    b.ToTable("Conversations", (string)null);
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.JobApplicationForm", b =>
@@ -529,7 +529,7 @@ namespace MentalDepths.Data.Migrations
                     b.HasIndex("SpecialistId")
                         .IsUnique();
 
-                    b.ToTable("JobApplicationForms");
+                    b.ToTable("JobApplicationForms", (string)null);
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.Message", b =>
@@ -556,7 +556,7 @@ namespace MentalDepths.Data.Migrations
 
                     b.HasIndex("ConversationId");
 
-                    b.ToTable("Messages");
+                    b.ToTable("Messages", (string)null);
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.Note", b =>
@@ -576,7 +576,7 @@ namespace MentalDepths.Data.Migrations
                     b.HasIndex("ConversationtId")
                         .IsUnique();
 
-                    b.ToTable("Notes");
+                    b.ToTable("Notes", (string)null);
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.Prescription", b =>
@@ -613,7 +613,7 @@ namespace MentalDepths.Data.Migrations
 
                     b.HasIndex("SpecialistId");
 
-                    b.ToTable("Prescriptions");
+                    b.ToTable("Prescriptions", (string)null);
                 });
 
             modelBuilder.Entity("MentalDepths.Data.Models.Specialisation", b =>
@@ -631,7 +631,7 @@ namespace MentalDepths.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Specialisations");
+                    b.ToTable("Specialisations", (string)null);
 
                     b.HasData(
                         new
@@ -740,7 +740,7 @@ namespace MentalDepths.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Specialists");
+                    b.ToTable("Specialists", (string)null);
 
                     b.HasData(
                         new
@@ -777,7 +777,7 @@ namespace MentalDepths.Data.Migrations
 
                     b.HasIndex("SpecialisationId");
 
-                    b.ToTable("SpecialistsSpecialisations");
+                    b.ToTable("SpecialistsSpecialisations", (string)null);
 
                     b.HasData(
                         new
