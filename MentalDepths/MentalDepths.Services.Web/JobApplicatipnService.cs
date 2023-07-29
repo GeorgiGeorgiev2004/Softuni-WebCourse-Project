@@ -5,6 +5,7 @@
     using MentalDepths.Services.Web.Interfaces;
     using MentalDepths.Web.Infrastructure.Extensions;
     using MentalDepths.Web.ViewModels.Web;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
     using System.Threading.Tasks;
 
@@ -16,43 +17,88 @@
             this.context = context;
         }
 
-        public async Task<JobApplicationVM> CreateAJobApplication(SpecialistVM model, JobApplicationFileVM jobApplication)
+        public async Task<JobApplicationVM> CreateAJobApplication(AplicantVM model, IFormFile CV, IFormFile Diploma, IFormFile Certification)
         {
-            FileManipulator fm = new FileManipulator();
-            return new JobApplicationVM() 
+            var fm = new FileReaderAndWriter();
+            var javm = new JobApplicationVM()
             {
-                Id=Guid.NewGuid(),
-                Specialist = new SpecialistVM
+                Id = Guid.NewGuid(),
+                Aplicant = new Aplicant
                 {
-                    ImageURL= model.ImageURL,
-                    Address= model.Address,
-                    Specialisations= model.Specialisations,
-                    Age= model.Age,
+                    ImageURL = model.ImageURL,
+                    Address = model.Address,
+                    Specialisations = model.Specialisations,
+                    Age = model.Age,
                     ApplicationUser = model.ApplicationUser,
-                    UserId=model.UserId,
-                    Description=model.Description
-                },
-                CV=fm.ConvertToByteArray(jobApplication.CVPath),
-                ScannedDiploma=fm.ConvertToByteArray(jobApplication.DiplomaPath),
-                Certification=fm.ConvertToByteArray(jobApplication.CertificatePath),
+                    UserId = model.UserId,
+                    Description = model.Description
+                }
             };
+            javm.AplicantId = javm.Aplicant.Id;
+            if (CV.Length > 0)
+            {
+                javm.CV = fm.TurnFileToByteArray(CV);
+            }
+            if (Diploma.Length > 0)
+            {
+                javm.ScannedDiploma = fm.TurnFileToByteArray(Diploma);
+            }
+            if (Certification.Length > 0)
+            {
+                javm.Certification = (fm.TurnFileToByteArray(Certification));
+            }
+
+            return javm;
         }
 
-        public async Task<SpecialistVM> CreateASpecialist(CreateASpecialistVM model)
+        public async Task<AplicantVM> CreateAnAplicant(CreateASpecialistVM model)
         {
-            SpecialistVM specialist = new SpecialistVM()
+            AplicantVM aplicant = new AplicantVM()
             {
-                Id=Guid.NewGuid(),
-                ApplicationUser = context.ApplicationUsers.FirstAsync(s=>s.Id==model.UserId).Result,
+                Id = Guid.NewGuid(),
+                ApplicationUser = context.ApplicationUsers.FirstAsync(s => s.Id == model.UserId).Result,
                 UserId = model.UserId,
                 ImageURL = model.ImageURL,
                 Age = model.Age,
                 Address = model.Address,
                 Description = model.Description,
-                Specialisations= model.Specialisations.Split(new char[]{',','.' },StringSplitOptions.RemoveEmptyEntries).ToList(),
+                Specialisations = model.Specialisations,
             };
-            specialist.ApplicationUser.PhoneNumber= model.PhoneNumber;
-            return specialist;
+            aplicant.ApplicationUser.PhoneNumber = model.PhoneNumber;
+            return aplicant;
+
+        }
+
+        public async Task SaveAplicant(AplicantVM aplicant, Guid JobAplicationId)
+        {
+            var ap = new Aplicant()
+            {
+                Id = Guid.NewGuid(),
+                ApplicationUser = context.ApplicationUsers.FirstAsync(s => s.Id == aplicant.UserId).Result,
+                UserId = aplicant.UserId,
+                ImageURL = aplicant.ImageURL,
+                Age = aplicant.Age,
+                Address = aplicant.Address,
+                Description = aplicant.Description,
+                Specialisations = aplicant.Specialisations,
+                JobApplicationId = JobAplicationId,
+            };
+            await context.Aplicants.AddAsync(ap);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task SaveJobApplication(JobApplicationVM javm)
+        {
+            JobApplicationForm jaf = new JobApplicationForm()
+            {
+                Id = javm.Id,
+                AplicantId = javm.AplicantId,
+                CV = javm.CV,
+                ScannedDiploma = javm.ScannedDiploma,
+                Certification = javm.Certification,
+            };
+            await context.JobApplicationForms.AddAsync(jaf);
+            await context.SaveChangesAsync();
         }
     }
 }

@@ -40,12 +40,6 @@
         public ICollection<Prescription> Prescriptions { get; set; }
 
         public ICollection<Conversation> Conversations { get; set; }
-
-        [ForeignKey(nameof(JobApplication))]
-        public Guid JobApplicationId { get; set; }
-
-        public JobApplicationForm JobApplication { get; set; }
-
         public Guid UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]

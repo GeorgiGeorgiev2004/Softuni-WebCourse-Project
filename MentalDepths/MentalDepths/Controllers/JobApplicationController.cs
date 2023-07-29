@@ -1,4 +1,5 @@
-﻿using MentalDepths.Services.Web.Interfaces;
+﻿using MentalDepths.Data.Models;
+using MentalDepths.Services.Web.Interfaces;
 using MentalDepths.Web.ViewModels.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp;
@@ -20,19 +21,21 @@ namespace MentalDepths.Controllers
         [HttpPost]
         public async Task<IActionResult> Apply(CreateASpecialistVM model)
         {
-            var spec = jobApplicatipnService.CreateASpecialist(model).Result;
-            return RedirectToAction("JobAppliaction", new {spec});
+            AplicantVM ap = jobApplicatipnService.CreateAnAplicant(model).Result;
+            return RedirectToAction("JobAppliaction", ap);
         }
         [HttpGet]
-        public IActionResult JobAppliaction() 
+        public IActionResult JobAppliaction()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult JobAppliaction(SpecialistVM specialist,JobApplicationFileVM model)
+        public async Task<IActionResult> JobAppliaction(AplicantVM aplicant,IFormFile CV, IFormFile Diploma,IFormFile Certification)
         {
-            var jobapplication = jobApplicatipnService.CreateAJobApplication(specialist, model).Result;
-            return View();
+            var jobapplication = jobApplicatipnService.CreateAJobApplication(aplicant, CV, Diploma, Certification).Result;
+            await jobApplicatipnService.SaveJobApplication(jobapplication);
+            await jobApplicatipnService.SaveAplicant(aplicant,jobapplication.Id);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

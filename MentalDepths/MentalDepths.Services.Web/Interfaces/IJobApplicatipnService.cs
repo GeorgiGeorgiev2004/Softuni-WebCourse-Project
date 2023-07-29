@@ -1,11 +1,14 @@
 ﻿using MentalDepths.Data.Models;
 using MentalDepths.Web.ViewModels.Web;
+using Microsoft.AspNetCore.Http;
 
 namespace MentalDepths.Services.Web.Interfaces
 {
     public interface IJobApplicatipnService
     {
-        public Task<SpecialistVM> CreateASpecialist(CreateASpecialistVM model);
-        public Task<JobApplicationVM> CreateAJobApplication(SpecialistVM specialist, JobApplicationFileVM model);
+        public Task<AplicantVM> CreateAnAplicant(CreateASpecialistVM model);
+        public Task SaveJobApplication(JobApplicationVM javm);
+        public Task SaveAplicant(AplicantVM aplicant, Guid JobAplicationId);
+        public Task<JobApplicationVM> CreateAJobApplication(AplicantVM aplicant, IFormFile CV, IFormFile Diploma, IFormFile CertificationFiles);
     }
 }

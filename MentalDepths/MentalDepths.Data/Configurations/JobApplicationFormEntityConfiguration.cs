@@ -9,7 +9,7 @@
         public void Configure(EntityTypeBuilder<JobApplicationForm> builder)
         {
             builder
-                .HasOne(jaf => jaf.Specialist)
+                .HasOne(jaf => jaf.Aplicant)
                 .WithOne(s => s.JobApplication)
                 .OnDelete(DeleteBehavior.Restrict);
         }

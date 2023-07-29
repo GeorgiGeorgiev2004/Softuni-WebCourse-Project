@@ -25,6 +25,7 @@
         public DbSet<Conversation> Conversations { get; set; } = null!;
         public DbSet<Message> Messages { get; set; } = null!;
         public DbSet<Note> Notes { get; set; } = null!;
+        public DbSet<Aplicant> Aplicants { get; set; } = null!;
         //<summary>
         //From here down is mapping tables
         //</summary>

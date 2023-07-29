@@ -15,9 +15,9 @@
         public Guid Id { get; set; }
 
         [ForeignKey(nameof(Specialist))]
-        public Guid SpecialistId { get; set; }
+        public Guid AplicantId { get; set; }
         
-        public Specialist Specialist { get; set; } = null!;
+        public Aplicant Aplicant { get; set; } = null!;
 
         [Required]
         public byte[] CV { get; set; } = null!;
