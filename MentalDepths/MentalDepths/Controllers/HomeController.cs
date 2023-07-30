@@ -4,8 +4,9 @@
     using System.Diagnostics;
 
     using MentalDepths.Web.ViewModels;
+    using Microsoft.AspNetCore.Authorization;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -13,7 +14,7 @@
         {
             _logger = logger;
         }
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();

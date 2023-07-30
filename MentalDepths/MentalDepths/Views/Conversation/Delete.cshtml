@@ -1,0 +1,17 @@
+﻿@{
+}
+<h1> Are you sure you want to delete this chat?</h1>
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                <button class="btn btn-success" type="submit">Yes!I'm certain!</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-danger" asp-controller="Conversation" asp-action="MyConversations" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">No!Go back!</a>
+        </div>
+    </div>
+</div>
+

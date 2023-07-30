@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis.CSharp;
 
 namespace MentalDepths.Controllers
 {
-    public class JobApplicationController : Controller
+    public class JobApplicationController : BaseController
     {
         private IJobApplicatipnService jobApplicatipnService;
         public JobApplicationController(IJobApplicatipnService jas)

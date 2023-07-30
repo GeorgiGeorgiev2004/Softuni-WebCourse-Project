@@ -27,7 +27,7 @@
                         @{
                             if (!User.Identity.IsAuthenticated)
                             {
-                                <p class="card-text p-2 text-warning"> Plsease log in to reach out to this professional!</p>
+                                <p class="card-text p-2 text-warning"> Plsease <a class="text-dark" asp-area="Identity" asp-page="/Account/Login">log in</a> to reach out to this professional!</p>
                             }
                             else
                             {

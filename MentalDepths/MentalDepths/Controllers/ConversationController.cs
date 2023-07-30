@@ -5,7 +5,7 @@ using System.Security.Claims;
 
 namespace MentalDepths.Controllers
 {
-    public class ConversationController : Controller
+    public class ConversationController : BaseController
     {
         private IConversationService conversationService;
         private INoteService noteService;
@@ -22,11 +22,15 @@ namespace MentalDepths.Controllers
         public async Task<IActionResult> Chat(Guid SpecialistId, Guid UserId)
         {
             var conversation = conversationService.GenerateNewConversation(SpecialistId, UserId).Result;
-            if (conversation.SpecialistName == null)
+            if (conversation.SpecialistName ==null)
             {
-                await conversationService.SaveConversation(conversation);
+                await conversationService.SaveConversation(conversation); 
                 var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 return RedirectToAction("MyConversations", new { id });
+            }
+            if (conversation.IsClosed == true)
+            {
+                await conversationService.MarkChatAsReturned(conversation.Id);
             }
             return View(conversation);
         }
@@ -43,6 +47,17 @@ namespace MentalDepths.Controllers
             var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             return RedirectToAction("MyConversations", "Conversation", new { id });
         }
-
+        public IActionResult Delete(Guid Id)
+        {
+            var conversation = conversationService.GetConversationById(Id).Result;
+            return View(conversation);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(ConversationVM cvm)
+        {
+            await conversationService.MarkChatAsDeleted(cvm.Id);
+            var ID = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return RedirectToAction("MyApointments", "Apointment", new { ID });
+        }
     }
 }

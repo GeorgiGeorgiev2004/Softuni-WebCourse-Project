@@ -11,9 +11,11 @@ namespace MentalDepths
     using MentalDepths.Services.Web.Repositories.Interfaces;
     using MentalDepths.Services.Web.Repositories;
     using MentalDepths.Services.Web.SignalR.Chat;
+    using MentalDepths.Data.Models;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +28,7 @@ namespace MentalDepths
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<MentalDepths.Data.Models.ApplicationUser>(options => 
+            builder.Services.AddDefaultIdentity<MentalDepths.Data.Models.ApplicationUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = true;
                 options.Password.RequireDigit = false;
@@ -34,6 +36,7 @@ namespace MentalDepths
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
             })
+                .AddRoles<IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<MentalDepthsDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -79,6 +82,28 @@ namespace MentalDepths
 
             app.MapHub<ChatHub>("/chatHub");
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var rm = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+
+                var roles = new[] { "Admin", "Specialist", "User" };
+                foreach (var role in roles)
+                {
+                    if (!await rm.RoleExistsAsync(role))
+                    {
+                        await rm.CreateAsync(new IdentityRole<Guid>(role));
+                    }
+                }
+            }
+            using (var scope = app.Services.CreateScope())
+            {
+                var um = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                var user = await um.FindByEmailAsync("gogo_5a@abv.bg");
+                if (user!=null&&um.IsInRoleAsync(user, "Admin").Result==false)
+                {
+                   var idk = await um.AddToRoleAsync(user, "Admin");
+                }
+            }
             app.Run();
         }
     }

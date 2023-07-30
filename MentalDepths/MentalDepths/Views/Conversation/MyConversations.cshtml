@@ -1,9 +1,10 @@
 ﻿@model ICollection<ConversationVM>
 @{
     var currentUserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+    var list = Model.Where(m => m.IsClosed == false);
 }
 <h1>MyChats</h1>
-@if (Model.Count == 0)
+@if (list.Count() == 0)
 {
     <p>No conversations yet!</p>
 }
@@ -18,7 +19,7 @@
                 @{
                     if (sps.IsThereASpecialistWithThisUserId(currentUserId).Result)
                     {
-                        foreach (var bavm in Model)
+                        foreach (var bavm in list)
                         {
                             <div class="card w-75">
                                 <div class="card-header">@bavm.User.UserName</div>
@@ -26,22 +27,26 @@
                                     Note: @bavm.Note.Message
                                     <a class="btn btn-primary " asp-action="Note" asp-controller="Conversation" asp-route-NoteId="@bavm.Note.Id">Add a note</a>
                                 </div>
-                                <div class="card-footer "><a class="btn btn-primary d-flex w-25" asp-action="Chat" asp-controller="Conversation" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId">See chat</a></div>
+                                <div class="card-footer d-flex "><a class="btn btn-primary w-50" asp-action="Chat" asp-controller="Conversation" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId">See chat</a><a class="btn btn-danger w-50" asp-action="Delete" asp-controller="Conversation" asp-route-Id="@bavm.Id">Delete this chat</a></div>
                             </div>
                         }
                     }
                     else
                     {
-                        foreach (var bavm in Model)
+                        foreach (var bavm in list)
                         {
-                            <div class="row no-gutters">
-                                <div class="col-md-4">
-                                    <img src="@bavm.Specialist.ImageURL" class="card-img" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-header">@bavm.SpecialistName</div>
-                                    <div class="card-body">@bavm.Specialist.Description</div>
-                                    <div class="card-footer "><a class="btn btn-primary d-flex w-25" asp-action="Chat" asp-controller="Conversation" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId">See chat</a></div>
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        <img src="@bavm.Specialist.ImageURL" class="card-img" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@bavm.SpecialistName</h5>
+                                            <p class="card-text">@bavm.Specialist.Description</p>
+                                            <div class="card-body d-flex "><a class="btn btn-primary d-flex w-75" asp-action="Chat" asp-controller="Conversation" asp-route-SpecialistId="@bavm.SpecialistId" asp-route-UserId="@bavm.UserId">See chat</a></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         }

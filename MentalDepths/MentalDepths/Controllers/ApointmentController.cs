@@ -5,7 +5,7 @@ using System.Security.Claims;
 
 namespace MentalDepths.Controllers
 {
-    public class ApointmentController : Controller
+    public class ApointmentController : BaseController
     {
         private IApointmentService apservice;
         private ISpecialistService specialistService;

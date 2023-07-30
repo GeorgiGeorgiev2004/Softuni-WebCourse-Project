@@ -1,6 +1,10 @@
 ﻿@model ICollection<BookApointementVM>
 @{
     ViewBag.Title = "These are your past appointmets";
+    if (Model.Count == 0)
+    {
+        ViewBag.Title = "You have not had any appointments yet!";
+    }
     var currentUserId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
     var list = @Model.Where(c=>c.HasOccured==true).OrderBy(m => m.Date).ToList();
     var CurSelectedCard = Guid.NewGuid();
@@ -16,7 +20,7 @@
             @foreach (var item in list)
             {
                 <div class="card">
-                    <div class="card-header"> Session with : @item.User.UserName on @item.Date.DayOfWeek</div>
+                    <div class="card-header"> Session with : @item.User.UserName on @item.Date.DayOfWeek - @item.Date.Day/@item.Date.Month/@item.Date.Year </div>
                     <div class="card-body" id="pain">Address: @item.Address</div>
                     <div class="card-body">Time: @item.Date.Hour:@item.Date.Minute - @item.Date.AddHours(1).Hour:@item.Date.Minute</div>
                 </div>
@@ -27,7 +31,7 @@
             @foreach (var item in list)
             {
                 <div class="card ">
-                    <div class="card-header col-md-12"> Session with : @sps.GetUsernameForspecialist(item.Specialist.UserId).Result on @item.Date.DayOfWeek</div>
+                    <div class="card-header col-md-12"> Session with : @sps.GetUsernameForspecialist(item.Specialist.UserId).Result on @item.Date.DayOfWeek - @item.Date.Day/@item.Date.Month/@item.Date.Year </div>
                     <div class="card-body">Address: @item.Address</div>
                     <div class="card-body">Time: @item.Date.Hour:@item.Date.Minute - @item.Date.AddHours(1).Hour:@item.Date.Minute</div>
                 </div>

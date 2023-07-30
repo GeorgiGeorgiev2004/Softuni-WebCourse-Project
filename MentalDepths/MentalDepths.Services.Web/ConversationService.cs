@@ -22,7 +22,7 @@ namespace MentalDepths.Services.Web
             Specialist? sp = context.Specialists.FirstOrDefaultAsync(s => s.UserId == userId).Result;
             if (sp != null)
             {
-                sp.ApplicationUser =await context.ApplicationUsers.FirstOrDefaultAsync(s => s.Id == userId);
+                sp.ApplicationUser = await context.ApplicationUsers.FirstOrDefaultAsync(s => s.Id == userId);
                 return await context.Conversations.Where(c => c.SpecialistId == sp.Id).Select(c => new ConversationVM()
                 {
                     Id = c.Id,
@@ -34,8 +34,9 @@ namespace MentalDepths.Services.Web
                     Note = new NoteVm()
                     {
                         Id = context.Notes.FirstOrDefault(n => n.ConversationtId == c.Id).Id,
-                       Message= context.Notes.FirstOrDefault(n => n.ConversationtId == c.Id).Message
-                    }
+                        Message = context.Notes.FirstOrDefault(n => n.ConversationtId == c.Id).Message
+                    },
+                    IsClosed=c.IsClosed
                 }).ToListAsync();
             }
             return await context.Conversations.Where(c => c.UserId == user.Id).Select(c => new ConversationVM()
@@ -45,12 +46,13 @@ namespace MentalDepths.Services.Web
                 User = context.ApplicationUsers.FirstOrDefault(s => s.Id == c.UserId),
                 Specialist = context.Specialists.FirstOrDefault(s => s.Id == c.SpecialistId),
                 SpecialistId = c.SpecialistId,
-                SpecialistName= c.Specialist.ApplicationUser.UserName??"Name Yok",
+                SpecialistName = c.Specialist.ApplicationUser.UserName,
                 Note = new NoteVm()
                 {
                     Id = context.Notes.FirstOrDefault(n => n.ConversationtId == c.Id).Id,
                     Message = context.Notes.FirstOrDefault(n => n.ConversationtId == c.Id).Message
-                }
+                },
+                IsClosed = c.IsClosed
             }).ToListAsync();
         }
         public async Task<ConversationVM> GenerateNewConversation(Guid IdSpecialist, Guid IdUser)
@@ -65,7 +67,8 @@ namespace MentalDepths.Services.Web
                     SpecialistId = conv.SpecialistId,
                     Specialist = await context.Specialists.FirstAsync(s => s.Id == IdSpecialist),
                     User = await context.ApplicationUsers.FirstAsync(u => u.Id == IdUser),
-                    Messages = context.Messages.Where(m => m.ConversationId == conv.Id).ToHashSet()
+                    Messages = context.Messages.Where(m => m.ConversationId == conv.Id).ToHashSet(),
+                    IsClosed= conv.IsClosed,
                 };
                 n.Specialist.ApplicationUser = context.ApplicationUsers.FirstOrDefaultAsync(s => s.Id == IdUser).Result;
                 n.SpecialistName = n.Specialist.ApplicationUser.UserName;
@@ -77,7 +80,8 @@ namespace MentalDepths.Services.Web
                 UserId = IdUser,
                 Specialist = await context.Specialists.FirstAsync(s => s.Id == IdSpecialist),
                 User = await context.ApplicationUsers.FirstAsync(u => u.Id == IdUser),
-                Messages = new HashSet<Message>()
+                Messages = new HashSet<Message>(),
+                IsClosed = false
             };
         }
 
@@ -100,7 +104,7 @@ namespace MentalDepths.Services.Web
                     Specialist = conversation.Specialist,
                     Note = note,
                     IsClosed = false,
-                    Messages= conversation.Messages
+                    Messages = conversation.Messages,
                 };
 
                 await context.Conversations.AddAsync(convo);
@@ -117,7 +121,7 @@ namespace MentalDepths.Services.Web
             conversation.User = context.ApplicationUsers.FirstOrDefaultAsync(a => a.Id == conversation.UserId).Result;
             conversation.Note = context.Notes.FirstOrDefaultAsync(n => n.ConversationtId == id).Result;
             conversation.Messages = context.Messages.Where(m => m.ConversationId == id).ToHashSet();
-            ConversationVM conv= new ConversationVM()
+            ConversationVM conv = new ConversationVM()
             {
                 Id = conversation.Id,
                 User = conversation.User,
@@ -125,9 +129,24 @@ namespace MentalDepths.Services.Web
                 Specialist = conversation.Specialist,
                 SpecialistId = conversation.SpecialistId,
                 Note = noteService.GetNoteById(conversation.Note.Id).Result,
-                Messages= conversation.Messages
+                Messages = conversation.Messages,
+                IsClosed=conversation.IsClosed
             };
             return conv;
+        }
+
+        public async Task MarkChatAsDeleted(Guid id)
+        {
+            var conversation = context.Conversations.FirstOrDefaultAsync(c => c.Id == id).Result;
+            conversation.IsClosed = true;
+            await context.SaveChangesAsync();
+        }
+
+        public async Task MarkChatAsReturned(Guid Id)
+        {
+            var conversation = context.Conversations.FirstOrDefaultAsync(c => c.Id == Id).Result;
+            conversation.IsClosed = false;
+            await context.SaveChangesAsync();
         }
     }
 }
