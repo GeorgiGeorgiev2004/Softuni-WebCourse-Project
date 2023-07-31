@@ -21,16 +21,22 @@ namespace MentalDepths.Controllers
         }
         public async Task<IActionResult> Chat(Guid SpecialistId, Guid UserId)
         {
-            var conversation = conversationService.GenerateNewConversation(SpecialistId, UserId).Result;
-            if (conversation.SpecialistName ==null)
+            if (conversationService.IsThereAConversationBetween(SpecialistId, UserId).Result)
             {
-                await conversationService.SaveConversation(conversation); 
+                var possibleConv = conversationService.GetConversationByParticipants(SpecialistId, UserId).Result;
+                if (possibleConv.IsClosed == true)
+                {
+                    await conversationService.MarkChatAsReturned(possibleConv.Id);
+                    var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    return RedirectToAction("MyConversations", new { id });
+                }
+            }
+            var conversation = conversationService.GenerateNewConversation(SpecialistId, UserId).Result;
+            if (conversation.SpecialistName == null)
+            {
+                await conversationService.SaveConversation(conversation);
                 var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 return RedirectToAction("MyConversations", new { id });
-            }
-            if (conversation.IsClosed == true)
-            {
-                await conversationService.MarkChatAsReturned(conversation.Id);
             }
             return View(conversation);
         }
@@ -57,7 +63,7 @@ namespace MentalDepths.Controllers
         {
             await conversationService.MarkChatAsDeleted(cvm.Id);
             var ID = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return RedirectToAction("MyApointments", "Apointment", new { ID });
+            return RedirectToAction("MyConversations", "Conversation", new { ID });
         }
     }
 }

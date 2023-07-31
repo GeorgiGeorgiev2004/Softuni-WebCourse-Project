@@ -3,7 +3,9 @@ using MentalDepths.Data;
 using MentalDepths.Data.Models;
 using MentalDepths.Services.Web.Interfaces;
 using MentalDepths.Web.ViewModels.Web;
+using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace MentalDepths.Services.Web
 {
@@ -147,6 +149,27 @@ namespace MentalDepths.Services.Web
             var conversation = context.Conversations.FirstOrDefaultAsync(c => c.Id == Id).Result;
             conversation.IsClosed = false;
             await context.SaveChangesAsync();
+        }
+
+        public async Task<bool> IsThereAConversationBetween(Guid SpecialistId, Guid userId)
+        {
+            var c = context.Conversations.FirstOrDefaultAsync(c => c.UserId == userId && c.SpecialistId == SpecialistId).Result;
+            if (c == null) return false;
+            else return true;
+        }
+
+        public async Task<ConversationVM> GetConversationByParticipants(Guid SpecialistId, Guid userId)
+        {
+            var c = context.Conversations.FirstOrDefaultAsync(c => c.UserId == userId && c.SpecialistId == SpecialistId).Result;
+            return new ConversationVM()
+            {
+                Id = c.Id,
+                SpecialistId = SpecialistId,
+                UserId = userId,
+                IsClosed=c.IsClosed,
+                Specialist= await context.Specialists.FirstAsync(s=>s.Id==c.SpecialistId),
+                User = await context.ApplicationUsers.FirstAsync(s => s.Id == c.UserId),
+            };
         }
     }
 }

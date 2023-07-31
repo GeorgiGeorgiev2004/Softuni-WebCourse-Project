@@ -13,18 +13,19 @@
 {
     <div class="card w-50">
         <div class="card-header">Application number: @count</div>
-        <div class="row no-gutters">
-            <div class="card-body">
-                <div class="col-mb-4">
-                    <a class="btn btn-success" asp-action="ShowCV" asp-controller="Admin" asp-route-id="@ja.Id">CV</a>
-                </div>
-                <div class="col-mb-4">
-                    <a class="btn btn-success" asp-action="ShowDiploma" asp-controller="Admin" asp-route-id="@ja.Id">Diploma</a>
-                </div>
-                <div class="col-mb-4">
-                    <a class="btn btn-success" asp-action="ShowCertification" asp-controller="Admin" asp-route-id="@ja.Id">Certifications</a>
-                </div>
+        <div class="card-body">
+            <div class="col-mb-4 d-inline">
+                <a class="btn btn-success " asp-action="ShowCV" asp-controller="Admin" asp-route-id="@ja.Id">CV</a>
             </div>
+            <div class="col-mb-4 d-inline">
+                <a class="btn btn-success " asp-action="ShowDiploma" asp-controller="Admin" asp-route-id="@ja.Id">Diploma</a>
+            </div>
+            <div class="col-mb-4 d-inline">
+                <a class="btn btn-success" asp-action="ShowCertification" asp-controller="Admin" asp-route-id="@ja.Id">Certifications</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <a class="btn btn-success" asp-action="About" asp-controller="Admin" asp-route-AplicantId="@ja.AplicantId">More about this candidate.</a>
         </div>
     </div>
     count++;

@@ -11,5 +11,7 @@ namespace MentalDepths.Services.Web.Interfaces
         public Task<ConversationVM> GetConversationById(Guid id);
         public Task MarkChatAsDeleted(Guid id);
         public Task MarkChatAsReturned(Guid Id);
+        public Task<bool> IsThereAConversationBetween(Guid SpecialistId, Guid userId);
+        public Task<ConversationVM> GetConversationByParticipants(Guid SpecialistId, Guid userId);
     }
 }

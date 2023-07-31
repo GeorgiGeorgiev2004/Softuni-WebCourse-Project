@@ -37,5 +37,10 @@ namespace MentalDepths.Controllers
             var jobapplication = jobApplicatipnService.GetJobApplication(id).Result;
             return File(jobapplication.Certification, "image/jpg");
         }
+        public async Task<IActionResult> About(Guid AplicantId) 
+        {
+            var aplicant = adminService.FindAplicantById(AplicantId).Result;
+            return View(aplicant);
+        }
     }
 }
