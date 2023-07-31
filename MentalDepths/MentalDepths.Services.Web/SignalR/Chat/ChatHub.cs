@@ -7,12 +7,10 @@
     public class ChatHub:Hub
     {
         private readonly IMessageService messageService;
-        private readonly ISpecialistService specialistService;
 
-        public ChatHub(IMessageService msgs, ISpecialistService spc)
+        public ChatHub(IMessageService msgs)
         {
             messageService = msgs;
-            specialistService = spc;
         }
         public async Task SendMessage(string message)
         {       

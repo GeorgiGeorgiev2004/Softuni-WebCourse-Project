@@ -18,6 +18,6 @@ namespace MentalDepths.Web.ViewModels.Web
         [Required]
         public byte[]? ScannedDiploma { get; set; } = null!;
         [Required]
-        public byte[] Certification { get; set; } = null!;
+        public byte[]? Certification { get; set; } = null!;
     }
 }

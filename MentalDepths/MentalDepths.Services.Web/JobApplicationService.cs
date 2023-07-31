@@ -7,12 +7,14 @@
     using MentalDepths.Web.ViewModels.Web;
     using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public class JobApplicatipnService : IJobApplicatipnService
+
+    public class JobApplicationService : IJobApplicatipnService
     {
         private MentalDepthsDbContext context;
-        public JobApplicatipnService(MentalDepthsDbContext context)
+        public JobApplicationService(MentalDepthsDbContext context)
         {
             this.context = context;
         }
@@ -69,11 +71,40 @@
 
         }
 
+        public async Task<ICollection<JobApplicationVM>> GetAllJobApplications()
+        {
+            var jobApplications =  await context.JobApplicationForms.Select(f => new JobApplicationVM()
+            {
+                Id = f.Id,
+                AplicantId = f.AplicantId,
+                Aplicant = context.Aplicants.First(a => a.Id == f.AplicantId),
+                CV = f.CV,
+                ScannedDiploma = f.ScannedDiploma,
+                Certification = f.Certification,
+            }).ToListAsync();
+            return jobApplications;
+        }
+
+        public async Task<JobApplicationVM> GetJobApplication(Guid JobAplicationId)
+        {
+            var jap = context.JobApplicationForms.FirstOrDefaultAsync(j => j.Id == JobAplicationId).Result;
+            return new JobApplicationVM()
+            {
+                Id=jap.Id,
+                CV=jap.CV,
+                ScannedDiploma=jap.ScannedDiploma,
+                Certification = jap.Certification,
+                AplicantId=jap.AplicantId,
+                Aplicant=context.Aplicants.First(A=>A.Id==jap.AplicantId)
+            };
+        }
+
         public async Task SaveAplicant(AplicantVM aplicant, Guid JobAplicationId)
         {
+            var jobapplication = await context.JobApplicationForms.FirstOrDefaultAsync(a => a.Id == JobAplicationId);
             var ap = new Aplicant()
             {
-                Id = Guid.NewGuid(),
+                Id = jobapplication.AplicantId,
                 ApplicationUser = context.ApplicationUsers.FirstAsync(s => s.Id == aplicant.UserId).Result,
                 UserId = aplicant.UserId,
                 ImageURL = aplicant.ImageURL,

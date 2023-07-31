@@ -2,8 +2,6 @@
 using MentalDepths.Services.Web.Interfaces;
 using MentalDepths.Web.ViewModels.Web;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp;
-
 namespace MentalDepths.Controllers
 {
     public class JobApplicationController : BaseController
@@ -22,6 +20,10 @@ namespace MentalDepths.Controllers
         public async Task<IActionResult> Apply(CreateASpecialistVM model)
         {
             AplicantVM ap = jobApplicatipnService.CreateAnAplicant(model).Result;
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             return RedirectToAction("JobAppliaction", ap);
         }
         [HttpGet]

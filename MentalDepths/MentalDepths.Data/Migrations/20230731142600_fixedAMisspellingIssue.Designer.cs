@@ -12,14 +12,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentalDepths.Data.Migrations
 {
     [DbContext(typeof(MentalDepthsDbContext))]
-    [Migration("20230729142106_ImplementedAplicanttable2")]
-    partial class ImplementedAplicanttable2
+    [Migration("20230731142600_fixedAMisspellingIssue")]
+    partial class fixedAMisspellingIssue
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.18")
+                .HasAnnotation("ProductVersion", "6.0.20")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -125,7 +125,7 @@ namespace MentalDepths.Data.Migrations
                             Id = new Guid("247a7f62-3cfb-4d10-94b5-b94bb5a32e57"),
                             Address = "Office",
                             ApplicationUserId = new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"),
-                            DateAndTime = new DateTime(2023, 8, 1, 17, 21, 5, 980, DateTimeKind.Local).AddTicks(9596),
+                            DateAndTime = new DateTime(2023, 8, 3, 17, 26, 0, 578, DateTimeKind.Local).AddTicks(8571),
                             HasPassed = false,
                             SpecialistId = new Guid("33713803-661e-4fad-a041-cf526fbc83e4")
                         });
@@ -230,8 +230,8 @@ namespace MentalDepths.Data.Migrations
                             Id = new Guid("f957a45a-d8df-439e-a50a-b1c0f87a69f2"),
                             AccessFailedCount = 0,
                             CityId = 2,
-                            ConcurrencyStamp = "45001be7-b70e-49c3-b786-aa8e4a14fb41",
-                            CreatedOn = new DateTime(2023, 7, 29, 17, 21, 5, 980, DateTimeKind.Local).AddTicks(9768),
+                            ConcurrencyStamp = "ddc0de16-fb57-4455-8f86-df4c681c0c4c",
+                            CreatedOn = new DateTime(2023, 7, 31, 17, 26, 0, 578, DateTimeKind.Local).AddTicks(8772),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "gogo_5a@abv.bg",
                             EmailConfirmed = true,
@@ -240,21 +240,21 @@ namespace MentalDepths.Data.Migrations
                             LastName = "Georgiev",
                             LockoutEnabled = false,
                             NormalizedEmail = "GOGO_5A@ABV.BG",
-                            NormalizedUserName = "GEORGI GEORGIEV",
-                            PasswordHash = "AIfehdEePFGruLqvNdRCXzvJejy+PFHoO9aQXCEkcLzMLNlRm1+vAAftedyWWNOMlQ==",
+                            NormalizedUserName = "GEORGI_GEORGIEV",
+                            PasswordHash = "AO6l62KnsORtHdT/gT/tTk5IhcUuxbRbDUOZ+OnPlmdO+L2JMAqEnySD6plKwm3wTg==",
                             PhoneNumberConfirmed = false,
                             SecondName = "Lyubenov",
-                            SecurityStamp = "71b4c35f-6248-444c-a8d5-d0cd953f10c9",
+                            SecurityStamp = "539b7ec1-f400-42fe-9937-fabf37ca3243",
                             TwoFactorEnabled = false,
-                            UserName = "Georgi Georgiev"
+                            UserName = "Georgi_Georgiev"
                         },
                         new
                         {
                             Id = new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"),
                             AccessFailedCount = 0,
                             CityId = 5,
-                            ConcurrencyStamp = "dc74593a-e1e9-4566-a7df-2e0513ea10f2",
-                            CreatedOn = new DateTime(2023, 7, 29, 17, 21, 5, 981, DateTimeKind.Local).AddTicks(4368),
+                            ConcurrencyStamp = "b46c074d-f257-4514-87a7-03367ce4b30d",
+                            CreatedOn = new DateTime(2023, 7, 31, 17, 26, 0, 579, DateTimeKind.Local).AddTicks(3365),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "ScaryHaxer@gmail.com",
                             EmailConfirmed = false,
@@ -263,21 +263,21 @@ namespace MentalDepths.Data.Migrations
                             LastName = "Steliov",
                             LockoutEnabled = false,
                             NormalizedEmail = "SCARYHAXER@GMAIL.COM",
-                            NormalizedUserName = "ILIQ STELIOV",
-                            PasswordHash = "AE5zyD8LrHdBC80+q0dU9z+MsHar8rgZSnbjdAWuq5Yox0rhaorBTj8srJ05SKl6RQ==",
+                            NormalizedUserName = "ILIQ_STELIOV",
+                            PasswordHash = "ANZ2wVsY3TRBgGWvlmmOMlpXFehUXyzCp0DxYcwQingZvkk2REW6H3ht9/EOQ4+ReQ==",
                             PhoneNumberConfirmed = false,
                             SecondName = "",
-                            SecurityStamp = "08850da2-f0c8-4ff0-96c7-913c18d96997",
+                            SecurityStamp = "3a2b9b7c-cf9f-495d-8ccb-60fb5c4f3eed",
                             TwoFactorEnabled = false,
-                            UserName = "Iliq Steliov"
+                            UserName = "Iliq_Steliov"
                         },
                         new
                         {
                             Id = new Guid("308508b8-ce9e-470b-a122-8a77f576532e"),
                             AccessFailedCount = 0,
                             CityId = 27,
-                            ConcurrencyStamp = "b499db2d-9176-4197-b4dd-acdc86a64176",
-                            CreatedOn = new DateTime(2023, 7, 29, 17, 21, 5, 981, DateTimeKind.Local).AddTicks(8787),
+                            ConcurrencyStamp = "b8a52a93-dd7e-493c-9fc7-483f5a97b5c7",
+                            CreatedOn = new DateTime(2023, 7, 31, 17, 26, 0, 579, DateTimeKind.Local).AddTicks(7857),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Ivan.Ivanov234@gmail.com",
                             EmailConfirmed = true,
@@ -286,21 +286,21 @@ namespace MentalDepths.Data.Migrations
                             LastName = "Ivanov",
                             LockoutEnabled = false,
                             NormalizedEmail = "IVAN.IVANOV234@GMAIL.COM",
-                            NormalizedUserName = "IVAN IVANOV",
-                            PasswordHash = "AB2zjtiEUVqu6TP6b/8ESZBpzTKXuBBgM5E4Y6pBSmnkkiWLAl+8Z+51g01yMp47iA==",
+                            NormalizedUserName = "IVAN_IVANOV",
+                            PasswordHash = "AE24tkR8XcSkn3K+9HTtyuPCAzO86GRsxdSbDXkHi5TX12yPrdZ1l9ffGUs4o8C+gg==",
                             PhoneNumberConfirmed = false,
                             SecondName = "Sirov",
-                            SecurityStamp = "3c72a36c-e5b9-4bd1-b056-7ba012ba6f55",
+                            SecurityStamp = "7baa5fb9-71d8-4538-ac4f-c0282b743276",
                             TwoFactorEnabled = false,
-                            UserName = "Ivan Ivanov"
+                            UserName = "Ivan_Ivanov"
                         },
                         new
                         {
                             Id = new Guid("9953dce8-25f6-45f2-bf8c-816b92bb0e28"),
                             AccessFailedCount = 0,
                             CityId = 13,
-                            ConcurrencyStamp = "cfff9de7-a056-4b5f-beaf-a9a349c9881e",
-                            CreatedOn = new DateTime(2023, 7, 29, 17, 21, 5, 982, DateTimeKind.Local).AddTicks(3211),
+                            ConcurrencyStamp = "e954efab-ec62-4569-8681-14d42af7e2ca",
+                            CreatedOn = new DateTime(2023, 7, 31, 17, 26, 0, 580, DateTimeKind.Local).AddTicks(2275),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Lilial_Izbora@abv.bg",
                             EmailConfirmed = false,
@@ -309,21 +309,21 @@ namespace MentalDepths.Data.Migrations
                             LastName = "Izbrannikov",
                             LockoutEnabled = false,
                             NormalizedEmail = "LILIAL_IZBORA@ABV.BG",
-                            NormalizedUserName = "LILIAL IZBRANNIKOV",
-                            PasswordHash = "AL4ZxR55xBNsTHtL0mpmmol7qhlv5/qfMI54PzlxE146+t4MBfyHcYmmlO5pRPn10Q==",
+                            NormalizedUserName = "LILIAL_IZBRANNIKOV",
+                            PasswordHash = "ABWIz+0PBfShkBJPxCG5k6dOay35gW/suvYe9+ueLa6THWyn7OABQUUQqWbuPkD2qA==",
                             PhoneNumberConfirmed = false,
                             SecondName = "Sabiev",
-                            SecurityStamp = "0a2cc2e9-0180-4238-8f5c-5fd92a011820",
+                            SecurityStamp = "fae0e101-289a-4ed7-9064-0e71d04c828d",
                             TwoFactorEnabled = false,
-                            UserName = "Lilial Izbrannikov"
+                            UserName = "Lilial_Izbrannikov"
                         },
                         new
                         {
                             Id = new Guid("59a88704-3ae3-4554-ad39-81b1f0304069"),
                             AccessFailedCount = 0,
                             CityId = 22,
-                            ConcurrencyStamp = "afe17e98-36ad-4228-9e99-0a5aaf3bd465",
-                            CreatedOn = new DateTime(2023, 7, 29, 17, 21, 5, 982, DateTimeKind.Local).AddTicks(7685),
+                            ConcurrencyStamp = "9fe2731b-7c39-4409-9cb8-2afce25564b6",
+                            CreatedOn = new DateTime(2023, 7, 31, 17, 26, 0, 580, DateTimeKind.Local).AddTicks(6929),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Kolio_Zemev@gmail.com",
                             EmailConfirmed = true,
@@ -333,10 +333,10 @@ namespace MentalDepths.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KOLIO_ZEMEV@GMAIL.COM",
                             NormalizedUserName = "NIKOLA ZEMELYARSKI",
-                            PasswordHash = "AOu+XSk9fuKKuEAIIcmqWMkElcN7MCFeg86iaER9lAHFY7FkWh0H6Yxy4f8w8Osxwg==",
+                            PasswordHash = "AJM8PnHNhWxoDLA70wApDo1wc+/ag2+gG2uYKMjd+P1q7EJAU4UMHpEdFqliX8G7QA==",
                             PhoneNumberConfirmed = false,
                             SecondName = "",
-                            SecurityStamp = "50c23a36-c8fb-487c-8531-d034dc301ab3",
+                            SecurityStamp = "e38cd50e-eb30-4073-af13-bfdafe185983",
                             TwoFactorEnabled = false,
                             UserName = "Nikola Zemelyarski"
                         },
@@ -345,8 +345,8 @@ namespace MentalDepths.Data.Migrations
                             Id = new Guid("a63c570e-8c25-449f-b89c-3df89bc0d17c"),
                             AccessFailedCount = 0,
                             CityId = 17,
-                            ConcurrencyStamp = "9861f401-16cb-4643-a7c7-d268136dcbf7",
-                            CreatedOn = new DateTime(2023, 7, 29, 17, 21, 5, 983, DateTimeKind.Local).AddTicks(2103),
+                            ConcurrencyStamp = "b38766d4-a96e-4d4c-83fc-3973b98f04e8",
+                            CreatedOn = new DateTime(2023, 7, 31, 17, 26, 0, 581, DateTimeKind.Local).AddTicks(1643),
                             DeletedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Sasunionios_loliolios@abv.bg",
                             EmailConfirmed = false,
@@ -355,13 +355,13 @@ namespace MentalDepths.Data.Migrations
                             LastName = "Redglade",
                             LockoutEnabled = false,
                             NormalizedEmail = "SASUNIONIOS_LOLIOLIOS@ABV.BG",
-                            NormalizedUserName = "DEMBE REDGLADE",
-                            PasswordHash = "AH7RbJaDvbKnnDT7qnJWXVGmvcfAIRTR801ypGGkstEMvW4ztK9lVRslGjX24z3eRQ==",
+                            NormalizedUserName = "DEMBE_REDGLADE",
+                            PasswordHash = "AOEVmWY/TxHj3YklQ4ADhRy3FW/Ag5MPfph+36UwaLhoRJXUS0ZzwOG47LzizQKrwQ==",
                             PhoneNumberConfirmed = false,
                             SecondName = "Nisantimetarottebe",
-                            SecurityStamp = "b36e24e9-878d-4f30-a11b-5c2550ce9f60",
+                            SecurityStamp = "cf257ae7-6141-43b5-925f-dabec2f9925c",
                             TwoFactorEnabled = false,
-                            UserName = "Dembe Redglade"
+                            UserName = "Dembe_Redglade"
                         });
                 });
 

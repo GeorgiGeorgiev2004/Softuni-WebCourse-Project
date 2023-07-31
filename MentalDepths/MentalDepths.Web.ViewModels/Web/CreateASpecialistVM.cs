@@ -10,13 +10,13 @@
         public Guid Id { get; set; }
 
         [Required]
-        [StringLength(URLMaxLenght, MinimumLength = URLMaxLenght)]
+        [StringLength(URLMaxLenght, MinimumLength = URLMinLenght)]
         public string ImageURL { get; set; } = null!;
 
         [Required]
         [Range(MinAge, MaxAge)]
         public int Age { get; set; }
-
+        [StringLength(10,MinimumLength =10,ErrorMessage ="Cellphone numbers need to have 10 digits")]
         public string PhoneNumber { get; set; } = null!;
 
         [Required]
@@ -30,6 +30,6 @@
         public string Specialisations { get; set; } = null!;
 
         public Guid UserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; } = null!;
+        public ApplicationUser? ApplicationUser { get; set; } = null!;
     }
 }

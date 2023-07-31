@@ -12,7 +12,7 @@ namespace MentalDepths.Web.ViewModels.Web
         public Guid Id { get; set; }
 
         [Required]
-        [StringLength(URLMaxLenght, MinimumLength = URLMaxLenght)]
+        [StringLength(URLMaxLenght, MinimumLength = URLMinLenght)]
         public string ImageURL { get; set; } = null!;
 
         [Required]

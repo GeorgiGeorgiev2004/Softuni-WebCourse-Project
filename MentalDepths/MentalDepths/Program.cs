@@ -48,7 +48,8 @@ namespace MentalDepths
             builder.Services.AddScoped<IApointmentService, ApointmentService>();
             builder.Services.AddScoped<IMessageService, MessageService>();
             builder.Services.AddScoped<INoteService, NoteService>();
-            builder.Services.AddScoped<IJobApplicatipnService, JobApplicatipnService>();
+            builder.Services.AddScoped<IJobApplicatipnService, JobApplicationService>();
+            builder.Services.AddScoped<IAdminService, AdminService>();
             builder.Services.AddSignalR();
 
             builder.Services.AddControllersWithViews();
@@ -102,6 +103,16 @@ namespace MentalDepths
                 if (user!=null&&um.IsInRoleAsync(user, "Admin").Result==false)
                 {
                    var idk = await um.AddToRoleAsync(user, "Admin");
+                }
+                var spec1 = await um.FindByEmailAsync("Kolio_Zemev@gmail.com");
+                if (spec1 != null && um.IsInRoleAsync(spec1, "Specialist").Result == false)
+                {
+                    var idk = await um.AddToRoleAsync(spec1, "Specialist");
+                }
+                var spec2 = await um.FindByEmailAsync("Ivan.Ivanov234@gmail.com");
+                if (spec2 != null && um.IsInRoleAsync(spec2, "Specialist").Result == false)
+                {
+                    var idk = await um.AddToRoleAsync(spec2, "Specialist");
                 }
             }
             app.Run();
