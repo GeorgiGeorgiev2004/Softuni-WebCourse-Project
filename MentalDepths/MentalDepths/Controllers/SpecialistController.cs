@@ -26,5 +26,10 @@ namespace MentalDepths.Controllers
 			var spec = await specialistService.FindSpecialistById(id);
 			return View(spec);
 		}
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> Register(AplicantVM aplicant) 
+        {
+            return View(aplicant);
+        }
     }
 }

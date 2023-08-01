@@ -71,6 +71,13 @@
 
         }
 
+        public async Task DeleteJobApplication(Guid JobAplicationId)
+        {
+            var jobapplication = context.JobApplicationForms.FirstOrDefaultAsync(a=>a.Id== JobAplicationId).Result;
+            context.JobApplicationForms.Remove(jobapplication);
+            await context.SaveChangesAsync();
+        }
+
         public async Task<ICollection<JobApplicationVM>> GetAllJobApplications()
         {
             var jobApplications =  await context.JobApplicationForms.Select(f => new JobApplicationVM()
@@ -96,6 +103,20 @@
                 Certification = jap.Certification,
                 AplicantId=jap.AplicantId,
                 Aplicant=context.Aplicants.First(A=>A.Id==jap.AplicantId)
+            };
+        }
+
+        public async Task<JobApplicationVM> GetJobApplicationByAplicantId(Guid AplicantId)
+        {
+            var jobapplication = await context.JobApplicationForms.FirstOrDefaultAsync(ja => ja.AplicantId == AplicantId);
+            return new JobApplicationVM()
+            {
+                Id = jobapplication.Id,
+                AplicantId = jobapplication.AplicantId,
+                Aplicant = context.Aplicants.First(a => a.Id == jobapplication.AplicantId),
+                CV = jobapplication.CV,
+                ScannedDiploma = jobapplication.ScannedDiploma,
+                Certification = jobapplication.Certification,
             };
         }
 

@@ -1,5 +1,6 @@
 ﻿namespace MentalDepths.Services.Web
 {
+    using MentalDepths.Web.ViewModels.Web;
     using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.IdentityModel.Tokens;
     using System.Net;
@@ -25,6 +26,22 @@
                     message
                     ));
 
+        }
+        public async Task<EmailVM> GeneratePossitiveOutcome(string email) 
+        {
+            var vm = new EmailVM();
+            vm.Email = email;
+            vm.Subject = "Great news!";
+            vm.Message = $"You have been accepted for the job you applied for! Contact us on this number - {MentalDepths.Common.Constatnts.Office.PhoneNumber} whenever possible so we can finalise some minor arrangements";
+            return vm;
+        }
+        public async Task<EmailVM> GenerateNegativeOutcome(string email)
+        {
+            var vm = new EmailVM();
+            vm.Email = email;
+            vm.Subject = "Unfortunate coincidence!";
+            vm.Message = $"It pains us greatly to inform you that the position you applied for has been occupied by someone else. We would love to hear from you in the future but for now we can only wish you best of luck!";
+            return vm;
         }
     }
 }

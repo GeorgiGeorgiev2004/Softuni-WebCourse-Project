@@ -1,0 +1,13 @@
+﻿@model ICollection<SpecialisationVM>
+@{
+}
+<div class="container">
+    <a asp-action="Add" asp-controller="Specialisation"class="btn btn-outline-success">Add a specialisation</a>
+    <br>
+       <ul class="list-group">
+    @foreach (var mdl in Model)
+    {
+            <li class="list-group-item">@mdl.Name<a asp-action="Delete" asp-controller="Specialisation" asp-route-name="@mdl.Name" class="btn btn-outline-danger float-end">Delete</a></li>
+    }
+       </ul>
+</div>

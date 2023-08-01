@@ -50,6 +50,7 @@ namespace MentalDepths
             builder.Services.AddScoped<INoteService, NoteService>();
             builder.Services.AddScoped<IJobApplicatipnService, JobApplicationService>();
             builder.Services.AddScoped<IAdminService, AdminService>();
+            builder.Services.AddScoped<ISpecialisationService, SpecialisationService>();
             builder.Services.AddSignalR();
 
             builder.Services.AddControllersWithViews();

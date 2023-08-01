@@ -12,6 +12,8 @@ namespace MentalDepths.Services.Web.Interfaces
         public Task SaveAplicant(AplicantVM aplicant, Guid JobAplicationId);
         public Task<ICollection<JobApplicationVM>> GetAllJobApplications();
         public Task<JobApplicationVM> GetJobApplication(Guid JobAplicationId);
+        public Task<JobApplicationVM> GetJobApplicationByAplicantId(Guid AplicantId);
+        public Task DeleteJobApplication(Guid JobAplicationId);
         public Task<JobApplicationVM> CreateAJobApplication(AplicantVM aplicant, IFormFile CV, IFormFile Diploma, IFormFile CertificationFiles);
     }
 }

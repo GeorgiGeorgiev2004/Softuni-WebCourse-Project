@@ -13,32 +13,29 @@
         <div class="col-md-2">
         </div>
 
-        <div class="card mb-6" style="max-width: 824px;">
+        <div class="card mb-8" style="max-width: 824px;">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img src="@Model.ImageURL" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">@name</h5>
-                        <p class="card-subtitle">@specialisations</p>
-                        <p class="card-subtitle"><small class="text-muted">@Model.Age years of age</small></p>
+                        <h5 class="card-title">Name: @name</h5>
+                        <p class="card-body">Specialisations: @specialisations</p>
+                        <p class="card-body">Age: @Model.Age</p>
                         <p class="card-text">Description: @Model.Description</p>
-                        @{
-                            if (!User.Identity.IsAuthenticated)
-                            {
-                                <p class="card-text p-2 text-warning"> Plsease <a class="text-dark" asp-area="Identity" asp-page="/Account/Login">log in</a> to reach out to this professional!</p>
-                            }
-                            else
-                            {
-                                <div class="d-grid gap-2">
-                                    <a asp-action="Chat" asp-controller="Conversation" asp-route-SpecialistId="@Model.Id" asp-route-UserId="@User.FindFirstValue(ClaimTypes.NameIdentifier)" class="link-success"> Book an apointement now</a>
-                                </div>
-                            }
-                        }
                     </div>
+                    <br />
                 </div>
             </div>
+                <div class="row g-0">
+                    <div class="col-6">
+                        <a asp-action="Hire" asp-controller="JobApplication" asp-route-id="@Model.Id" class="btn btn-outline-success">Hire</a>
+                    </div>
+                    <div class="col-6">
+                        <a asp-action="Dismiss" asp-controller="JobApplication" asp-route-id="@Model.Id" class="btn btn-outline-danger ">Dismiss</a>
+                    </div>
+                </div>
         </div>
         <div class="col-md-2">
         </div>

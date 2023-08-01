@@ -11,7 +11,7 @@
             builder
                 .HasOne(jaf => jaf.Aplicant)
                 .WithOne(s => s.JobApplication)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
         }
         public ICollection<JobApplicationForm> GenerateJobApplicationForm() 
         {

@@ -1,0 +1,12 @@
+﻿@model SpecialisationVM
+@{
+    ViewBag.Title = "Add a specialisation to the database!";
+}
+<h1 class="text-center">@ViewBag.Title</h1>
+
+<div class="container"> 
+    <form method="post">
+        <input type="text" asp-for="@Model.Name"></input>
+        <input type="submit" class="btn btn-primary"></input>
+    </form>
+</div>
