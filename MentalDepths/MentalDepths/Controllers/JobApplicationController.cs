@@ -59,8 +59,8 @@ namespace MentalDepths.Controllers
         {
             var aplicant = adminService.FindAplicantById(id).Result;
             EmailSender es = new EmailSender();
-            await es.SendEmailAsync(mail.Email, mail.Subject, mail.Message);
-            return RedirectToAction("register", "specialist", new { aplicant });
+            //await es.SendEmailAsync(mail.Email, mail.Subject, mail.Message);
+            return RedirectToAction("Register", "Specialist", new { aplicantId=id});
         }
         [HttpGet]
         [Authorize(Roles = "Admin")]

@@ -52,6 +52,7 @@ namespace MentalDepths
             builder.Services.AddScoped<IAdminService, AdminService>();
             builder.Services.AddScoped<ISpecialisationService, SpecialisationService>();
             builder.Services.AddSignalR();
+            builder.Services.AddTransient<UserManager<ApplicationUser>>();
 
             builder.Services.AddControllersWithViews();
 

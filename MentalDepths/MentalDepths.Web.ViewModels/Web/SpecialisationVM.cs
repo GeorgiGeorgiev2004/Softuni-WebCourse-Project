@@ -8,6 +8,7 @@ namespace MentalDepths.Web.ViewModels.Web
 {
     public class SpecialisationVM
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

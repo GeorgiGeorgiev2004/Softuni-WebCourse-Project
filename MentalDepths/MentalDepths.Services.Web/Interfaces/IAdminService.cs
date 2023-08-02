@@ -6,5 +6,6 @@ namespace MentalDepths.Services.Web.Interfaces
     public interface IAdminService
     {
         public Task<AplicantVM> FindAplicantById(Guid aplicantId);
+        public Task<RegisterASpecicalistVM> TurnAplicantToSpecialist(AplicantVM aplicant);
     }
 }

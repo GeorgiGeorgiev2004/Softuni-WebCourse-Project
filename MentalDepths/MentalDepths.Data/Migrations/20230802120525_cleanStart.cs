@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MentalDepths.Data.Migrations
 {
-    public partial class fixedAMisspellingIssue : Migration
+    public partial class cleanStart : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -169,7 +169,7 @@ namespace MentalDepths.Data.Migrations
                         column: x => x.JobApplicationId,
                         principalTable: "JobApplicationForms",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -488,12 +488,12 @@ namespace MentalDepths.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "CityId", "ConcurrencyStamp", "CreatedOn", "DeletedOn", "Email", "EmailConfirmed", "FirstName", "IsDeleted", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecondName", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"), 0, 5, "b46c074d-f257-4514-87a7-03367ce4b30d", new DateTime(2023, 7, 31, 17, 26, 0, 579, DateTimeKind.Local).AddTicks(3365), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ScaryHaxer@gmail.com", false, "Iliq", false, "Steliov", false, null, "SCARYHAXER@GMAIL.COM", "ILIQ_STELIOV", "ANZ2wVsY3TRBgGWvlmmOMlpXFehUXyzCp0DxYcwQingZvkk2REW6H3ht9/EOQ4+ReQ==", null, false, "", "3a2b9b7c-cf9f-495d-8ccb-60fb5c4f3eed", false, "Iliq_Steliov" },
-                    { new Guid("308508b8-ce9e-470b-a122-8a77f576532e"), 0, 27, "b8a52a93-dd7e-493c-9fc7-483f5a97b5c7", new DateTime(2023, 7, 31, 17, 26, 0, 579, DateTimeKind.Local).AddTicks(7857), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ivan.Ivanov234@gmail.com", true, "Ivan", false, "Ivanov", false, null, "IVAN.IVANOV234@GMAIL.COM", "IVAN_IVANOV", "AE24tkR8XcSkn3K+9HTtyuPCAzO86GRsxdSbDXkHi5TX12yPrdZ1l9ffGUs4o8C+gg==", null, false, "Sirov", "7baa5fb9-71d8-4538-ac4f-c0282b743276", false, "Ivan_Ivanov" },
-                    { new Guid("59a88704-3ae3-4554-ad39-81b1f0304069"), 0, 22, "9fe2731b-7c39-4409-9cb8-2afce25564b6", new DateTime(2023, 7, 31, 17, 26, 0, 580, DateTimeKind.Local).AddTicks(6929), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kolio_Zemev@gmail.com", true, "Nikola", false, "Zemelyarski", false, null, "KOLIO_ZEMEV@GMAIL.COM", "NIKOLA ZEMELYARSKI", "AJM8PnHNhWxoDLA70wApDo1wc+/ag2+gG2uYKMjd+P1q7EJAU4UMHpEdFqliX8G7QA==", null, false, "", "e38cd50e-eb30-4073-af13-bfdafe185983", false, "Nikola Zemelyarski" },
-                    { new Guid("9953dce8-25f6-45f2-bf8c-816b92bb0e28"), 0, 13, "e954efab-ec62-4569-8681-14d42af7e2ca", new DateTime(2023, 7, 31, 17, 26, 0, 580, DateTimeKind.Local).AddTicks(2275), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lilial_Izbora@abv.bg", false, "Lilial", false, "Izbrannikov", false, null, "LILIAL_IZBORA@ABV.BG", "LILIAL_IZBRANNIKOV", "ABWIz+0PBfShkBJPxCG5k6dOay35gW/suvYe9+ueLa6THWyn7OABQUUQqWbuPkD2qA==", null, false, "Sabiev", "fae0e101-289a-4ed7-9064-0e71d04c828d", false, "Lilial_Izbrannikov" },
-                    { new Guid("a63c570e-8c25-449f-b89c-3df89bc0d17c"), 0, 17, "b38766d4-a96e-4d4c-83fc-3973b98f04e8", new DateTime(2023, 7, 31, 17, 26, 0, 581, DateTimeKind.Local).AddTicks(1643), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sasunionios_loliolios@abv.bg", false, "Dembe", false, "Redglade", false, null, "SASUNIONIOS_LOLIOLIOS@ABV.BG", "DEMBE_REDGLADE", "AOEVmWY/TxHj3YklQ4ADhRy3FW/Ag5MPfph+36UwaLhoRJXUS0ZzwOG47LzizQKrwQ==", null, false, "Nisantimetarottebe", "cf257ae7-6141-43b5-925f-dabec2f9925c", false, "Dembe_Redglade" },
-                    { new Guid("f957a45a-d8df-439e-a50a-b1c0f87a69f2"), 0, 2, "ddc0de16-fb57-4455-8f86-df4c681c0c4c", new DateTime(2023, 7, 31, 17, 26, 0, 578, DateTimeKind.Local).AddTicks(8772), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "gogo_5a@abv.bg", true, "Georgi", false, "Georgiev", false, null, "GOGO_5A@ABV.BG", "GEORGI_GEORGIEV", "AO6l62KnsORtHdT/gT/tTk5IhcUuxbRbDUOZ+OnPlmdO+L2JMAqEnySD6plKwm3wTg==", null, false, "Lyubenov", "539b7ec1-f400-42fe-9937-fabf37ca3243", false, "Georgi_Georgiev" }
+                    { new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"), 0, 5, "68896f2c-fb4e-46b4-8329-29dd901476ad", new DateTime(2023, 8, 2, 15, 5, 24, 826, DateTimeKind.Local).AddTicks(2171), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ScaryHaxer@gmail.com", false, "Iliq", false, "Steliov", false, null, "SCARYHAXER@GMAIL.COM", "ILIQ_STELIOV", "AO5fodejo4Z+zxsIRyHXsR+h2Ko3DdKyDzt39tuULKDuZs1tRceIHS7af0xsEqOcdQ==", null, false, "", "830efebd-fbe7-4402-96a8-b1b9f308ef38", false, "Iliq_Steliov" },
+                    { new Guid("308508b8-ce9e-470b-a122-8a77f576532e"), 0, 27, "e68a5746-c1fc-4969-b636-f3bc8d657b4a", new DateTime(2023, 8, 2, 15, 5, 24, 826, DateTimeKind.Local).AddTicks(6629), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ivan.Ivanov234@gmail.com", true, "Ivan", false, "Ivanov", false, null, "IVAN.IVANOV234@GMAIL.COM", "IVAN_IVANOV", "ANR3BbMrv7u4Zt3TTdCp3mP2cGBT6apGLD78Y4U1x/Vj9XdzDchDBNcCxYMb96TRAw==", null, false, "Sirov", "25faf54b-8c15-44bf-90c0-a5fd62e6d4bd", false, "Ivan_Ivanov" },
+                    { new Guid("59a88704-3ae3-4554-ad39-81b1f0304069"), 0, 22, "1d9ac375-a4c3-468f-9df7-cb50d8d8fd17", new DateTime(2023, 8, 2, 15, 5, 24, 827, DateTimeKind.Local).AddTicks(5646), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Kolio_Zemev@gmail.com", true, "Nikola", false, "Zemelyarski", false, null, "KOLIO_ZEMEV@GMAIL.COM", "NIKOLA ZEMELYARSKI", "ALPHg6+YBI3GN8T1WEHpyEtvHfRFn0qAPgtgkQLoVXc63yeBZmsULB6OI9jXR1GZKg==", null, false, "", "e40653e3-9e2e-40cf-a574-fea66db668d8", false, "Nikola Zemelyarski" },
+                    { new Guid("9953dce8-25f6-45f2-bf8c-816b92bb0e28"), 0, 13, "44587340-389f-4675-b81a-830ba2f89e92", new DateTime(2023, 8, 2, 15, 5, 24, 827, DateTimeKind.Local).AddTicks(1200), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lilial_Izbora@abv.bg", false, "Lilial", false, "Izbrannikov", false, null, "LILIAL_IZBORA@ABV.BG", "LILIAL_IZBRANNIKOV", "ADCkv50F/lQ6Q2+dTn2h6G8+iGyp+9bvxIRPqfkG62nnE4qiRh0dA1qjj4xl+0xK+w==", null, false, "Sabiev", "8563d8e1-1051-482b-87b4-67c6fc6de8cc", false, "Lilial_Izbrannikov" },
+                    { new Guid("a63c570e-8c25-449f-b89c-3df89bc0d17c"), 0, 17, "70dd68ae-7a8a-4acd-9390-f4ba7d79eb30", new DateTime(2023, 8, 2, 15, 5, 24, 828, DateTimeKind.Local).AddTicks(100), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sasunionios_loliolios@abv.bg", false, "Dembe", false, "Redglade", false, null, "SASUNIONIOS_LOLIOLIOS@ABV.BG", "DEMBE_REDGLADE", "AKI3Z5RNkrqZneioZ6UCoipiziExukY7ADdhxUdxdObqq+W8TRvW2/qiZinYuqGC3g==", null, false, "Nisantimetarottebe", "37f3936d-fc05-43e9-948b-13201bb57ab0", false, "Dembe_Redglade" },
+                    { new Guid("f957a45a-d8df-439e-a50a-b1c0f87a69f2"), 0, 2, "a24c9b5a-ad0b-4912-981e-d669ca14618c", new DateTime(2023, 8, 2, 15, 5, 24, 825, DateTimeKind.Local).AddTicks(7522), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "gogo_5a@abv.bg", true, "Georgi", false, "Georgiev", false, null, "GOGO_5A@ABV.BG", "GEORGI_GEORGIEV", "AFKZMdpXj5xpoaxOldkiX7F0sV686CcVvnQ1PRXSCEppXxxdPrHpNnwZS7CstmlL2w==", null, false, "Lyubenov", "40683f4b-ed53-4284-a632-b1f907743e2c", false, "Georgi_Georgiev" }
                 });
 
             migrationBuilder.InsertData(
@@ -509,7 +509,7 @@ namespace MentalDepths.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Apointments",
                 columns: new[] { "Id", "Address", "ApplicationUserId", "DateAndTime", "HasPassed", "SpecialistId" },
-                values: new object[] { new Guid("247a7f62-3cfb-4d10-94b5-b94bb5a32e57"), "Office", new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"), new DateTime(2023, 8, 3, 17, 26, 0, 578, DateTimeKind.Local).AddTicks(8571), false, new Guid("33713803-661e-4fad-a041-cf526fbc83e4") });
+                values: new object[] { new Guid("247a7f62-3cfb-4d10-94b5-b94bb5a32e57"), "Office", new Guid("010d67b6-964d-4248-9c9a-ad83215eaa4a"), new DateTime(2023, 8, 5, 15, 5, 24, 825, DateTimeKind.Local).AddTicks(7314), false, new Guid("33713803-661e-4fad-a041-cf526fbc83e4") });
 
             migrationBuilder.InsertData(
                 table: "SpecialistsSpecialisations",

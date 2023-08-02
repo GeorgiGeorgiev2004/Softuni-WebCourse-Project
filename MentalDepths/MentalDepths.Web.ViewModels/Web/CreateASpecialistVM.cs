@@ -16,7 +16,7 @@
         [Required]
         [Range(MinAge, MaxAge)]
         public int Age { get; set; }
-        [StringLength(10,MinimumLength =10,ErrorMessage ="Cellphone numbers need to have 10 digits")]
+        [StringLength(10, MinimumLength = 10, ErrorMessage = "Cellphone numbers need to have 10 digits")]
         public string PhoneNumber { get; set; } = null!;
 
         [Required]

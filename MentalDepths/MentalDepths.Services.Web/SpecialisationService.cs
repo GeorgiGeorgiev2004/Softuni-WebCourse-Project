@@ -44,6 +44,7 @@ namespace MentalDepths.Services.Web
         {
             return await context.Specialisations.Select(s => new SpecialisationVM() 
             {
+                Id = s.Id,
                 Name=s.Name
             }).ToListAsync();
         }

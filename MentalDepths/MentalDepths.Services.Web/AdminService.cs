@@ -13,9 +13,11 @@ namespace MentalDepths.Services.Web
     public class AdminService : IAdminService
     {
         private MentalDepthsDbContext context;
-        public AdminService(MentalDepthsDbContext ctxt)
+        private ISpecialisationService specialisationService;
+        public AdminService(MentalDepthsDbContext ctxt,ISpecialisationService spc)
         {
               context = ctxt;
+            specialisationService = spc;
         }
 
         public async Task<AplicantVM> FindAplicantById(Guid aplicantId)
@@ -32,6 +34,21 @@ namespace MentalDepths.Services.Web
                 ImageURL=ap.ImageURL,
                 JobApplicationId=ap.JobApplicationId,
                 Specialisations=ap.Specialisations,
+            };
+        }
+
+        public async Task<RegisterASpecicalistVM> TurnAplicantToSpecialist(AplicantVM aplicant)
+        {
+            return new RegisterASpecicalistVM() 
+            {
+                Id=Guid.NewGuid(),
+                ImageURL=aplicant.ImageURL,
+                Age = aplicant.Age,
+                Address=aplicant.Address,
+                Description=aplicant.Description,
+                Specialisations=specialisationService.GetAllSpecialisations().Result,
+                UserId=aplicant.UserId,
+                ApplicationUser = await context.ApplicationUsers.FirstOrDefaultAsync(a=>a.Id==aplicant.UserId)
             };
         }
     }

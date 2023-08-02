@@ -1,5 +1,39 @@
-﻿@model AplicantVM
+﻿@model RegisterASpecicalistVM
 @{
-
 }
 <h1 class="text-center">Register the specialist</h1>
+<div class="container">
+    <div>
+        <form method="post">
+            <div class="form-floating">
+                <input type="url" class="form-control" asp-for="@Model.ImageURL" />
+                <label asp-for="@Model.ImageURL"></label>
+            </div>
+            <div class="form-floating">
+                <input type="number" class="form-control" asp-for="@Model.Age" />
+                <label asp-for="@Model.Age"></label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="@Model.Address" />
+                <label asp-for="@Model.Address"></label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="@Model.Description" />
+                <label asp-for="@Model.Description"></label>
+            </div>
+            <br />
+            <div class="form-floating">
+                <small>Specialisations</small>
+                <select asp-for="@Model.SpecialisationIDs" multiple class="form-control-lg">
+                    @foreach (var item in Model.Specialisations)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <input class="btn btn-outline-success" type="submit"></input>
+            <input type="hidden" asp-for="@Model.Id" value="@Model.Id"></input>
+            <input type="hidden" asp-for="@Model.UserId" value="@Model.UserId"></input>
+        </form>
+    </div>
+</div>
