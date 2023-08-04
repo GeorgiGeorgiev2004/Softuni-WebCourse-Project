@@ -32,19 +32,22 @@
                         @if (User.Identity.IsAuthenticated)
                         {    
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Conversation" asp-action="MyConversations" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">Chats</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Conversation" asp-action="MyConversations">Chats</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Apointment" asp-action="MyApointments" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">Apointments</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Apointment" asp-action="MyApointments">Apointments</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Apointment" asp-action="MyPastApointments" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)">History</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Apointment" asp-action="MyPastApointments">History</a>
                         </li>
                         }
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Specialisation" asp-action="All">Specialisations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="JobApplications">Applications</a>
                             </li>
                         }
                     </ul>

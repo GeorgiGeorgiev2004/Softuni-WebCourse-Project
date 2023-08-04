@@ -27,14 +27,16 @@ namespace MentalDepths.Controllers
             var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             return RedirectToAction("MyConversations", "Conversation", new { id });
         }
-        public IActionResult MyApointments(Guid id)
+        public IActionResult MyApointments()
         {
-            var apointments = apservice.GetAllApointementsForUser(id).Result;
+            var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var apointments = apservice.GetAllApointementsForUser(Guid.Parse(id)).Result;
             return View(apointments);
         }
-        public IActionResult MyPastApointments(Guid id)
+        public IActionResult MyPastApointments()
         {
-            var apointments = apservice.GetAllApointementsForUser(id).Result;
+            var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var apointments = apservice.GetAllApointementsForUser(Guid.Parse(id)).Result;
             return View(apointments);
         }
         [HttpGet]

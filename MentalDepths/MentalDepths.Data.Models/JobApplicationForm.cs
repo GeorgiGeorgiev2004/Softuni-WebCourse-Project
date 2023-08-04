@@ -20,10 +20,10 @@
         public Aplicant Aplicant { get; set; } = null!;
 
         [Required]
-        public byte[] CV { get; set; } = null!;
+        public byte[]? CV { get; set; } = null!;
         [Required]
-        public byte[] ScannedDiploma{ get; set; } = null!;
+        public byte[]? ScannedDiploma{ get; set; } = null!;
         [Required]
-        public byte[] Certification { get; set; } = null!;
+        public byte[]? Certification { get; set; } = null!;
     }
 }

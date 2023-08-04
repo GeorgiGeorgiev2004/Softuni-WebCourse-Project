@@ -14,9 +14,10 @@ namespace MentalDepths.Controllers
             conversationService = cvs;
             this.noteService = noteService;
         }
-        public async Task<IActionResult> MyConversations(Guid id)
+        public async Task<IActionResult> MyConversations()
         {
-            var convos = conversationService.GetAllConversationsForUser(id).Result;
+            var id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var convos = conversationService.GetAllConversationsForUser(Guid.Parse(id)).Result;
             return View(convos);
         }
         public async Task<IActionResult> Chat(Guid SpecialistId, Guid UserId)

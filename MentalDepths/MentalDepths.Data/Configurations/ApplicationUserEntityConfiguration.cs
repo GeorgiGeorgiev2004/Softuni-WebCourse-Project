@@ -35,6 +35,7 @@ namespace MentalDepths.Data.Configurations
             user.NormalizedUserName = user.UserName.ToUpper();
             user.NormalizedEmail=user.Email.ToUpper();
             users.Add(user);
+
             user = new ApplicationUser()
             {
                 Id = Guid.Parse("010d67b6-964d-4248-9c9a-ad83215eaa4a"),
@@ -42,7 +43,7 @@ namespace MentalDepths.Data.Configurations
                 SecondName = string.Empty,
                 LastName = "Steliov",
                 CityId = 5,
-                Email = "ScaryHaxer@gmail.com",
+                Email = "Iliq_Seliov@gmail.com",
                 EmailConfirmed = false,
                 PasswordHash = hasher.HashPassword("Ya9zMTWsW"),
                 SecurityStamp = Guid.NewGuid().ToString("D"),
@@ -82,7 +83,7 @@ namespace MentalDepths.Data.Configurations
                 CityId = 13,
                 Email = "Lilial_Izbora@abv.bg",
                 EmailConfirmed = false,
-                PasswordHash = new PasswordHasher().HashPassword("#jzhsrSh#K"),
+                PasswordHash = new PasswordHasher().HashPassword("SjzhsrSh)K"),
                 SecurityStamp = Guid.NewGuid().ToString("D"),
                 ConcurrencyStamp = Guid.NewGuid().ToString("D"),
                 LockoutEnabled = false
@@ -114,11 +115,11 @@ namespace MentalDepths.Data.Configurations
             user = new ApplicationUser()
             {
                 Id = Guid.Parse("a63c570e-8c25-449f-b89c-3df89bc0d17c"),
-                FirstName = "Dembe",
-                SecondName = "Nisantimetarottebe",
-                LastName = "Redglade",
+                FirstName = "Donmeka",
+                SecondName = string.Empty,
+                LastName = "Amlaik",
                 CityId = 17,
-                Email = "Sasunionios_loliolios@abv.bg",
+                Email = "Idontevenknow_Atthispoint@abv.bg",
                 EmailConfirmed = false,
                 PasswordHash = hasher.HashPassword("!cJ@yvJ"),
                 SecurityStamp = Guid.NewGuid().ToString("D"),

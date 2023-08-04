@@ -24,11 +24,11 @@ namespace MentalDepths.Controllers
         [HttpPost]
         public async Task<IActionResult> Apply(CreateASpecialistVM model)
         {
-            AplicantVM ap = jobApplicationService.CreateAnAplicant(model).Result;
             if (!ModelState.IsValid)
             {
                 return View();
             }
+            AplicantVM ap = jobApplicationService.CreateAnAplicant(model).Result;
             return RedirectToAction("JobAppliaction", ap);
         }
         [HttpGet]
