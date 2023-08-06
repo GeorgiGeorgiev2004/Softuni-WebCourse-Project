@@ -32,9 +32,10 @@
             {
                 Id = Guid.Parse("247a7f62-3cfb-4d10-94b5-b94bb5a32e57"),
                 ApplicationUserId= Guid.Parse("010d67b6-964d-4248-9c9a-ad83215eaa4a"),
-                SpecialistId= Guid.Parse("33713803-661e-4fad-a041-cf526fbc83e4"),
+                SpecialistId= Guid.Parse("550184af-0284-4a1c-bc3e-223cb9198e62"),
                 Address = AddressesEnum.Office.ToString(),
-                DateAndTime = DateTime.Now.AddDays(3)
+                DateAndTime = new DateTime(2023, 8, 11, 9, 40, 00),
+                HasPassed = false,
             };
             apointments.Add(apointment);
             return apointments;

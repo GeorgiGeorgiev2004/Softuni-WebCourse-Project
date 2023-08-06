@@ -24,6 +24,7 @@ namespace MentalDepths.Data.Models
         public Guid UserId { get; set; }
         [ForeignKey(nameof(UserId))]
         public ApplicationUser User { get; set; }
+        public Guid NoteId { get; set; }
         public Note Note { get; set; }
         public ICollection<Message> Messages { get; set; }
 
