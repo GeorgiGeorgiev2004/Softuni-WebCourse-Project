@@ -39,6 +39,10 @@ namespace MentalDepths.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Register(RegisterASpecicalistVM spcialist)
         {
+            if (!ModelState.IsValid) 
+            {
+                View();
+            }
             await specialistService.SaveASpecialistToTheDb(spcialist);
             return RedirectToAction("All");
         }

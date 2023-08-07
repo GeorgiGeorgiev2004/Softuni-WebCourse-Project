@@ -59,7 +59,9 @@ namespace MentalDepths.Controllers
         {
             var aplicant = adminService.FindAplicantById(id).Result;
             EmailSender es = new EmailSender();
-            //await es.SendEmailAsync(mail.Email, mail.Subject, mail.Message);
+            await es.SendEmailAsync(mail.Email, mail.Subject, mail.Message);
+            var jobapplication = jobApplicationService.GetJobApplicationByAplicantId(aplicant.Id).Result;
+            await jobApplicationService.DeleteJobApplication(jobapplication.Id);
             return RedirectToAction("Register", "Specialist", new { aplicantId=id});
         }
         [HttpGet]

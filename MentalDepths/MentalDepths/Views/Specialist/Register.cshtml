@@ -22,8 +22,8 @@
                 <label asp-for="@Model.Description"></label>
             </div>
             <br />
-            <div class="form-floating">
                 <small>Specialisations</small>
+            <div class="form-floating">
                 <select asp-for="@Model.SpecialisationIDs" multiple class="form-control-lg">
                     @foreach (var item in Model.Specialisations)
                     {

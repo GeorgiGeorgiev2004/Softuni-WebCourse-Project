@@ -41,7 +41,7 @@ namespace MentalDepths.Services.Web
                 Id = specialist.Id,
                 Address = specialist.Address,
                 Description = specialist.Description,
-                Specialisations = specialist.Specialisations.Select(s => s.Specialisation.Name).ToList(),
+                Specialisations = await context.SpecialistsSpecialisations.Where(ss=>ss.SpecialistId==specialist.Id).Select(s=>s.Specialisation.Name).ToListAsync(),
                 ApplicationUser = await context.Users.FirstAsync(s => s.Id == specialist.UserId),
                 Age = specialist.Age,
                 ImageURL = specialist.ImageURL,

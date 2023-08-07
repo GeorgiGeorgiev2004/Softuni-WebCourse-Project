@@ -1,0 +1,44 @@
+﻿@using MentalDepths.Web.ViewModels.Web;
+@model AplicantVM
+@{
+    ViewBag.Title = "More information about " + Model.ApplicationUser.UserName;
+    string name = Model.ApplicationUser.FirstName + "" + $" {Model.ApplicationUser.SecondName}" + " " + Model.ApplicationUser.LastName;
+    string specialisations = string.Join(", ", Model.Specialisations);
+}
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="container-fluid" style="max-width:100%">
+    <div class="row">
+
+        <div class="col-md-2">
+        </div>
+
+        <div class="card mb-8" style="max-width: 824px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="@Model.ImageURL" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Name: @name</h5>
+                        <p class="card-body">Specialisations: @specialisations</p>
+                        <p class="card-body">Age: @Model.Age</p>
+                        <p class="card-text">Description: @Model.Description</p>
+                    </div>
+                    <br />
+                </div>
+            </div>
+                <div class="row g-0">
+                    <div class="col-6">
+                        <a asp-area="" asp-action="Hire" asp-controller="JobApplication" asp-route-id="@Model.Id" class="btn btn-outline-success">Hire</a>
+                    </div>
+                    <div class="col-6">
+                        <a asp-area="" asp-action="Dismiss" asp-controller="JobApplication" asp-route-id="@Model.Id" class="btn btn-outline-danger ">Dismiss</a>
+                    </div>
+                </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+</div>

@@ -36,6 +36,15 @@ namespace MentalDepths.Services.Web
         public async Task Delete(string name)
         {
             var specialisation = await context.Specialisations.FirstOrDefaultAsync(s=>s.Name==name);
+            if (context.SpecialistsSpecialisations.Any(ss=>ss.SpecialisationId==specialisation.Id)) 
+            {
+                var ss = await context.SpecialistsSpecialisations.Where(ss => ss.SpecialisationId == specialisation.Id).ToListAsync();
+                foreach (var item in ss)
+                {
+                    var specialist = context.Specialists.FirstOrDefaultAsync(s => s.Id == item.SpecialistId).Result;
+                    specialist.Specialisations.Remove(item);
+                }
+            }
             context.Specialisations.Remove(specialisation);
             await context.SaveChangesAsync();
         }

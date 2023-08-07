@@ -78,10 +78,18 @@ namespace MentalDepths
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+            app.MapControllerRoute(
+            name: "areas",
+            pattern: "/{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
             app.MapRazorPages();
+
 
             app.MapHub<ChatHub>("/chatHub");
 
@@ -102,9 +110,9 @@ namespace MentalDepths
             {
                 var um = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
                 var user = await um.FindByEmailAsync("gogo_5a@abv.bg");
-                if (user!=null&&um.IsInRoleAsync(user, "Admin").Result==false)
+                if (user != null && um.IsInRoleAsync(user, "Admin").Result == false)
                 {
-                   var idk = await um.AddToRoleAsync(user, "Admin");
+                    var idk = await um.AddToRoleAsync(user, "Admin");
                 }
                 var spec1 = await um.FindByEmailAsync("Kolio_Zemev@gmail.com");
                 if (spec1 != null && um.IsInRoleAsync(spec1, "Specialist").Result == false)

@@ -10,6 +10,12 @@
         {
             builder
                 .HasKey(ss => new { ss.SpecialistId, ss.SpecialisationId });
+            builder.HasOne(ss=>ss.Specialist)
+                .WithMany(s=>s.Specialisations)
+                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(ss => ss.Specialisation)
+              .WithMany(s => s.Specialists)
+              .OnDelete(DeleteBehavior.Restrict);
             builder.HasData(GenerateSpecialistSpecialisation());
         }
         public List<SpecialistSpecialisation> GenerateSpecialistSpecialisation()
