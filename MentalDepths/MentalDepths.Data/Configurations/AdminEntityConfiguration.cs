@@ -8,7 +8,7 @@
     {
         public void Configure(EntityTypeBuilder<Admin> builder)
         {
-            builder.HasData(this.GenerateAdmin());
+
         }
         public Admin GenerateAdmin()
         {

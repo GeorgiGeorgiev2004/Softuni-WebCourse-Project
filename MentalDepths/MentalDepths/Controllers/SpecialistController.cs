@@ -9,10 +9,12 @@ namespace MentalDepths.Controllers
     {
         private ISpecialistService specialistService;
         private IAdminService adminService;
-        public SpecialistController(ISpecialistService sp, IAdminService adminService)
+        private IJobApplicatipnService jobApplicatipnService;
+        public SpecialistController(ISpecialistService sp, IAdminService adminService, IJobApplicatipnService jobApplicatipnService)
         {
             specialistService = sp;
             this.adminService = adminService;
+            this.jobApplicatipnService = jobApplicatipnService;
         }
         [HttpGet]
         [AllowAnonymous]
@@ -29,10 +31,11 @@ namespace MentalDepths.Controllers
             return View(spec);
         }
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Register(Guid aplicantId)
+        public async Task<IActionResult> Register(Guid aplicantId,Guid jobapplicationId)
         {
             var aplicant = adminService.FindAplicantById(aplicantId).Result;
             var specialist = adminService.TurnAplicantToSpecialist(aplicant).Result;
+            await jobApplicatipnService.DeleteJobApplication(jobapplicationId);
             return View(specialist);
         }
         [HttpPost]
