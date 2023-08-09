@@ -55,5 +55,6 @@ namespace Services.Test.UnitTests
 
             Assert.That(Guid.Parse("3b250a59-82af-49d4-9bb1-5fcb197de174"), Is.EqualTo(aplicant.Id));
         }
+
     }
 }

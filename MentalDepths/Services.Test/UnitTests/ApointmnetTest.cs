@@ -79,12 +79,13 @@ namespace Services.Test.UnitTests
             apointmentService.SaveApointment(bavm);
             Assert.That(context.Apointments.Count(),Is.EqualTo(2));
         }
+        [Test]
         public void ConfirmApointmentOccured_Works()
         {
             var apointmentId = Guid.Parse("ab65ae1f-cef0-4f16-a02d-18cc33d34134");
             apointmentService.ConfirmApointmentOccured(apointmentId);
-
-            Assert.That(context.Apointments.Count(), Is.EqualTo(2));
+            var apointment = apointmentService.GetApointmentById(apointmentId);
+            Assert.That(apointment.IsCompleted, Is.EqualTo(true));
         }
     }
 }
