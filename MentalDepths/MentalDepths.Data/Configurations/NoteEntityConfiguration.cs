@@ -8,7 +8,6 @@ namespace MentalDepths.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Note> builder)
         {
-            builder.HasData(GenerateNote());
         }
 
         public Note GenerateNote() 

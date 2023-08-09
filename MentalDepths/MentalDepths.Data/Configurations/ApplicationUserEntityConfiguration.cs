@@ -10,7 +10,7 @@ namespace MentalDepths.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
-            builder.HasData(GenerateApplicationUsers().Result);
+
         }
 
         public async Task<ICollection<ApplicationUser>> GenerateApplicationUsers()

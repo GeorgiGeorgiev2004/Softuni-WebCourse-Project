@@ -11,8 +11,6 @@ namespace MentalDepths.Data.Configurations
             builder.HasOne(c => c.Specialist)
                 .WithMany(s => s.Conversations)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasData(GenerateConversation());
         }
         public Conversation GenerateConversation() 
         {

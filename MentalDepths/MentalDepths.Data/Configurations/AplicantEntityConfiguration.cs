@@ -13,7 +13,7 @@ namespace MentalDepths.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Aplicant> builder)
         {
-            builder.HasData(GenerateAplicants());
+    
         }
         public HashSet<Aplicant> GenerateAplicants()
         {

@@ -16,7 +16,6 @@
             builder.HasOne(ss => ss.Specialisation)
               .WithMany(s => s.Specialists)
               .OnDelete(DeleteBehavior.Restrict);
-            builder.HasData(GenerateSpecialistSpecialisation());
         }
         public List<SpecialistSpecialisation> GenerateSpecialistSpecialisation()
         {

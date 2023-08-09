@@ -17,7 +17,6 @@
             Apointments = new HashSet<Apointment>();
             Prescriptions = new HashSet<Prescription>();
             Conversations= new HashSet<Conversation>();
-            EmailConfirmed = false;
         }
         [Required]
         [StringLength(NamesMaxLenght,MinimumLength =NamesMinLenght)]

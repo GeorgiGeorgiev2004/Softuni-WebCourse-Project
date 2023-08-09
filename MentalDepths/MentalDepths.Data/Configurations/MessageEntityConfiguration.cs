@@ -17,7 +17,6 @@ namespace MentalDepths.Data.Configurations
             builder.HasOne(m=>m.Conversation)
                 .WithMany(c=>c.Messages)
                 .OnDelete(DeleteBehavior.Cascade);
-            builder.HasData(Conversation());
         }
         public ICollection<Message> Conversation() 
         {

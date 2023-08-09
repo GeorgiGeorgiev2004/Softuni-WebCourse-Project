@@ -12,8 +12,6 @@
                 .HasOne(jaf => jaf.Aplicant)
                 .WithOne(s => s.JobApplication)
                 .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasData(GenerateJobApplicationForm());
         }
         public List<JobApplicationForm> GenerateJobApplicationForm()
         {

@@ -14,7 +14,7 @@
                 .HasForeignKey(c=>c.CityId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasData(GenerateCities());
+           
         }
 
         public ICollection<City> GenerateCities() 

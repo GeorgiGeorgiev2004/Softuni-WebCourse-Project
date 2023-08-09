@@ -23,7 +23,6 @@
                 .HasForeignKey(a => a.SpecialistId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasData(GenerateApointment());
         }
         public List<Apointment> GenerateApointment()
         {

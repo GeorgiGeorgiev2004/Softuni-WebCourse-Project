@@ -11,7 +11,7 @@
     public class MentalDepthsDbContext : IdentityDbContext<ApplicationUser,IdentityRole<Guid>,Guid>
     {
         private bool seed;
-        public MentalDepthsDbContext(DbContextOptions<MentalDepthsDbContext> options, bool seed = true)
+        public MentalDepthsDbContext(DbContextOptions<MentalDepthsDbContext> options, bool seed=true)
             : base(options)
         {
             if (Database.IsRelational())
