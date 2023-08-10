@@ -34,7 +34,7 @@ namespace Services.Test.UnitTests
 
         public Conversation Conversation { get; set; }
 
-        public JobApplicationForm JobApplicationForm { get; set; }
+        public JobApplicationFormService JobApplicationForm { get; set; }
 
         public Message Message { get; set; }
 
@@ -164,7 +164,7 @@ namespace Services.Test.UnitTests
                 context.Conversations.Add(Conversation);
             }
 
-            JobApplicationForm = new JobApplicationForm()
+            JobApplicationForm = new JobApplicationFormService()
             {
                 Id = Guid.Parse("c66c791a-3ce2-4347-a9a8-482589035906"),
                 AplicantId = Guid.Parse("3b250a59-82af-49d4-9bb1-5fcb197de174"),
@@ -201,7 +201,7 @@ namespace Services.Test.UnitTests
             Specialisation = new Specialisation()
             {
                 Id = 1,
-                Name = "Specialisation"
+                Name = "Test Specialisation"
             };
             if (!context.Specialisations.Any(a => a.Id == Specialisation.Id))
             {

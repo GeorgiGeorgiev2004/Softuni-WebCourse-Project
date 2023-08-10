@@ -4,9 +4,9 @@
     using System.ComponentModel.DataAnnotations.Schema;
 
     using static MentalDepths.Common.ModelRegulations;
-    public class JobApplicationForm
+    public class JobApplicationFormService
     {
-        public JobApplicationForm()
+        public JobApplicationFormService()
         {
             Id= Guid.NewGuid();
         }

@@ -4,20 +4,20 @@
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
     using MentalDepths.Data.Models;
-    public class JobApplicationFormEntityConfiguration : IEntityTypeConfiguration<JobApplicationForm>
+    public class JobApplicationFormEntityConfiguration : IEntityTypeConfiguration<JobApplicationFormService>
     {
-        public void Configure(EntityTypeBuilder<JobApplicationForm> builder)
+        public void Configure(EntityTypeBuilder<JobApplicationFormService> builder)
         {
             builder
                 .HasOne(jaf => jaf.Aplicant)
                 .WithOne(s => s.JobApplication)
                 .OnDelete(DeleteBehavior.Cascade);
         }
-        public List<JobApplicationForm> GenerateJobApplicationForm()
+        public List<JobApplicationFormService> GenerateJobApplicationForm()
         {
-            List<JobApplicationForm> jobApplicationForms = new List<JobApplicationForm>()
+            List<JobApplicationFormService> jobApplicationForms = new List<JobApplicationFormService>()
                 {
-                    new JobApplicationForm()
+                    new JobApplicationFormService()
                     {
                         Id=Guid.Parse("2503c6c8-c74d-45e0-8f6a-ab475628445f"),
                         AplicantId=Guid.Parse("7bca8717-bead-4eff-934f-0eeb611c214b"),
@@ -25,7 +25,7 @@
                         ScannedDiploma=File.ReadAllBytes("D:\\Softuni proekt\\Softuni-WebCourse-Project\\MentalDepths\\MentalDepths.Data\\Configurations\\images\\diploma.jpg"),
                         Certification=File.ReadAllBytes("D:\\Softuni proekt\\Softuni-WebCourse-Project\\MentalDepths\\MentalDepths.Data\\Configurations\\images\\certification.jpg")
                     },
-                    new JobApplicationForm()
+                    new JobApplicationFormService()
                     {
                         Id=Guid.Parse("6a9170ff-59af-47f3-ba1e-f1d5ffaeb0ab"),
                         AplicantId=Guid.Parse("b4e811e8-305e-405c-a758-cefdf2d2fb4e"),

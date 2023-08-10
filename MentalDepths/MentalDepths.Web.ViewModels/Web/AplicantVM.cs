@@ -33,7 +33,7 @@ namespace MentalDepths.Web.ViewModels.Web
         [ForeignKey(nameof(JobApplication))]
         public Guid JobApplicationId { get; set; }
 
-        public JobApplicationForm JobApplication { get; set; }
+        public JobApplicationFormService JobApplication { get; set; }
 
         public Guid UserId { get; set; }
 

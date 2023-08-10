@@ -141,7 +141,7 @@
 
         public async Task SaveJobApplication(JobApplicationVM javm)
         {
-            JobApplicationForm jaf = new JobApplicationForm()
+            JobApplicationFormService jaf = new JobApplicationFormService()
             {
                 Id = javm.Id,
                 AplicantId = javm.AplicantId,

@@ -114,5 +114,40 @@ namespace Services.Test.UnitTests
             Assert.That(conversation.IsClosed, Is.EqualTo(false));
         }
 
+        [Test]
+        public void IsThereAConversationBetween_Works()
+        {
+            var user1 = Guid.Parse("812a4249-cf21-494e-9b6f-76fe5ab3aba3");
+            var user2 = Guid.Parse("2b7ff5f6-3216-49e5-8ec8-8dc4e221615f");
+
+            bool result = conversationService.IsThereAConversationBetween(user1, user2).Result;
+            Assert.That(result, Is.EqualTo(true));
+        }
+        [Test]
+        public void IsThereAConversationBetween_Breaks()
+        {
+            var user1 = Guid.Parse("812a4249-cf21-494e-9b6f-76fe5ab3aba3");
+            var user2 = Guid.Parse("3df16939-8fe8-4012-8ce7-1a69f3f654ec");
+
+            bool result = conversationService.IsThereAConversationBetween(user1, user2).Result;
+            Assert.That(result, Is.EqualTo(false));
+        }
+        [Test]
+        public void GetConversationByParticipants_Works()
+        {
+            var user1 = Guid.Parse("812a4249-cf21-494e-9b6f-76fe5ab3aba3");
+            var user2 = Guid.Parse("2b7ff5f6-3216-49e5-8ec8-8dc4e221615f");
+
+            var convo = conversationService.GetConversationByParticipants(user1, user2).Result;
+            Assert.That(convo, Is.Not.EqualTo(null));
+        }
+        [Test]
+        public void GetConversationByParticipants_Breaks()
+        {
+            var user1 = Guid.Parse("812a4249-cf21-494e-9b6f-76fe5ab3aba3");
+            var user2 = Guid.Parse("3df16939-8fe8-4012-8ce7-1a69f3f654ec");
+
+            Assert.ThrowsAsync<NullReferenceException>(async ()=> await conversationService.GetConversationByParticipants(user1, user2));
+        }
     }
 }
