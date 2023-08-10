@@ -1,9 +1,7 @@
-﻿
-namespace MentalDepths.Web.Infrastructure.Extensions
+﻿namespace MentalDepths.Web.Infrastructure.Extensions
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Http.Internal;
-    using System.Collections;
     using System.IO;
 
     public class FileReaderAndWriter
