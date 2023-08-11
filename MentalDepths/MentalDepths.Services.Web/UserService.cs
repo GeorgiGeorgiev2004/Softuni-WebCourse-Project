@@ -46,6 +46,7 @@
             {
                 repo.AddToDictionary(id, code);
             }
+            else throw new Exception("There is no such User");
         }
 
         public string GetConfiramtionCodeFromId(string id)

@@ -4,7 +4,7 @@
     using MentalDepths.Web.ViewModels.Web;
     public interface IUserService
     {
-        Task<ICollection<CitiesVM>> GetAllCities();
+        public Task<ICollection<CitiesVM>> GetAllCities();
 
         public string GenerateConfiramtionCode();
 
