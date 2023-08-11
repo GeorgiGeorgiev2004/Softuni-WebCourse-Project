@@ -1,5 +1,6 @@
 ﻿using MentalDepths.Services.Web.Interfaces;
 using MentalDepths.Web.ViewModels.Web;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -40,15 +41,32 @@ namespace MentalDepths.Controllers
             return View(apointments);
         }
         [HttpGet]
+        [Authorize(Roles = "Specialist")]
         public IActionResult MarkAsCompleted(Guid id)
         {
             var apointment = apservice.GetApointmentById(id).Result;
             return View(apointment);
         }
         [HttpPost]
+        [Authorize(Roles = "Specialist")]
         public IActionResult MarkAsCompleted(Guid id,BookApointementVM model)
         {
             apservice.ConfirmApointmentOccured(id);
+            var ID = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return RedirectToAction("MyApointments", "Apointment", new { ID });
+        }
+        [HttpGet]
+        [Authorize(Roles = "Specialist")]
+        public IActionResult Delete(Guid id)
+        {
+            var apointment = apservice.GetApointmentById(id).Result;
+            return View(apointment);
+        }
+        [HttpPost]
+        [Authorize(Roles = "Specialist")]
+        public async Task<IActionResult> Delete(Guid id, BookApointementVM model)
+        {
+            await apservice.DeleteApointment(id);
             var ID = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             return RedirectToAction("MyApointments", "Apointment", new { ID });
         }

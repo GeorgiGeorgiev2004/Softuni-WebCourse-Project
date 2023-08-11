@@ -1,8 +1,14 @@
-﻿@model ICollection<SpecialistVM>
+﻿@using MentalDepths.Services.Web.Interfaces;
+@inject ISpecialistService spc;
+@model ICollection<SpecialistVM>
 @{
 	ViewBag.Title = "Our Team";
+	bool IsThere = false;
+	if (User.Identity.IsAuthenticated)
+	{
+		IsThere = spc.IsThereASpecialistWithThisUserId(Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))).Result;
+	}
 }
-
 <h1 class="text-center">@ViewBag.Title</h1>
 <hr />
 <div class="container-fluid" style="max-width:100%">
@@ -29,9 +35,12 @@
 					}
 				}
 			</ul>
+			@if (!IsThere)
+			{	
 			<div>
 				<a asp-action="Apply" asp-controller="JobApplication" class="link-primary">Join our team!</a>
 			</div>
+			}
 		</div>
 		<div class="col-md-2">
 		</div>

@@ -50,11 +50,11 @@ namespace Services.Test.UnitTests
         //{
         //    AplicantVM avm = new AplicantVM()
         //    {
-        //        Id=Guid.NewGuid(),
-        //        Address="Example Address",
+        //        Id = Guid.NewGuid(),
+        //        Address = "Example Address",
         //        Age = 22,
         //        JobApplicationId = Guid.Parse("6856ad87-2fec-4a9d-a420-acb85b3b5c48"),
-        //        Description= "Example Description",
+        //        Description = "Example Description",
         //        Specialisations = "example, example",
         //        ImageURL = "https://www.greenlawnfertilizing.com/wp-content/uploads/2017/01/oak-tree-540x540.jpg.webp",
         //        UserId = Guid.Parse("2b7ff5f6-3216-49e5-8ec8-8dc4e221615f"),

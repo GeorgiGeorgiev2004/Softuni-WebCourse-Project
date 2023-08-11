@@ -1,7 +1,7 @@
 ﻿@model ICollection<BookApointementVM>
 @{
     ViewBag.Title = "These are your appointmets";
-    if (Model.Count==0)
+    if (Model.Count == 0)
     {
         ViewBag.Title = "You currently have no appointments!";
     }
@@ -21,8 +21,12 @@
             {
                 <div class="card">
                     <div class="card-header"> Session with : @item.User.UserName on @item.Date.DayOfWeek - @item.Date.Day/@item.Date.Month/@item.Date.Year </div>
-                    <div class="card-body" id="pain">Address: @item.Address 
-                        <a class="btn btn-primary w-25 align-self-end float-end" asp-action="MarkAsCompleted" asp-controller="Apointment" asp-route-id="@item.Id">Apointment has passed successfully</a></div>
+                    <div class="card-body" id="pain">
+                        Address: @item.Address
+                        <a class="btn btn-primary w-25 align-self-end float-end" asp-action="MarkAsCompleted" asp-controller="Apointment" asp-route-id="@item.Id">Apointment has passed successfully</a>
+                        <a class="btn btn-outline-danger w-25 align-self-end float-end" asp-action="Delete" asp-controller="Apointment" asp-route-id="@item.Id">Delete Apointment</a>
+                    </div>
+
                     <div class="card-body">Time: @item.Date.Hour:@item.Date.Minute - @item.Date.AddHours(1).Hour:@item.Date.Minute</div>
                 </div>
             }

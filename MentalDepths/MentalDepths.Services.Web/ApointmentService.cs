@@ -21,6 +21,13 @@ namespace MentalDepths.Services.Web
             context.SaveChanges();
         }
 
+        public async Task DeleteApointment(Guid id)
+        {
+            var apointment = context.Apointments.FirstOrDefault(a => a.Id == id);
+            context.Apointments.Remove(apointment);
+            await context.SaveChangesAsync();
+        }
+
         public async Task<BookApointementVM> GenerateNewApointement(Guid IdSpecialist, Guid IdUser)
         {
             var bavm = new BookApointementVM()
@@ -93,6 +100,7 @@ namespace MentalDepths.Services.Web
             {
                 var apointement = new Apointment()
                 {
+                    Id = bavm.Id,
                     ApplicationUserId = bavm.UserId,
                     ApplicationUser = bavm.User,
                     SpecialistId = bavm.SpecialistId,

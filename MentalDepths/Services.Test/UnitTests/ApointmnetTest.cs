@@ -87,5 +87,27 @@ namespace Services.Test.UnitTests
             var apointment = apointmentService.GetApointmentById(apointmentId);
             Assert.That(apointment.IsCompleted, Is.EqualTo(true));
         }
+        [Test]
+        public void DeleteApointment_Works()
+        {
+            var specialistId = Guid.Parse("812a4249-cf21-494e-9b6f-76fe5ab3aba3");
+            var patientId = Guid.Parse("2b7ff5f6-3216-49e5-8ec8-8dc4e221615f");
+            BookApointementVM bavm = new BookApointementVM()
+            {
+                Id = Guid.Parse("b0a1c8ad-c84a-4c43-b358-c77a6de5743a"),
+                SpecialistId = specialistId,
+                Address = MentalDepths.Common.Constatnts.Office.OfficeAddress,
+                Date = DateTime.Now,
+                HasOccured = false,
+                UserId = patientId
+            };
+
+            apointmentService.SaveApointment(bavm);
+
+            var idk = context.Apointments.ToList();
+            apointmentService.DeleteApointment(bavm.Id);
+
+            Assert.That(context.Apointments.Count(), Is.EqualTo(1));
+        }
     }
 }

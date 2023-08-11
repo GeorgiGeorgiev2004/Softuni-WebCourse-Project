@@ -11,5 +11,7 @@ namespace MentalDepths.Services.Web.Interfaces
 
         public Task ConfirmApointmentOccured(Guid apointmentId);
         public Task<BookApointementVM> GetApointmentById(Guid id);
+
+        public Task DeleteApointment(Guid id);
     }
 }
